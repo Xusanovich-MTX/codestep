@@ -1,0 +1,44 @@
+.editor-extras { margin: 0 0 18px; min-width: 0; }
+.editor-extra-toolbar, .editor-extra-option-controls, .editor-extra-search-controls { display: flex; flex-wrap: wrap; align-items: center; gap: 7px; }
+.editor-extra-toolbar { padding: 10px; border: 1px solid var(--ed-border); border-radius: 10px; background: var(--ed-card); }
+.editor-extra-button { min-height: 34px; border: 1px solid var(--ed-border); border-radius: 6px; padding: 7px 10px; background: var(--ed-bg); color: var(--ed-text); font: inherit; font-size: 0.6875rem; line-height: 1.5; cursor: pointer; }
+.editor-extra-button:hover { border-color: #059669; }
+.editor-extra-button[aria-pressed="true"], .editor-extra-button[aria-expanded="true"] { border-color: #059669; background: #047857; color: white; }
+.editor-workspace .editor-extra-button:disabled { opacity: .45; cursor: default; }
+.editor-extra-options { margin-top: 8px; }
+.editor-extra-options > summary { display: list-item; width: fit-content; padding: 5px 2px; color: var(--ed-muted); font-size: 0.6875rem; cursor: pointer; }
+.editor-extra-option-controls { padding: 10px 0 4px; gap: 10px 14px; }
+.editor-extra-font { display: flex; align-items: center; gap: 7px; }
+.editor-extra-font-value { width: 42px; text-align: center; color: var(--ed-muted); font-size: 0.6875rem; }
+.editor-extra-check { display: inline-flex; align-items: center; gap: 7px; color: var(--ed-muted); font-size: 0.6875rem; cursor: pointer; }
+.editor-extra-check input { margin: 0; width: 15px; height: 15px; accent-color: #059669; }
+.editor-extra-panel { margin-top: 10px; padding: 14px; background: var(--ed-card); border: 1px solid var(--ed-border); border-radius: 10px; min-width: 0; }
+.editor-extra-search-fields { display: flex; flex-wrap: wrap; gap: 12px; }
+.editor-extra-field { display: flex; flex: 1 1 220px; flex-direction: column; gap: 6px; min-width: 0; color: var(--ed-muted); font-size: 0.6875rem; }
+.editor-workspace .editor-extra-field textarea, .editor-workspace .editor-extra-field input { box-sizing: border-box; width: 100%; min-height: 36px; min-width: 0; max-height: 180px; margin: 0; padding: 8px 10px; border: 1px solid var(--ed-border); border-radius: 6px; background: var(--ed-bg); color: var(--ed-text); font: 0.75rem/1.6 Consolas, 'Cascadia Code', monospace; resize: vertical; }
+.editor-extra-field textarea:focus-visible, .editor-extra-field input:focus-visible, .editor-extra-check input:focus-visible { outline: 2px solid #38bdf8; outline-offset: 2px; }
+.editor-extra-search-controls { margin-top: 12px; }
+.editor-extra-search-controls .editor-extra-check { margin-right: 5px; }
+.editor-extra-status { display: block; color: var(--ed-text); font-size: 0.6875rem; line-height: 1.7; margin-top: 8px; }
+.editor-extra-help { margin: 5px 0 0; color: var(--ed-muted); font-size: 0.625rem; line-height: 1.7; }
+.editor-extra-goto { display: flex; flex-wrap: wrap; align-items: end; gap: 10px; }
+.editor-extra-goto .editor-extra-field { flex: 0 1 155px; }
+.editor-extra-goto .editor-extra-status { margin: 0 auto 7px 0; color: var(--ed-muted); }
+.editor-workspace .editor-search-match { background: rgba(234, 179, 8, .25); border-bottom: 1px solid #b99739; }
+.light-mode .editor-workspace .editor-search-match { background: #f6e4a7; border-bottom-color: #997820; }
+.editor-workspace.editor-productivity-enabled .code-editor-panel .CodeMirror, .editor-workspace.editor-productivity-enabled #codeInput { font-size: var(--ed-font-size, 14px); }
+.editor-workspace.editor-wrap-lines #codeInput { white-space: pre-wrap; overflow-wrap: anywhere; }
+.editor-workspace.editor-focus-mode { position: fixed; inset: 0; z-index: 1100; box-sizing: border-box; width: 100%; height: 100%; max-width: none; margin: 0; padding: 14px 24px 32px; overflow: auto; overscroll-behavior: contain; background: var(--ed-bg); }
+.editor-workspace.editor-focus-mode .editor-heading { margin-top: 8px; }
+.editor-workspace.editor-focus-mode .code-editor-panel .CodeMirror, .editor-workspace.editor-focus-mode #codeInput { height: min(68vh, 800px); min-height: 280px; }
+.editor-workspace .editor-clipboard-helper { position: fixed; left: 0; top: 0; width: 1px; height: 1px; padding: 0; border: 0; opacity: 0; pointer-events: none; }
+@media (max-width: 600px) {
+    .editor-extra-toolbar { gap: 6px; padding: 8px; }
+    .editor-extra-toolbar .editor-extra-button { flex: 1 1 auto; padding: 7px 8px; }
+    .editor-extra-panel { padding: 11px; }
+    .editor-extra-search-fields { gap: 10px; }
+    .editor-extra-field { flex-basis: 100%; }
+    .editor-extra-search-controls .editor-extra-check { width: 100%; margin-bottom: 3px; }
+    .editor-extra-option-controls { gap: 9px; }
+    .editor-workspace.editor-focus-mode { padding: 10px 12px 24px; }
+}

@@ -1,0 +1,1109 @@
+.programming-catalog,
+.programming-topic-detail {
+    --curriculum-surface: #172235;
+    --curriculum-border: #334155;
+    --curriculum-text: #e2e8f0;
+    --curriculum-muted: #a5b4c8;
+    --curriculum-accent: #6ee7b7;
+    --curriculum-hover: rgba(16, 185, 129, 0.09);
+    --curriculum-heading: rgba(16, 185, 129, 0.045);
+    color: var(--curriculum-text);
+    line-height: 1.65;
+}
+
+.light-mode .programming-catalog,
+.light-mode .programming-topic-detail {
+    --curriculum-surface: #fff8e9;
+    --curriculum-border: #ded2bc;
+    --curriculum-text: #342f27;
+    --curriculum-muted: #6b6254;
+    --curriculum-accent: #27634e;
+    --curriculum-hover: #e6eedf;
+    --curriculum-heading: #f2e7d1;
+}
+
+.programming-catalog .curriculum-heading {
+    margin: 0 0 24px;
+}
+
+.programming-catalog .curriculum-sections-nav {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    margin: 20px 0 24px;
+}
+
+.programming-catalog .curriculum-sections-nav a {
+    padding: 16px;
+    border: 1px solid var(--curriculum-border);
+    border-radius: 12px;
+    background: var(--curriculum-surface);
+    color: var(--curriculum-text);
+    font-size: 0.8125rem;
+    text-decoration: none;
+    overflow-wrap: anywhere;
+}
+
+.programming-catalog .curriculum-sections-nav span {
+    display: block;
+    margin-bottom: 6px;
+    color: var(--curriculum-accent);
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.programming-catalog .curriculum-section {
+    margin-top: 36px;
+    scroll-margin-top: 100px;
+}
+
+.programming-catalog .curriculum-section + .curriculum-section {
+    margin-top: 48px;
+}
+
+.programming-catalog .curriculum-reference {
+    margin-top: 32px;
+}
+
+.programming-catalog .curriculum-eyebrow,
+.programming-topic-detail .curriculum-eyebrow {
+    margin: 0 0 8px;
+    color: var(--curriculum-accent);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+}
+
+.programming-catalog .curriculum-heading h2 {
+    margin: 0 0 8px;
+    font-size: clamp(1.375rem, 3vw, 1.875rem);
+    font-weight: 600;
+    line-height: 1.35;
+}
+
+.programming-catalog .curriculum-summary,
+.programming-topic-detail .curriculum-summary {
+    margin: 0;
+    color: var(--curriculum-muted);
+    font-size: 0.875rem;
+}
+
+.programming-catalog .curriculum-introduction {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 20px;
+    padding: 17px 22px;
+    border: 1px solid var(--curriculum-border);
+    border-radius: 12px;
+    background: var(--curriculum-surface);
+    color: var(--curriculum-text);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.programming-catalog .curriculum-chapters {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+    gap: 20px;
+}
+
+.programming-catalog .curriculum-chapter {
+    min-width: 0;
+    border: 1px solid var(--curriculum-border);
+    border-radius: 14px;
+    background: var(--curriculum-surface);
+    scroll-margin-top: 100px;
+}
+
+.programming-catalog .curriculum-chapter > header {
+    padding: 20px 22px 18px;
+    border-bottom: 1px solid var(--curriculum-border);
+    border-radius: 14px 14px 0 0;
+    background: var(--curriculum-heading);
+}
+
+.programming-catalog .chapter-number {
+    display: block;
+    margin-bottom: 6px;
+    color: var(--curriculum-accent);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.045em;
+}
+
+.programming-catalog .curriculum-chapter h3 {
+    margin: 0;
+    font-size: 1.0625rem;
+    font-weight: 600;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+}
+
+.programming-catalog .curriculum-topic-list {
+    margin: 0;
+    padding: 5px 0;
+    list-style: none;
+}
+
+.programming-catalog .curriculum-topic-list > li + li {
+    border-top: 1px solid var(--curriculum-border);
+}
+
+.programming-catalog .curriculum-topic {
+    display: grid;
+    grid-template-columns: 42px minmax(0, 1fr);
+    align-items: baseline;
+    column-gap: 10px;
+    padding: 16px 22px;
+    color: var(--curriculum-text);
+    font-size: 0.8125rem;
+    line-height: 1.75;
+    text-decoration: none;
+    transition: background-color 150ms ease;
+}
+
+.programming-catalog .curriculum-topic-number {
+    color: var(--curriculum-muted);
+    font-size: 0.75rem;
+    font-variant-numeric: tabular-nums;
+}
+
+.programming-catalog .curriculum-topic-name {
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
+.programming-catalog .curriculum-problem-count {
+    display: block;
+    margin-top: 4px;
+    color: var(--curriculum-accent);
+    font-size: 0.75rem;
+}
+
+.programming-catalog .curriculum-topic:hover,
+.programming-catalog .curriculum-introduction:hover,
+.programming-catalog .curriculum-sections-nav a:hover,
+.programming-topic-detail .curriculum-navigation a:hover {
+    background: var(--curriculum-hover);
+}
+
+.programming-catalog a:focus-visible,
+.programming-topic-detail a:focus-visible,
+.legacy-topics a.topic-card:focus-visible {
+    outline: 3px solid #3b82f6;
+    outline-offset: 3px;
+    border-radius: 6px;
+}
+
+.programming-catalog .curriculum-topic.curriculum-chapter-link {
+    grid-template-columns: minmax(0, 1fr);
+}
+
+.legacy-topics {
+    margin-top: 48px;
+}
+
+.legacy-topics > h2 {
+    margin: 0 0 4px;
+    font-size: 1.375rem;
+    font-weight: 600;
+}
+
+.legacy-topics a.topic-card {
+    color: inherit;
+    text-decoration: none;
+}
+
+.programming-topic-detail {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 8px 0 24px;
+}
+
+.programming-topic-detail .back-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    min-height: 28px;
+    margin: 0 0 24px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--curriculum-accent);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    text-decoration: none;
+}
+.programming-topic-detail .back-button:hover { color: #36d8b3; }
+
+.programming-topic-detail .curriculum-breadcrumb {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 7px 12px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    margin: 0 0 16px;
+    padding: 0;
+    color: var(--curriculum-muted);
+    font-size: 0.875rem;
+    overflow-wrap: anywhere;
+}
+
+.programming-topic-detail .curriculum-breadcrumb > * {
+    min-width: 0;
+    max-width: 100%;
+}
+
+.programming-topic-detail .curriculum-breadcrumb a {
+    border-radius: 3px;
+    color: inherit;
+    text-decoration: none;
+    text-underline-offset: 4px;
+}
+
+.programming-topic-detail .curriculum-breadcrumb a:hover {
+    color: var(--curriculum-accent);
+    text-decoration: underline;
+}
+
+.programming-topic-detail .curriculum-breadcrumb a:focus-visible {
+    outline: 2px solid var(--curriculum-accent);
+    outline-offset: 3px;
+}
+
+.programming-topic-detail .curriculum-breadcrumb [aria-hidden="true"] {
+    opacity: 0.6;
+}
+
+.programming-topic-detail .curriculum-detail-heading {
+    max-width: 960px;
+    margin-bottom: 30px;
+    padding: 0;
+    border: 0;
+}
+
+.programming-topic-detail .curriculum-detail-heading .curriculum-eyebrow { margin-bottom: 12px; font-size: 0.8125rem; letter-spacing: 1.7px; }
+.programming-topic-detail .curriculum-detail-heading h1 {
+    margin: 0 0 16px;
+    color: var(--curriculum-text);
+    font-size: 42px;
+    font-weight: 700;
+    line-height: 1.2;
+    overflow-wrap: anywhere;
+}
+.programming-topic-detail .curriculum-detail-heading .curriculum-summary { color: var(--curriculum-muted); font-size: 1rem; line-height: 1.6; }
+
+.programming-topic-detail .curriculum-problems {
+    margin-top: 0;
+}
+
+.programming-topic-detail .curriculum-problems > h2 {
+    margin: 0 0 16px;
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.programming-topic-detail .curriculum-problems-count {
+    display: inline-block;
+    margin-left: 8px;
+    padding: 2px 10px;
+    border-radius: 20px;
+    background: var(--curriculum-hover);
+    color: var(--curriculum-accent);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    vertical-align: middle;
+}
+
+.programming-topic-detail .curriculum-empty,
+.programming-topic-detail .curriculum-introduction-content,
+.programming-topic-detail .book-front-matter-card,
+.programming-topic-detail .curriculum-problem {
+    border: 1px solid var(--curriculum-border);
+    border-radius: 14px;
+    background: var(--curriculum-surface);
+}
+
+.programming-topic-detail .curriculum-empty,
+.programming-topic-detail .curriculum-introduction-content,
+.programming-topic-detail .book-front-matter-card,
+.programming-topic-detail .curriculum-problem-link {
+    padding: 28px;
+}
+
+.programming-topic-detail .book-front-matter-card {
+    margin-bottom: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    border-left: 4px solid var(--curriculum-accent);
+}
+
+.programming-topic-detail .book-front-citation p {
+    margin: 0;
+    color: var(--curriculum-text);
+    font-size: 1.0625rem;
+    line-height: 1.7;
+    font-weight: 600;
+}
+
+.programming-topic-detail .book-front-annotation p {
+    margin: 0;
+    color: var(--curriculum-text);
+    font-size: 0.95rem;
+    line-height: 1.8;
+    text-align: justify;
+    text-indent: 1.25rem;
+}
+
+.programming-topic-detail .book-front-reviewers {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 12px;
+    padding: 14px 18px;
+    background: var(--curriculum-heading);
+    border-radius: 10px;
+    border: 1px solid var(--curriculum-border);
+}
+
+.programming-topic-detail .reviewers-label {
+    font-weight: 700;
+    color: var(--curriculum-accent);
+    font-size: 0.9375rem;
+}
+
+.programming-topic-detail .reviewers-list p {
+    margin: 0;
+    color: var(--curriculum-text);
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.programming-topic-detail .reviewers-list p + p {
+    margin-top: 8px;
+}
+
+.programming-topic-detail .book-front-recommendation p {
+    margin: 0;
+    color: var(--curriculum-muted);
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    font-style: italic;
+}
+
+.programming-topic-detail .book-front-isbn {
+    color: var(--curriculum-accent);
+    font-size: 0.9375rem;
+    letter-spacing: 0.5px;
+}
+
+.programming-topic-detail .introduction-text-title {
+    margin: 0 0 16px;
+    color: var(--curriculum-accent);
+    font-size: 1.125rem;
+    font-weight: 600;
+}
+
+.programming-topic-detail .curriculum-introduction-content p {
+    margin: 0;
+    color: var(--curriculum-text);
+    font-size: 1rem;
+    line-height: 1.85;
+    text-align: justify;
+    text-indent: 1.5rem;
+}
+
+.programming-topic-detail .curriculum-introduction-content p + p {
+    margin-top: 16px;
+}
+
+.programming-topic-detail .curriculum-references-container {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.programming-topic-detail .curriculum-reference-block {
+    padding: 24px 28px;
+    border: 1px solid var(--curriculum-border);
+    border-radius: 14px;
+    background: var(--curriculum-surface);
+}
+
+.programming-topic-detail .reference-subtitle {
+    margin: 0 0 16px;
+    color: var(--curriculum-accent);
+    font-size: 1.125rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.programming-topic-detail .reference-list {
+    margin: 0;
+    padding-left: 24px;
+    color: var(--curriculum-text);
+    font-size: 0.95rem;
+    line-height: 1.8;
+}
+
+.programming-topic-detail .reference-list li {
+    margin-bottom: 10px;
+    text-align: justify;
+}
+
+.programming-topic-detail .reference-list.electronic-links li {
+    margin-bottom: 8px;
+}
+
+.programming-topic-detail .reference-list.electronic-links a {
+    color: #60a5fa;
+    text-decoration: none;
+    font-family: Consolas, monospace;
+    font-size: 0.925rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: color 150ms ease;
+}
+
+.programming-topic-detail .reference-list.electronic-links a:hover {
+    color: #93c5fd;
+    text-decoration: underline;
+}
+
+.light-mode .programming-topic-detail .reference-list.electronic-links a {
+    color: #1d4ed8;
+}
+
+.light-mode .programming-topic-detail .reference-list.electronic-links a:hover {
+    color: #1e40af;
+}
+
+.programming-topic-detail .curriculum-empty p {
+    margin: 0;
+    color: var(--curriculum-muted);
+    font-size: 0.875rem;
+}
+
+.programming-topic-detail .curriculum-empty p + p {
+    margin-top: 8px;
+}
+
+.programming-topic-detail .curriculum-empty strong {
+    color: var(--curriculum-text);
+    font-weight: 600;
+}
+
+.programming-topic-detail .curriculum-problem + .curriculum-problem {
+    margin-top: 16px;
+}
+
+.programming-topic-detail .curriculum-problem h3 {
+    margin: 0 0 12px;
+    color: var(--curriculum-accent);
+    font-size: 1.0625rem;
+    line-height: 1.5;
+}
+
+.programming-topic-detail .curriculum-problem {
+    scroll-margin-top: 100px;
+}
+
+.programming-topic-detail .curriculum-problem-link {
+    display: block;
+    border-radius: inherit;
+    color: var(--curriculum-text);
+    text-decoration: none;
+    transition: background-color 150ms ease;
+}
+
+.programming-topic-detail .curriculum-problem-link:hover,
+.programming-topic-detail .curriculum-problem-link:focus-visible {
+    background: var(--curriculum-hover);
+}
+
+.programming-topic-detail .curriculum-problem-link:focus-visible {
+    border-radius: 14px;
+}
+
+.programming-topic-detail .curriculum-problem-action {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 16px;
+    color: var(--curriculum-accent);
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+
+.programming-topic-detail .curriculum-problem .problem-source-note,
+.editor-workspace .problem-source-note {
+    margin-top: 16px;
+    padding: 12px 16px;
+    border: 1px solid rgba(185, 148, 71, .5);
+    border-left: 3px solid #b99447;
+    border-radius: 8px;
+    background: rgba(185, 148, 71, .08);
+    font-size: .8125rem;
+    line-height: 1.8;
+    overflow-wrap: anywhere;
+}
+
+.programming-topic-detail .curriculum-problem p,
+.programming-topic-detail .problem-statement-text {
+    margin: 0 0 12px;
+    font-size: 0.95rem;
+    line-height: 1.75;
+    color: var(--curriculum-text);
+}
+
+.problem-formula {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 18px 0;
+    font-size: 1rem;
+}
+
+.problem-formula-variable,
+.problem-formula-expression {
+    font-family: "Cambria Math", "Times New Roman", serif;
+    font-size: 1.25em;
+}
+
+.problem-formula-variable {
+    flex-shrink: 0;
+    font-style: italic;
+}
+
+.problem-formula-brace {
+    font-family: "Times New Roman", serif;
+    font-size: 4em;
+    font-weight: 400;
+    line-height: 1;
+}
+
+.problem-formula-cases {
+    display: grid;
+    gap: 8px;
+    min-width: 0;
+}
+
+.problem-formula-case {
+    display: grid;
+    grid-template-columns: minmax(115px, 1fr) 1fr;
+    align-items: baseline;
+    gap: 16px;
+}
+
+.problem-figures {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+    gap: 16px;
+    margin: 18px 0 4px;
+    max-width: 640px;
+}
+
+.problem-figure {
+    margin: 0;
+    min-width: 0;
+}
+
+.problem-figure img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    background: #f8fafc;
+}
+
+@media (max-width: 480px) {
+    .problem-formula { gap: 4px; font-size: .875rem; }
+    .problem-formula-case { grid-template-columns: minmax(96px, 1fr) 1fr; gap: 8px; }
+}
+
+.programming-topic-detail .problem-subitems-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr));
+    gap: 10px;
+    margin: 12px 0 6px;
+}
+
+.programming-topic-detail .problem-subitem {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 12px;
+    background: var(--curriculum-heading);
+    border: 1px solid var(--curriculum-border);
+    border-radius: 8px;
+    font-family: Consolas, "Courier New", monospace;
+    font-size: 0.9rem;
+    color: var(--curriculum-text);
+}
+
+.programming-topic-detail .problem-subitem.problem-subitem-plain {
+    font-family: inherit;
+    font-size: 0.9rem;
+    grid-column: 1 / -1;
+}
+
+.programming-topic-detail .subitem-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 26px;
+    height: 24px;
+    padding: 0 6px;
+    background: var(--curriculum-surface);
+    border: 1px solid var(--curriculum-accent);
+    border-radius: 5px;
+    color: var(--curriculum-accent);
+    font-weight: 700;
+    font-size: 0.8rem;
+    flex-shrink: 0;
+}
+
+.programming-topic-detail .subitem-content {
+    color: var(--curriculum-text);
+    word-break: break-word;
+    font-weight: 500;
+}
+
+.light-mode .programming-topic-detail .problem-subitem {
+    background: #f7f2e7;
+    border-color: #d8cbbc;
+}
+
+.light-mode .programming-topic-detail .subitem-num {
+    background: #ffffff;
+    border-color: var(--curriculum-accent);
+    color: var(--curriculum-accent);
+}
+
+.programming-topic-detail .curriculum-navigation {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 14px;
+    margin-top: 28px;
+}
+
+.programming-topic-detail .curriculum-navigation a {
+    flex: 1 1 240px;
+    min-width: 0;
+    padding: 16px 18px;
+    border: 1px solid var(--curriculum-border);
+    border-radius: 10px;
+    color: var(--curriculum-accent);
+    font-size: 0.8125rem;
+    text-decoration: none;
+    overflow-wrap: anywhere;
+}
+
+.programming-topic-detail .curriculum-navigation a small {
+    display: block;
+    margin-bottom: 4px;
+    color: var(--curriculum-muted);
+    font-size: 0.6875rem;
+}
+
+@media (max-width: 760px) {
+    .programming-catalog .curriculum-sections-nav,
+    .programming-catalog .curriculum-chapters {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .programming-catalog .curriculum-chapter > header,
+    .programming-catalog .curriculum-introduction {
+        padding: 16px;
+    }
+
+    .programming-catalog .curriculum-topic {
+        grid-template-columns: 36px minmax(0, 1fr);
+        column-gap: 8px;
+        padding: 14px 16px;
+    }
+
+    .programming-topic-detail .curriculum-empty,
+    .programming-topic-detail .curriculum-problem-link {
+        padding: 20px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .programming-catalog .curriculum-topic,
+    .programming-topic-detail .curriculum-problem-link {
+        transition: none;
+    }
+}
+
+.programming-topic-detail .curriculum-examples-link {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    margin-top: 24px;
+    padding: 18px 20px;
+    border: 1px solid var(--curriculum-accent);
+    border-radius: 12px;
+    background: var(--curriculum-heading);
+    color: var(--curriculum-accent);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.programming-topic-detail .curriculum-examples-link:hover,
+.programming-topic-detail .curriculum-examples-link:focus-visible {
+    background: var(--curriculum-hover);
+}
+
+.programming-topic-detail .curriculum-examples-link span {
+    margin-left: auto;
+    padding: 2px 10px;
+    border-radius: 20px;
+    background: var(--curriculum-hover);
+    color: var(--curriculum-text);
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+.sample-problems {
+    --sample-solution-surface: var(--curriculum-hover);
+    --sample-solution-border: var(--curriculum-border);
+    --sample-answer-surface: #12382d;
+}
+
+.light-mode .sample-problems {
+    --sample-solution-surface: #e9eee2;
+    --sample-solution-border: #bdcbb6;
+    --sample-answer-surface: #d8e6cc;
+}
+
+.sample-problems .sample-return,
+.sample-problems .curriculum-breadcrumb a {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+}
+
+.sample-problems .curriculum-summary,
+.sample-problems .sample-intro {
+    color: var(--curriculum-muted);
+    font-size: 0.9375rem;
+    line-height: 1.85;
+    overflow-wrap: anywhere;
+}
+
+.sample-problems .curriculum-summary {
+    margin: 0;
+}
+
+@media (max-width: 760px) {
+    .programming-topic-detail .curriculum-breadcrumb { margin-bottom: 14px; font-size: 0.8125rem; }
+    .programming-topic-detail .back-button { margin-bottom: 20px; font-size: 0.875rem; }
+    .programming-topic-detail .curriculum-detail-heading { margin-bottom: 24px; }
+    .programming-topic-detail .curriculum-detail-heading h1 { font-size: 34px; }
+}
+
+@media (max-width: 420px) {
+    .programming-topic-detail .curriculum-detail-heading h1 { font-size: 30px; }
+}
+
+.sample-problems .sample-intro {
+    margin: 24px 0 18px;
+}
+
+.sample-problems .sample-index {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    margin-bottom: 28px;
+}
+
+.sample-problems .sample-index a {
+    padding: 16px;
+    border: 1px solid var(--curriculum-border);
+    border-radius: 10px;
+    background: var(--curriculum-surface);
+    color: var(--curriculum-accent);
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-decoration: none;
+    overflow-wrap: anywhere;
+}
+
+.sample-problems .sample-index a:hover,
+.sample-problems .sample-index a:focus-visible {
+    background: var(--curriculum-hover);
+}
+
+.sample-problems .sample-card {
+    min-width: 0;
+    margin-top: 24px;
+    border: 1px solid var(--curriculum-border);
+    border-radius: 14px;
+    background: var(--curriculum-surface);
+    scroll-margin-top: 100px;
+    overflow-wrap: anywhere;
+}
+
+.sample-problems .sample-question {
+    padding: 28px;
+    border-bottom: 1px solid var(--curriculum-border);
+    border-radius: 14px 14px 0 0;
+    background: var(--curriculum-heading);
+}
+
+.sample-problems .sample-card h2 {
+    margin: 0 0 14px;
+    font-size: 1.375rem;
+    line-height: 1.45;
+    font-weight: 600;
+}
+
+.sample-problems .sample-card h3 {
+    margin: 0 0 14px;
+    font-size: 1.0625rem;
+    font-weight: 600;
+}
+
+.sample-problems .sample-question h3 {
+    margin: 22px 0 8px;
+    color: var(--curriculum-muted);
+    font-size: 0.8125rem;
+}
+
+.sample-problems .sample-solution {
+    min-width: 0;
+    margin: 24px;
+    padding: 22px;
+    border: 1px solid var(--sample-solution-border);
+    border-radius: 12px;
+    background: var(--sample-solution-surface);
+}
+
+.sample-problems .sample-solution > h3 {
+    margin-bottom: 20px;
+    color: var(--curriculum-accent);
+    font-size: 1.125rem;
+    line-height: 1.5;
+}
+
+.sample-problems .sample-statement,
+.sample-problems .sample-steps p {
+    margin: 0;
+    font-size: 0.9375rem;
+    line-height: 1.85;
+}
+
+.sample-problems .sample-steps {
+    margin: 0;
+    padding-left: 24px;
+}
+
+.sample-problems .sample-steps li {
+    min-width: 0;
+    padding: 16px;
+    border: 1px solid var(--curriculum-border);
+    border-radius: 10px;
+    background: var(--curriculum-surface);
+}
+
+.sample-problems .sample-steps li + li {
+    margin-top: 14px;
+}
+
+.sample-problems .sample-steps li::marker {
+    color: var(--curriculum-accent);
+    font-weight: 600;
+}
+
+.sample-problems .sample-formula {
+    max-width: 100%;
+    margin: 12px 0 0;
+    padding: 16px;
+    border: 1px solid var(--curriculum-border);
+    border-radius: 8px;
+    background: var(--curriculum-heading);
+    color: var(--curriculum-text);
+    font-family: Consolas, "Courier New", monospace;
+    font-size: 14px;
+    line-height: 1.8;
+    overflow-x: auto;
+    white-space: pre;
+    overflow-wrap: normal;
+    word-break: normal;
+    tab-size: 4;
+}
+
+.sample-problems .sample-formula:focus-visible {
+    outline: 3px solid #3b82f6;
+    outline-offset: 3px;
+}
+
+.sample-problems .sample-formula code {
+    padding: 0;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+}
+
+.sample-problems .sample-answer {
+    display: grid;
+    gap: 8px;
+    margin: 0 24px 24px;
+    padding: 18px 20px;
+    border: 1px solid var(--curriculum-accent);
+    border-left-width: 4px;
+    border-radius: 10px;
+    background: var(--sample-answer-surface);
+}
+
+.sample-problems .sample-answer h3 {
+    margin: 0;
+    color: var(--curriculum-accent);
+    font-size: 0.9375rem;
+}
+
+.sample-problems .sample-answer code {
+    min-width: 0;
+    color: var(--curriculum-text);
+    font-family: Consolas, "Courier New", monospace;
+    font-size: 15px;
+    line-height: 1.8;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+.sample-problems .sample-note {
+    margin: 0 28px 28px;
+    color: var(--curriculum-muted);
+    font-size: 0.8125rem;
+    line-height: 1.8;
+}
+
+.sample-problems .sample-programs {
+    display: grid;
+    gap: 20px;
+    margin: 0 24px 24px;
+}
+
+.sample-problems .sample-program {
+    min-width: 0;
+    padding: 22px;
+    border: 1px solid var(--sample-solution-border);
+    border-radius: 12px;
+    background: var(--sample-solution-surface);
+}
+
+.sample-problems .sample-program h3 {
+    color: var(--curriculum-accent);
+}
+
+.sample-problems .sample-program h4 {
+    margin: 22px 0 0;
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+
+.sample-problems .sample-program p {
+    color: var(--curriculum-muted);
+    font-size: 0.875rem;
+    line-height: 1.8;
+}
+
+.sample-problems .sample-console {
+    border-left: 3px solid var(--curriculum-accent);
+}
+
+.sample-problems .sample-source {
+    --code-keyword: #c792ea;
+    --code-string: #c3e88d;
+    --code-number: #f78c6c;
+    --code-function: #82aaff;
+    --code-operator: #89ddff;
+    --code-comment: #9bb7a2;
+    --code-property: #f2c97d;
+    --code-meta: #f39199;
+}
+
+.light-mode .sample-problems .sample-source {
+    --code-keyword: #7534cb;
+    --code-string: #32641c;
+    --code-number: #a83b0d;
+    --code-function: #245db2;
+    --code-operator: #03648f;
+    --code-comment: #4b6650;
+    --code-property: #785100;
+    --code-meta: #aa233b;
+}
+
+.sample-source .cm-keyword { color: var(--code-keyword); font-weight: 600; }
+.sample-source .cm-string, .sample-source .cm-string-2 { color: var(--code-string); }
+.sample-source .cm-number { color: var(--code-number); }
+.sample-source .cm-def, .sample-source .cm-builtin { color: var(--code-function); }
+.sample-source .cm-operator, .sample-source .cm-type, .sample-source .cm-variable-3 { color: var(--code-operator); }
+.sample-source .cm-comment { color: var(--code-comment); font-style: italic; }
+.sample-source .cm-variable-2, .sample-source .cm-property { color: var(--code-property); }
+.sample-source .cm-meta, .sample-source .cm-atom { color: var(--code-meta); }
+
+@media (max-width: 700px) {
+    .sample-problems .sample-index {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .sample-problems .sample-programs { margin: 0 12px 16px; gap: 14px; }
+    .sample-problems .sample-program { padding: 14px 12px; }
+    .programming-topic-detail .curriculum-examples-link {
+        padding: 16px;
+    }
+
+    .sample-problems .sample-question {
+        padding: 18px;
+    }
+
+    .sample-problems .sample-card h2 {
+        font-size: 1.25rem;
+    }
+
+    .sample-problems .sample-steps {
+        padding-left: 20px;
+    }
+
+    .sample-problems .sample-solution {
+        margin: 14px 12px;
+        padding: 14px 12px;
+    }
+
+    .sample-problems .sample-steps li {
+        padding: 12px;
+    }
+
+    .sample-problems .sample-answer {
+        margin: 0 12px 16px;
+    }
+
+    .sample-problems .sample-note {
+        margin: 0 18px 18px;
+    }
+
+    .sample-problems .sample-formula,
+    .sample-problems .sample-answer {
+        padding: 12px;
+    }
+}

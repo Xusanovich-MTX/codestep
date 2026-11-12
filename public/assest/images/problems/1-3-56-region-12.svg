@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 220" role="img" aria-labelledby="title description">
+  <title id="title">1.3.56-masala, 12-chizma</title>
+  <desc id="description">Birinchi chorakdagi radiusi 3 bo‘lgan chorak doiraning ichki qismi kulrang.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <path d="M0 0 8 3 0 6Z" fill="#17191b"/>
+    </marker>
+  </defs>
+  <path d="M70 174H268A198 140 0 0 0 70 34Z" fill="#c9c9c9" stroke="#666" stroke-width="1.5"/>
+  <g fill="none" stroke="#d8d8d8" stroke-width=".7">
+    <path d="M70 34H294M70 64H294M70 94H294M70 124H294M70 154H294M120 24V180M170 24V180M220 24V180M270 24V180"/>
+  </g>
+  <g fill="none" stroke="#17191b" stroke-width="1.2">
+    <path d="M36 174H322" marker-end="url(#arrow)"/>
+    <path d="M70 194V18" marker-end="url(#arrow)"/>
+  </g>
+  <path d="M70 174H268A198 140 0 0 0 70 34" fill="none" stroke="#555" stroke-width="1.7"/>
+  <g fill="#17191b" font-family="Georgia,serif" font-size="14">
+    <text x="64" y="191">0</text><text x="263" y="191">3</text>
+    <text x="43" y="39">3</text><text x="43" y="179">0</text>
+    <text x="307" y="169" font-style="italic">x</text><text x="77" y="28" font-style="italic">y</text>
+    <text x="18" y="213" font-size="20">12)</text>
+  </g>
+</svg>

@@ -1,0 +1,134 @@
+{
+    "topics": [
+        {
+            "id": 1,
+            "title": "C++ Kirish",
+            "description": "C++ dasturlash tiliga kirish, asosiy tushunchalar va birinchi dastur",
+            "icon": "fas fa-code",
+            "duration": "15 daqiqa",
+            "exercises": 5,
+            "language": "cpp",
+            "content": "<h2>C++ dasturlash tiliga kirish</h2><p>C++ - bu umumiy maqsadli dasturlash tili...</p>"
+        },
+        {
+            "id": 2,
+            "title": "Python Kirish",
+            "description": "Python dasturlash tiliga kirish, o'zgaruvchilar va ma'lumot turlari",
+            "icon": "fab fa-python",
+            "duration": "12 daqiqa",
+            "exercises": 4,
+            "language": "python",
+            "content": "<h2>Python dasturlash tiliga kirish</h2><p>Python - bu yuqori darajadagi...</p>"
+        },
+        {
+            "id": 3,
+            "title": "Shart operatorlari",
+            "description": "if-else, switch case shart operatorlari va ularning qo'llanilishi",
+            "icon": "fas fa-random",
+            "duration": "20 daqiqa",
+            "exercises": 8,
+            "language": "cpp",
+            "content": "<h2>Shart operatorlari</h2><p>if-else va switch case operatorlari haqida...</p>"
+        },
+        {
+            "id": 4,
+            "title": "Sikllar",
+            "description": "for, while, do-while sikllari va ularni amalda qo'llash",
+            "icon": "fas fa-redo",
+            "duration": "25 daqiqa",
+            "exercises": 10,
+            "language": "cpp",
+            "content": "<h2>Sikllar</h2><p>for, while va do-while sikllari haqida...</p>"
+        },
+        {
+            "id": 5,
+            "title": "Funksiyalar",
+            "description": "Funksiyalar, parametrlar va qaytarish qiymatlari",
+            "icon": "fas fa-box",
+            "duration": "30 daqiqa",
+            "exercises": 12,
+            "language": "cpp",
+            "content": "<h2>Funksiyalar</h2><p>Funksiyalar bilan ishlash...</p>"
+        },
+        {
+            "id": 6,
+            "title": "Massivlar",
+            "description": "Bir va ko'p o'lchamli massivlar, ular bilan ishlash",
+            "icon": "fas fa-layer-group",
+            "duration": "25 daqiqa",
+            "exercises": 8,
+            "language": "cpp",
+            "content": "<h2>Massivlar</h2><p>Massivlar bilan ishlash...</p>"
+        },
+        {
+            "id": 7,
+            "title": "HTML va CSS",
+            "description": "Veb-sahifaning tuzilishi, uslublari va responsiv dizayn",
+            "icon": "fab fa-html5",
+            "duration": "18 daqiqa",
+            "exercises": 6,
+            "language": "html",
+            "content": "<h2>HTML va CSS</h2><p>HTML sahifa tuzilishini, CSS esa dizayn va uslublarni belgilaydi.</p>"
+        },
+        {
+            "id": 8,
+            "title": "JavaScript Asoslari",
+            "description": "JavaScript o'zgaruvchilari, funksiyalari va hodisalar",
+            "icon": "fab fa-js",
+            "duration": "22 daqiqa",
+            "exercises": 9,
+            "language": "javascript",
+            "content": "<h2>JavaScript Asoslari</h2><p>JavaScript sahifaga interaktivlik va dinamik xatti-harakatlar qo'shadi.</p>"
+        },
+        {
+            "id": 9,
+            "title": "OOP",
+            "description": "Klasslar, obyektlar, meros va inkapsulyatsiya",
+            "icon": "fas fa-cubes",
+            "duration": "28 daqiqa",
+            "exercises": 7,
+            "language": "cpp",
+            "content": "<h2>OOP</h2><p>Obyektga yo'naltirilgan dasturlash yaproqlar va modullarni tashkil etishda yordam beradi.</p>"
+        },
+        {
+            "id": 10,
+            "title": "SQL va ma'lumotlar bazalari",
+            "description": "SELECT, INSERT, UPDATE va tabellar bilan ishlash",
+            "icon": "fas fa-database",
+            "duration": "24 daqiqa",
+            "exercises": 8,
+            "language": "sql",
+            "content": "<h2>SQL va ma'lumotlar bazalari</h2><p>SQL orqali ma'lumotlarni saqlash, o'qish va yangilash mumkin.</p>"
+        },
+        {
+            "id": 11,
+            "title": "Git va GitHub",
+            "description": "Versiyalarni boshqarish va loyihalarni hamkorlikda rivojlantirish",
+            "icon": "fab fa-github",
+            "duration": "16 daqiqa",
+            "exercises": 5,
+            "language": "bash",
+            "content": "<h2>Git va GitHub</h2><p>Git bilan ish olib borish va kodni GitHubda saqlash ko'nikmasi kerak.</p>"
+        },
+        {
+            "id": 12,
+            "title": "Algoritmlar va ma'lumotlar tuzilmalari",
+            "description": "Qidiruv, saralash va asosiy ma'lumotlar tuzilmalari",
+            "icon": "fas fa-sitemap",
+            "duration": "35 daqiqa",
+            "exercises": 11,
+            "language": "cpp",
+            "content": "<h2>Algoritmlar</h2><p>Algoritmlar muammolarni samarali va tez yechishga yordam beradi.</p>"
+        },
+        {
+            "id": 13,
+            "title": "1-bob. Sonli ma'lumotlar",
+            "description": "Mashina xotirasida sonlarni tasvirlash, ikkilik va o'nlik sanoq sistemalaridagi masalalar",
+            "icon": "fas fa-calculator",
+            "duration": "30 daqiqa",
+            "exercises": 20,
+            "language": "math",
+            "content": "<h2>1-bob. Sonli ma'lumotlar</h2><h3>1.1.1 Ma'lumotlarni mashina xotirasida ifodalash</h3><ol><li><p><strong>1.1.1-masala.</strong> N = 1254 butun musbat son berilgan. Mashina razryadi k = 16 teng. Ushbu manfiy emas butun sonni mashina xotirasida ifodalang (avval o'tkazish algoritmini keltiring, keyin algoritm qadamlari bo'yicha masalani yeching).</p></li><li><p><strong>1.1.2-masala.</strong> N = 2541 butun musbat son berilgan. Mashina razryadi k = 16 teng. Ushbu manfiy emas butun sonni mashina xotirasida ifodalang.</p></li><li><p><strong>1.1.3-masala.</strong> N = 3675 butun musbat son berilgan. Mashina razryadi k = 15 teng. Ushbu manfiy emas butun sonni mashina xotirasida ifodalang.</p></li><li><p><strong>1.1.4-masala.</strong> N = 7458 butun musbat son berilgan. Mashina razryadi k = 17 teng. Ushbu manfiy emas butun sonni mashina xotirasida ifodalang.</p></li><li><p><strong>1.1.5-masala.</strong> N = 7654 butun musbat son berilgan. Mashina razryadi k = 18 teng. Ushbu manfiy emas butun sonni mashina xotirasida ifodalang.</p></li><li><p><strong>1.1.6-masala.</strong> N = -7654 butun manfiy son berilgan. Mashina razryadi k = 18 teng. Ushbu manfiy butun sonni mashina xotirasida ifodalang.</p></li><li><p><strong>1.1.7-masala.</strong> N = -1025 butun manfiy son berilgan. Mashina razryadi k = 16 teng. Ushbu manfiy butun sonni mashina xotirasida ifodalang.</p></li><li><p><strong>1.1.8-masala.</strong> N = -5232 butun manfiy son berilgan. Mashina razryadi k = 16 teng. Ushbu manfiy butun sonni mashina xotirasida ifodalang.</p></li><li><p><strong>1.1.9-masala.</strong> N = -5879 butun manfiy son berilgan. Mashina razryadi k = 14 teng. Ushbu manfiy butun sonni mashina xotirasida ifodalang.</p></li><li><p><strong>1.1.10-masala.</strong> N = -7895 butun manfiy son berilgan. Mashina razryadi k = 18 teng. Ushbu manfiy butun sonni mashina xotirasida ifodalang.</p></li><li><p><strong>1.1.11-masala.</strong> Mashina xotirasida ifodalangan manfiy butun son (ikkilik) N = 101111111001 berilgan. Ushbu sonni 10 lik sanoq sistemasiga qanday son ekanligi aniqlang.</p></li><li><p><strong>1.1.12-masala.</strong> Mashina xotirasida ifodalangan manfiy butun son (ikkilik) N = 10111111100101 berilgan. Ushbu sonni 10 lik sanoq sistemasiga qanday son ekanligi aniqlang.</p></li><li><p><strong>1.1.13-masala.</strong> Mashina xotirasida ifodalangan manfiy butun son (ikkilik) N = 101111110111001 berilgan. Ushbu sonni 10 lik sanoq sistemasiga qanday son ekanligi aniqlang.</p></li><li><p><strong>1.1.14-masala.</strong> Mashina xotirasida ifodalangan manfiy butun son (ikkilik) N = 10110011111101 berilgan. Ushbu sonni 10 lik sanoq sistemasiga qanday son ekanligi aniqlang.</p></li><li><p><strong>1.1.15-masala.</strong> Mashina xotirasida ifodalangan manfiy butun son (ikkilik) N = 100011111111011 berilgan. Ushbu sonni 10 lik sanoq sistemasiga qanday son ekanligi aniqlang.</p></li><li><p><strong>1.1.16-masala.</strong> Mashina xotirasida ifodalangan manfiy butun son (ikkilik) N = 101111111001 berilgan. Ushbu sonni 10 lik sanoq sistemasiga qanday son ekanligi aniqlang.</p></li><li><p><strong>1.1.17-masala.</strong> Mashina xotirasida ifodalangan manfiy butun son (ikkilik) N = 10111111100101 berilgan. Ushbu sonni 10 lik sanoq sistemasiga qanday son ekanligi aniqlang.</p></li><li><p><strong>1.1.18-masala.</strong> Mashina xotirasida ifodalangan manfiy butun son (ikkilik) N = 101111110111001 berilgan. Ushbu sonni 10 lik sanoq sistemasiga qanday son ekanligi aniqlang.</p></li><li><p><strong>1.1.19-masala.</strong> Mashina xotirasida ifodalangan manfiy butun son (ikkilik) N = 10110011111101 berilgan. Ushbu sonni 10 lik sanoq sistemasiga qanday son ekanligi aniqlang.</p></li><li><p><strong>1.1.20-masala.</strong> Mashina xotirasida ifodalangan manfiy butun son (ikkilik) N = 100011111111011 berilgan. Ushbu sonni 10 lik sanoq sistemasiga qanday son ekanligi aniqlang.</p></li></ol>"
+        }
+    ]
+}

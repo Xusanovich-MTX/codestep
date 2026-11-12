@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 220" role="img" aria-labelledby="title description">
+  <title id="title">1.3.56-masala, 1-chizma</title>
+  <desc id="description">Shtrixlangan soha x = −2 vertikal chizig‘ining chapida va y = 1 gorizontal chizig‘ining yuqorisida.</desc>
+  <defs>
+    <pattern id="hatch" width="7" height="7" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+      <path d="M0 0V7" stroke="#555" stroke-width="1"/>
+    </pattern>
+    <marker id="arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <path d="M0 0 8 3 0 6Z" fill="#17191b"/>
+    </marker>
+  </defs>
+  <path d="M100 150 100 48C88 45 84 54 78 63 70 71 76 86 66 96 57 105 66 117 55 127 49 135 55 143 44 150Z" fill="url(#hatch)" stroke="#45484b" stroke-width="1.2"/>
+  <g fill="none" stroke="#17191b" stroke-width="1.3">
+    <path d="M28 176H326" marker-end="url(#arrow)"/>
+    <path d="M100 198V18" marker-end="url(#arrow)"/>
+  </g>
+  <path d="M100 150H28M100 48V176" fill="none" stroke="#777" stroke-width="1.2" stroke-dasharray="5 4"/>
+  <g fill="#17191b" font-family="Georgia,serif" font-size="16">
+    <text x="91" y="194">−2</text><text x="107" y="154">1</text>
+    <text x="314" y="171" font-style="italic">x</text><text x="108" y="25" font-style="italic">y</text>
+    <text x="18" y="213" font-size="20">1)</text>
+  </g>
+</svg>

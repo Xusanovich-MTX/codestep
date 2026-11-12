@@ -1,0 +1,176 @@
+{
+  "id": 81,
+  "number": "1.1.4",
+  "title": "Butun sonlarga oid masalalar",
+  "problems": [
+    {
+      "number": "1.1.101",
+      "statement": "Butun turdagi h o‘zgaruvchiga berilgan k (k ≥ 100) musbat sonning oxiridan uchinchi raqamini o‘zlashtirish dasturini tuzing. Masalan, agar k = 130985 bo‘lsa, h = 9."
+    },
+    {
+      "number": "1.1.102",
+      "statement": "Berilgan to‘rt xonali son raqamlarining ko‘paytmasini topish dasturini tuzing."
+    },
+    {
+      "number": "1.1.103",
+      "statement": "A soni berilgan, ikkita nolga teng bo‘lmagan butun sonlar berilgan. Bu ikki sonning ayirmasi modulini, bo‘linmasi va yig‘indisi kvadratini hisoblovchi dastur tuzing.",
+      "note": "Manbaning birinchi jumlasida tahrir xatosi bor. Bu yerda ikkita nolga teng bo‘lmagan a va b butun son berilgan deb olinadi; |a − b|, a / b va (a + b)² hisoblanadi."
+    },
+    {
+      "number": "1.1.104",
+      "statement": "To‘rt xonali natural son berilgan. Ushbu sonning raqamlari ko‘paytmasini topish dasturini tuzing."
+    },
+    {
+      "number": "1.1.105",
+      "statement": "A, B, C o‘zgaruvchilar qiymatlari bilan berilgan. Shunday dastur tuzingki, A o‘zgaruvchi qiymati C o‘zgaruvchiga, C o‘zgaruvchi qiymati B ga, B o‘zgaruvchi qiymati A ga teng bo‘lsin.\nMisol: dastlab A = 2, B = 3, C = 5. So‘ngra A = 5, B = 2, C = 3.",
+      "note": "Manbadagi matn va misol almashish yo‘nalishini turlicha ifodalaydi. Bu masalada misoldagi yo‘nalish olinadi: yangi (A, B, C) = eski (C, A, B)."
+    },
+    {
+      "number": "1.1.106",
+      "statement": "Uch xonali natural son berilgan. Ushbu sonning raqamlari yig‘indisini topish dasturini tuzing."
+    },
+    {
+      "number": "1.1.107",
+      "statement": "Uch xonali natural son berilgan. Ushbu sonning oxirgi raqamini boshiga o‘tkazish dasturini tuzing.\nMisol: A = 231. Almashtirishdan so‘ng A = 123."
+    },
+    {
+      "number": "1.1.108",
+      "statement": "Ikki o‘zgaruvchining qiymatlarini almashtirish dasturini yarating."
+    },
+    {
+      "number": "1.1.109",
+      "statement": "Quyidagi sxema bo‘yicha uchta o‘zgaruvchining a, b, c qiymatlarini almashtirish dasturini tuzing:\na) b qiymatini c ga, a qiymatini b ga, c ga a qiymatini belgilash;\nb) b qiymatini a ga, c qiymatini b ga va c ga a qiymatini belgilash.",
+      "note": "Manbaning a) bandida qiymatni ko‘chirish yo‘nalishi takrorlangan. Ikki qarama-qarshi siklik almashish nazarda tutiladi: a) yangi (a, b, c) = eski (c, a, b); b) yangi (a, b, c) = eski (b, c, a). Har ikkala band dastlabki qiymatlardan boshlanadi."
+    },
+    {
+      "number": "1.1.110",
+      "statement": "Butun a soni berilgan. Faqat ko‘paytirish amalidan foydalanib, quyidagilarni hosil qilish dasturini tuzing:\na) a⁴ ikki amal orqali;\nb) a⁶ uch amal orqali;\nc) a⁷ to‘rt amal orqali;\nd) a⁸ uch amal orqali;\ne) a⁹ to‘rt amal orqali;\nf) a¹⁰ to‘rt amal orqali;\ng) a¹³ besh amal orqali;\nh) a¹⁵ besh amal orqali;\nj) a²¹ olti amal orqali;\nk) a²⁸ olti amal orqali;\nl) a⁶⁴ olti amal orqali."
+    },
+    {
+      "number": "1.1.111",
+      "statement": "Butun a soni berilgan. Faqat ko‘paytirish amalidan foydalanib, quyidagilarni aniqlash dasturini tuzing:\na) to‘rtta amalda a³ va a¹⁰;\nb) beshta amalda a⁴ va a²⁰;\nc) beshta amalda a⁵ va a¹³;\nd) beshta amalda a⁵ va a¹⁹;\ne) oltita amalda a², a⁵ va a¹⁷;\nf) oltita amalda a⁴, a¹² va a²⁸.",
+      "note": "Manbaning d) bandida beshta amal ko‘rsatilgan, ammo a⁵ va a¹⁹ ni faqat ko‘paytirish orqali birgalikda olish uchun kamida oltita amal kerak. Ushbu band uchun oltita amal olinadi."
+    },
+    {
+      "number": "1.1.112",
+      "statement": "Masofa santimetrda berilgan. Undagi to‘liq metrlar sonini topish dasturini tuzing."
+    },
+    {
+      "number": "1.1.113",
+      "statement": "Massa kilogrammda berilgan. Undagi to‘liq sentnerlar sonini topish dasturini tuzing."
+    },
+    {
+      "number": "1.1.114",
+      "statement": "Massa kilogrammda berilgan. Undagi to‘liq tonnalar sonini topish dasturini tuzing."
+    },
+    {
+      "number": "1.1.115",
+      "statement": "Masofa metrlarda berilgan. Undagi to‘liq kilometrlar sonini topish dasturini tuzing."
+    },
+    {
+      "number": "1.1.116",
+      "statement": "Yil boshlanib 234 kun o‘tdi. Bu davrda necha to‘liq hafta o‘tdi? Ushbu savolga javob berish dasturini tuzing."
+    },
+    {
+      "number": "1.1.117",
+      "statement": "Kun boshidan N soniya o‘tdi. Quyidagilarni aniqlash dasturini tuzing:\na) kun boshidan necha to‘liq soat o‘tdi;\nb) keyingi soat boshidan necha to‘liq daqiqa o‘tdi;\nc) keyingi daqiqa boshidan necha to‘liq soniya o‘tdi."
+    },
+    {
+      "number": "1.1.118",
+      "statement": "Ikki xonali son berilgan. Quyidagilarni topish dasturini tuzing:\na) undagi o‘nliklar soni;\nb) undagi birliklar soni;\nv) uning raqamlari yig‘indisi."
+    },
+    {
+      "number": "1.1.119",
+      "statement": "Uch xonali son berilgan. Chapdagi birinchi raqam o‘chirilgan va oxiridan yozilgan. Olingan sonni topish dasturini tuzing."
+    },
+    {
+      "number": "1.1.120",
+      "statement": "Uch xonali son berilgan. O‘ngdagi oxirgi raqam o‘chirilgan va boshiga yozilgan. Olingan sonni topish dasturini tuzing."
+    },
+    {
+      "number": "1.1.121",
+      "statement": "Uch xonali son berilgan. Berilgan sonning birinchi va ikkinchi raqamlarini almashtirish orqali olingan sonni topish dasturini tuzing."
+    },
+    {
+      "number": "1.1.122",
+      "statement": "Uch xonali son berilgan. Berilgan sonning ikkinchi va uchinchi raqamlarini almashtirish orqali olingan sonni topish dasturini tuzing."
+    },
+    {
+      "number": "1.1.123",
+      "statement": "Barcha raqamlari har xil bo‘lgan uch xonali son berilgan. Berilgan sonning raqamlarini qayta tartiblash orqali tuzilgan oltita sonni olish dasturini tuzing."
+    },
+    {
+      "number": "1.1.124",
+      "statement": "To‘rt xonali son berilgan. Quyidagilarni topish dasturini tuzing:\na) uning raqamlarini o‘ngdan chapga o‘qish orqali olingan son;\nb) berilgan sonning birinchi va ikkinchi, uchinchi va to‘rtinchi raqamlarini o‘zgartirishdan hosil bo‘lgan son. Masalan, 5434 sonidan 4543, 7048 sonidan 784 olinadi;\nc) berilgan sonning ikkinchi va uchinchi raqamlarini almashtirish natijasida hosil bo‘lgan son. Masalan, 5084 sonidan 5804 olinadi;\nd) berilgan sonning dastlabki ikki va oxirgi ikki raqamini qayta joylashtirish natijasida hosil bo‘lgan son. Masalan, 4566 sonidan 6645, 7304 sonidan 473 olinadi."
+    },
+    {
+      "number": "1.1.125",
+      "statement": "n natural soni berilgan (n > 9). Quyidagilarni topish dasturini tuzing:\na) undagi birliklar soni;\nb) undagi o‘nliklar soni."
+    },
+    {
+      "number": "1.1.126",
+      "statement": "n natural soni berilgan (n > 99). Quyidagilarni topish dasturini tuzing:\na) undagi o‘nliklar soni;\nb) undagi yuzlar soni."
+    },
+    {
+      "number": "1.1.127",
+      "statement": "n natural soni berilgan (n > 999). Quyidagilarni topish dasturini tuzing:\na) undagi yuzlar soni;\nb) undagi minglar soni."
+    },
+    {
+      "number": "1.1.128",
+      "statement": "Uch xonali x sonidan uning oxirgi raqami ayirib tashlangan. Natija 10 ga bo‘linib, chap tomondagi qismiga x sonining oxirgi raqami qo‘shilganda, natijada 237 soni paydo bo‘ldi. x sonini topish dasturini tuzing."
+    },
+    {
+      "number": "1.1.129",
+      "statement": "Uch xonali x sonidan uning oxirgi raqami ayirib tashlangan. Natija 10 ga bo‘linib, chap tomondagi qismiga x sonining oxirgi raqami qo‘shilsa, natijada n soni paydo bo‘ldi. n sonini toping. Berilgan n uchun x sonini topish dasturini tuzing (n ning qiymati klaviaturadan kiritiladi, 10 ≤ n ≤ 999 va n dagi o‘nliklar soni nolga teng emas).",
+      "note": "Manbada n ni ham, x ni ham topish so‘ralgan. Kiritiladigan son n bo‘lib, dastur dastlabki uch xonali x sonini topadi."
+    },
+    {
+      "number": "1.1.130",
+      "statement": "Uch xonali x sonda birinchi raqam o‘chirib tashlangan. Qolgan son 10 ga ko‘paytirilganda va ko‘paytmaga x ning birinchi raqami qo‘shilganda, natijada 564 soni hosil bo‘ldi. x sonini topish dasturini tuzing."
+    },
+    {
+      "number": "1.1.131",
+      "statement": "Uch xonali x sonda birinchi raqam o‘chirib tashlangan. Olingan son 10 ga ko‘paytirilganda va ko‘paytmaga x sonining birinchi raqami qo‘shilganda, n soni olingan. Berilgan n uchun x sonini topish dasturini tuzing (n ning qiymati klaviaturadan kiritiladi, 1 ≤ n ≤ 999).",
+      "note": "Dastlabki x uch xonali bo‘lishi uchun kiritiladigan n sonining oxirgi raqami nolga teng bo‘lmasligi kerak. Manbadagi oraliqqa shu shart ham qo‘shiladi."
+    },
+    {
+      "number": "1.1.132",
+      "statement": "Uch xonali x sonda uning ikkinchi raqami o‘chiriladi. Chap tarafdagi hosil bo‘lgan ikki xonali songa x ning ikkinchi raqami qo‘shilganda, natijada n soni paydo bo‘ldi. Berilgan n sonini topish dasturini tuzing (n ning qiymati klaviaturadan kiritiladi, 10 ≤ n ≤ 999 va n dagi o‘nliklar soni nolga teng emas).",
+      "note": "Matndagi “n sonini topish” o‘rniga kiritilgan n bo‘yicha dastlabki x topiladi. O‘chirilgan o‘rta raqam qolgan ikki raqamning chapiga yoziladi: x = abc bo‘lsa, n = bac."
+    },
+    {
+      "number": "1.1.133",
+      "statement": "Uch xonali x sonda uning ikkinchi raqami o‘chiriladi. O‘ng tarafdagi ikki xonali songa x sonining ikkinchi raqami qo‘shilganda, natijada 456 soni paydo bo‘ldi. x sonini topish dasturini tuzing."
+    },
+    {
+      "number": "1.1.134",
+      "statement": "Uch xonali x sonda uning ikkinchi raqami o‘chiriladi. O‘ng tarafdagi ikki xonali songa x sonining ikkinchi raqami qo‘shilganda, natijada n soni paydo bo‘ldi. Berilgan n uchun x sonini topish dasturini tuzing (n ning qiymati klaviaturadan kiritiladi, 100 ≤ n ≤ 999)."
+    },
+    {
+      "number": "1.1.135",
+      "statement": "Uch xonali x sonda uning oxirgi raqami o‘chiriladi. Qolgan ikki xonali sondagi raqamlar qayta tartiblanganda va keyin ularga chap tomondan x sonining oxirgi raqami qo‘shilganda, natijada 654 soni hosil bo‘ldi. x sonini topish dasturini tuzing."
+    },
+    {
+      "number": "1.1.136",
+      "statement": "Uch xonali x sonda uning oxirgi raqami o‘chiriladi. Qolgan ikki xonali sondagi raqamlar qayta tartiblanganda va keyin ularga chap tomondan x sonining oxirgi raqami qo‘shilganda, natijada n soni paydo bo‘ldi. Berilgan n uchun x sonini topish dasturini tuzing (n ning qiymati klaviaturadan kiritiladi, 1 ≤ n ≤ 999 va n dagi birliklar soni nolga teng emas)."
+    },
+    {
+      "number": "1.1.137",
+      "statement": "Vaqt momentini ko‘rsatuvchi h, m, s (0 ≤ h ≤ 23, 0 ≤ m ≤ 59, 0 ≤ s ≤ 59) butun sonlari berilgan: “h soat, m daqiqa, s soniya”. Kunning boshidagi holati va aniqlangan vaqtda soat strelkasi ko‘rsatadigan burchakni graduslarda aniqlash dasturini tuzing.",
+      "note": "Burchak soat strelkasining 12 soatlik siferblatdagi holati sifatida olinadi: 0° dan 360° gacha, 360° kirmaydi. Masalan, 00:00 va 12:00 uchun burchak 0°."
+    },
+    {
+      "number": "1.1.138",
+      "statement": "Kun boshidan boshlab soat strelkasi y gradusga aylangan (0 ≤ y < 360, y haqiqiy son). To‘liq soatlarni va kun boshidan o‘tgan to‘liq daqiqalar sonini aniqlash dasturini tuzing."
+    },
+    {
+      "number": "1.1.139",
+      "statement": "Vaqt momentini ko‘rsatuvchi h, m (0 ≤ h < 12, 0 ≤ m ≤ 59) butun sonlari berilgan: “h soat, m minut”. Soat strelkasi daqiqa strelkasi bilan quyidagi holatlarga kelguncha o‘tishi kerak bo‘lgan minimal vaqtni (to‘liq daqiqalar sonini) aniqlash dasturini tuzing:\na) ustma-ust tushishi;\nb) bir-biriga perpendikulyar joylashishi.",
+      "note": "Strelkalar uzluksiz harakatlanadi. Har bir holatgacha qolgan vaqtning to‘liq daqiqalari olinadi, ya’ni kasr qismi tashlanadi. Kerakli holat hozir mavjud bo‘lsa, kutish vaqti 0."
+    },
+    {
+      "number": "1.1.140",
+      "statement": "Ikkita a va b butun soni berilgan. Agar a soni b ga bo‘linadigan bo‘lsa yoki b soni a ga bo‘linadigan bo‘lsa, u holda 1 chiqadi, aks holda boshqa har qanday raqam. Shartli yoki sikl operatorlaridan foydalanmang."
+    }
+  ]
+}

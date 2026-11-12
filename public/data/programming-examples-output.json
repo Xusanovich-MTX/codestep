@@ -1,0 +1,83 @@
+{
+    "15": {
+        "intro": "Bu namunalarda klaviaturadan ma’lumot olish, uni o‘zgaruvchida saqlash va ekranga chop etish o‘rganiladi. Har bir masala uchun Python va C++ dasturi hamda uning ishlash namunasi berilgan.",
+        "examples": [
+            {
+                "number": 1,
+                "title": "Klaviaturadan kiritilgan sonni chop etish",
+                "statement": "Klaviaturadan kiritilgan butun sonni ekranga chiqaruvchi dastur tuzing.",
+                "steps": [
+                    {
+                        "text": "Kiritilgan sonni saqlash uchun a o‘zgaruvchisidan foydalanamiz. C++ dasturida uni int a = 0; ko‘rinishida e’lon qilamiz."
+                    },
+                    {
+                        "text": "Foydalanuvchidan butun son kiritishni so‘raymiz. Python’da input() matnni o‘qiydi, int() esa uni butun songa aylantiradi. C++ da cin >> a; kiritilgan sonni a o‘zgaruvchisiga yozadi."
+                    },
+                    {
+                        "text": "a o‘zgaruvchisining qiymatini ekranga chiqaramiz: Python’da print(), C++ da cout ishlatiladi. Masalan, 7 kiritilsa, dastur aynan 7 sonini ko‘rsatadi."
+                    }
+                ],
+                "implementations": [
+                    {
+                        "language": "python",
+                        "title": "Python",
+                        "explanation": "input() yordamida olingan qiymat int() orqali butun songa aylantiriladi. Konsoldagi namuna foydalanuvchi kiritgan 7 sonini ham ko‘rsatadi.",
+                        "code": "a = int(input(\"Raqamni kiriting: \"))\nprint(\"Kiritilgan raqam:\", a)\n",
+                        "stdin": "7\n",
+                        "output_label": "Konsoldagi namuna",
+                        "output": "Raqamni kiriting: 7\nKiritilgan raqam: 7"
+                    },
+                    {
+                        "language": "cpp",
+                        "title": "C++",
+                        "explanation": "Son a o‘zgaruvchisiga o‘qiladi va shu o‘zgaruvchi ekranga chiqariladi. Konsoldagi namunada kiritilgan 7 soni ham ko‘rsatilgan.",
+                        "code": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int a = 0;\n    cout << \"Raqamni kiriting: \";\n    cin >> a;\n    cout << \"Kiritilgan raqam: \" << a << endl;\n    return 0;\n}\n",
+                        "stdin": "7\n",
+                        "output_label": "Konsoldagi namuna",
+                        "output": "Raqamni kiriting: 7\nKiritilgan raqam: 7"
+                    }
+                ],
+                "answer": "7 soni kiritilganda «Kiritilgan raqam: 7» xabari chiqadi. Boshqa butun son kiritilsa, xabarda o‘sha son ko‘rsatiladi.",
+                "note": "Bu o‘quv namunasida kiritish va chiqish xabarlari bor. 1.1.50 yoki 1.1.52-masalani avtomatik tekshirtirishda talabga muvofiq faqat kiritilgan sonni chiqaring."
+            },
+            {
+                "number": 2,
+                "title": "Fanlar va o‘qituvchilar ro‘yxatini chop etish",
+                "statement": "O‘tiladigan fanlar va ularning o‘qituvchilari ro‘yxatini ekranga chop etuvchi dastur tuzing.",
+                "steps": [
+                    {
+                        "text": "Har bir fan nomini shu fan o‘qituvchisining ismi-familiyasi bilan bog‘laymiz. Namuna uchun uchta juftlikdan foydalanamiz: Ona tili — Zokirov A., Matematika — Sobirov J., Fizika — Rustamov A."
+                    },
+                    {
+                        "text": "Python dasturida fan va o‘qituvchi nomlarini klaviaturadan olamiz. Ular fan1, ustoz1, fan2, ustoz2, fan3 va ustoz3 o‘zgaruvchilarida saqlanadi. C++ namunasida esa shu ma’lumotlar dastur matnida oldindan berilgan."
+                    },
+                    {
+                        "text": "Ma’lumotlarni ketma-ket chop etamiz: avval birinchi fan va uning o‘qituvchisi, keyin ikkinchi va uchinchi juftlik. Har bir ma’lumot alohida qatorda chiqadi."
+                    }
+                ],
+                "implementations": [
+                    {
+                        "language": "python",
+                        "title": "Python",
+                        "explanation": "Dastur uchta fan va uchta o‘qituvchi nomini so‘raydi. Konsoldagi namuna kiritilgan matnlar bilan birga yakuniy ro‘yxatni ham ko‘rsatadi.",
+                        "code": "fan1 = input(\"1-fanni kiriting: \")\nustoz1 = input(\"1-fan o'qituvchisini kiriting: \")\nfan2 = input(\"2-fanni kiriting: \")\nustoz2 = input(\"2-fan o'qituvchisini kiriting: \")\nfan3 = input(\"3-fanni kiriting: \")\nustoz3 = input(\"3-fan o'qituvchisini kiriting: \")\n\nprint(\"1-fan:\", fan1)\nprint(\"1-o'qituvchi:\", ustoz1)\nprint(\"2-fan:\", fan2)\nprint(\"2-o'qituvchi:\", ustoz2)\nprint(\"3-fan:\", fan3)\nprint(\"3-o'qituvchi:\", ustoz3)\n",
+                        "stdin": "Ona tili\nZokirov A.\nMatematika\nSobirov J.\nFizika\nRustamov A.\n",
+                        "output_label": "Konsoldagi namuna",
+                        "output": "1-fanni kiriting: Ona tili\n1-fan o'qituvchisini kiriting: Zokirov A.\n2-fanni kiriting: Matematika\n2-fan o'qituvchisini kiriting: Sobirov J.\n3-fanni kiriting: Fizika\n3-fan o'qituvchisini kiriting: Rustamov A.\n1-fan: Ona tili\n1-o'qituvchi: Zokirov A.\n2-fan: Matematika\n2-o'qituvchi: Sobirov J.\n3-fan: Fizika\n3-o'qituvchi: Rustamov A."
+                    },
+                    {
+                        "language": "cpp",
+                        "title": "C++",
+                        "explanation": "Bu dastur tayyor ma’lumotlarni chiqaradi, shuning uchun klaviaturadan qiymat kiritish talab qilinmaydi. Har bir \"\\n\" belgisi keyingi qatorga o‘tkazadi.",
+                        "code": "#include <iostream>\nusing namespace std;\n\nint main() {\n    cout << \"1-fan: Ona tili\\n\";\n    cout << \"1-o'qituvchi: Zokirov A.\\n\";\n    cout << \"2-fan: Matematika\\n\";\n    cout << \"2-o'qituvchi: Sobirov J.\\n\";\n    cout << \"3-fan: Fizika\\n\";\n    cout << \"3-o'qituvchi: Rustamov A.\\n\";\n    return 0;\n}\n",
+                        "stdin": "",
+                        "output_label": "Dastur natijasi",
+                        "output": "1-fan: Ona tili\n1-o'qituvchi: Zokirov A.\n2-fan: Matematika\n2-o'qituvchi: Sobirov J.\n3-fan: Fizika\n3-o'qituvchi: Rustamov A."
+                    }
+                ],
+                "answer": "Uchta fan va ularning o‘qituvchilari tartib bilan, alohida qatorlarda chop etiladi.",
+                "note": "Mashqni avtomatik tekshirtirishda masala sahifasidagi «Qabul qilish talablari»ga qarab chiqish ko‘rinishini moslang."
+            }
+        ]
+    }
+}

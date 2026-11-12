@@ -1,0 +1,32 @@
+/* Dark Theme */
+body.dark-mode {
+    background-color: #0F172A;
+    color: #E2E8F0;
+}
+
+.dark-mode .navigation-drawer {
+    background-color: #1E293B;
+}
+
+.dark-mode .card,
+.dark-mode .topic-card,
+.dark-mode .settings-card,
+.dark-mode .contact-link {
+    background-color: #1E293B;
+    border-color: #334155;
+}
+
+.dark-mode .toolbar {
+    background-color: #0F172A;
+    border-bottom-color: #334155;
+}
+
+.dark-mode .code-input textarea,
+.dark-mode .output-panel {
+    background-color: #1E293B;
+    border-color: #10B981;
+}
+
+.dark-mode ::-webkit-scrollbar-track {
+    background: #0F172A;
+}

@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 220" role="img" aria-labelledby="title description">
+  <title id="title">1.3.56-masala, 11-chizma</title>
+  <desc id="description">Koordinata boshi, (3,6) va (0,6) nuqtalari bilan chegaralangan uchburchak soha.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <path d="M0 0 8 3 0 6Z" fill="#17191b"/>
+    </marker>
+  </defs>
+  <path d="M68 174 248 42 68 42Z" fill="#c7c7c7" stroke="#e24b4b" stroke-width="2.2"/>
+  <g fill="none" stroke="#d7d7d7" stroke-width=".7">
+    <path d="M68 42H290M68 64H290M68 86H290M68 108H290M68 130H290M68 152H290M98 24V180M128 24V180M158 24V180M188 24V180M218 24V180M248 24V180"/>
+  </g>
+  <g fill="none" stroke="#17191b" stroke-width="1.2">
+    <path d="M38 174H322" marker-end="url(#arrow)"/>
+    <path d="M68 194V18" marker-end="url(#arrow)"/>
+  </g>
+  <path d="M68 42H248" stroke="#5278d6" stroke-width="1.6" stroke-dasharray="4 3"/>
+  <g fill="#17191b" font-family="Georgia,serif" font-size="14">
+    <text x="63" y="191">0</text><text x="244" y="191">3</text>
+    <text x="43" y="179">0</text><text x="43" y="47">6</text>
+    <text x="307" y="169" font-style="italic">x</text><text x="75" y="28" font-style="italic">y</text>
+    <text x="18" y="213" font-size="20">11)</text>
+  </g>
+</svg>

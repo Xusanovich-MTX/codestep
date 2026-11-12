@@ -1,0 +1,81 @@
+/* A quiet coding-grid backdrop shared by every page and both themes. */
+body {
+    isolation: isolate;
+}
+
+.site-background {
+    --bg-glow-green: rgba(16, 185, 129, 0.16);
+    --bg-glow-blue: rgba(59, 130, 246, 0.15);
+    --bg-grid: rgba(148, 180, 202, 0.075);
+    --bg-symbol: rgba(110, 231, 183, 0.12);
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+    user-select: none;
+    background:
+        radial-gradient(ellipse at 4% 8%, var(--bg-glow-green), transparent 58%),
+        radial-gradient(ellipse at 96% 82%, var(--bg-glow-blue), transparent 58%);
+}
+
+.light-mode .site-background {
+    --bg-glow-green: rgba(67, 125, 93, 0.09);
+    --bg-glow-blue: rgba(108, 139, 170, 0.10);
+    --bg-grid: rgba(119, 97, 57, 0.085);
+    --bg-symbol: rgba(39, 99, 78, 0.12);
+}
+
+.site-background::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(var(--bg-grid) 1px, transparent 1px),
+        linear-gradient(90deg, var(--bg-grid) 1px, transparent 1px);
+    background-size: 56px 56px;
+    mask-image: linear-gradient(90deg, #000, rgba(0, 0, 0, 0.2) 35%, rgba(0, 0, 0, 0.2) 65%, #000);
+}
+
+.background-code {
+    position: absolute;
+    color: var(--bg-symbol);
+    font: 700 clamp(44px, 5vw, 76px)/1 Consolas, "Courier New", monospace;
+}
+
+.background-code-left {
+    top: 24%;
+    left: 2%;
+    transform: rotate(-12deg);
+}
+
+.background-code-right {
+    right: 2%;
+    bottom: 16%;
+    transform: rotate(10deg);
+}
+
+.dark-mode .home-topic-card,
+.dark-mode .topic-card,
+.dark-mode .topic-content {
+    background-color: rgba(23, 34, 53, 0.96);
+}
+
+@media (max-width: 1279px) {
+    .background-code {
+        display: none;
+    }
+}
+
+@media (max-width: 600px) {
+    .site-background::before {
+        background-size: 40px 40px;
+        opacity: 0.7;
+    }
+}
+
+@media print {
+    .site-background {
+        display: none;
+    }
+}

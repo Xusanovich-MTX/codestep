@@ -1,0 +1,7 @@
+{
+    "provider": "wandbox",
+    "compilers": {
+        "cpp": "gcc-13.2.0",
+        "python": "cpython-3.12.7"
+    }
+}

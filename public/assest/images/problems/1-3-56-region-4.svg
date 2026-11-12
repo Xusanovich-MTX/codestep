@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 220" role="img" aria-labelledby="title description">
+  <title id="title">1.3.56-masala, 4-chizma</title>
+  <desc id="description">Koordinata tekisligida yuqoriga ochilgan parabola, qiya chiziq va ularning o‘ng tomonidagi kulrang soha.</desc>
+  <defs>
+    <pattern id="hatch" width="7" height="7" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+      <path d="M0 0V7" stroke="#858585" stroke-width="1"/>
+    </pattern>
+    <marker id="arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <path d="M0 0 8 3 0 6Z" fill="#17191b"/>
+    </marker>
+  </defs>
+  <path d="M258 92C274 65 291 37 315 18H330V157L258 143Z" fill="url(#hatch)" opacity=".8"/>
+  <g fill="none" stroke="#d6d6d6" stroke-width=".7">
+    <path d="M40 44H330M40 74H330M40 104H330M40 134H330M90 18V178M140 18V178M190 18V178M240 18V178M290 18V178"/>
+  </g>
+  <g fill="none" stroke="#17191b" stroke-width="1.2">
+    <path d="M35 174H330" marker-end="url(#arrow)"/>
+    <path d="M55 198V16" marker-end="url(#arrow)"/>
+  </g>
+  <path d="M52 70C91 133 126 153 160 151 198 149 228 116 267 34 281 7 296 -3 316 -15" fill="none" stroke="#d54a42" stroke-width="2.5"/>
+  <path d="M55 179 310 119" fill="none" stroke="#4778c9" stroke-width="2.5"/>
+  <g fill="#17191b" font-family="Georgia,serif" font-size="14">
+    <text x="52" y="193">0</text><text x="151" y="193">2</text><text x="251" y="193">4</text>
+    <text x="38" y="153">2</text><text x="38" y="93">6</text><text x="35" y="35">10</text>
+    <text x="316" y="169" font-style="italic">x</text><text x="62" y="24" font-style="italic">y</text>
+    <text x="18" y="213" font-size="20">4)</text>
+  </g>
+</svg>

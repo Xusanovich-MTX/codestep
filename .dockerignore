@@ -1,0 +1,9 @@
+.git
+.osp
+.vscode
+.env
+.tools
+node_modules
+storage/*.sqlite*
+storage/*.db*
+tests

@@ -1,0 +1,365 @@
+/* The desktop menu has its own space; mobile navigation stays within reach. */
+:root {
+    --navigation-width: 280px;
+    --mobile-navigation-height: 136px;
+}
+
+.navigation-drawer {
+    left: 0;
+    width: var(--navigation-width);
+    border-right: 1px solid #344457;
+    box-shadow: none;
+    transition: transform .2s ease, width .2s ease, visibility .2s;
+    overscroll-behavior: contain;
+}
+
+.light-mode .navigation-drawer { border-color: var(--day-border); }
+.main-content, .footer {
+    margin-left: var(--navigation-width);
+    min-width: 0;
+    transition: margin-left .2s ease, margin-right .2s ease;
+}
+.main-content > .container { width: 100%; }
+.menu-label-short { display: none; }
+.nav-icon, .nav-toggle-icon {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.7;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+.nav-icon { color: #45d6a5; }
+.light-mode .nav-icon { color: #277251; }
+.menu-button:focus-visible, .navigation-drawer .menu-item:focus-visible {
+    outline: 2px solid #10b981;
+    outline-offset: -3px;
+}
+
+/* User customization: Hidden navigation items */
+[data-nav-item].nav-item-hidden {
+    display: none !important;
+}
+
+/* Desktop drawer layout */
+@media (min-width: 1024px) {
+    .navigation-drawer {
+        display: flex;
+        flex-direction: column;
+    }
+    .drawer-menu {
+        flex: 1 1 auto;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+}
+
+/* Collapsed state (standard or compact) */
+.desktop-menu-collapsed .navigation-drawer {
+    transform: translateX(-100%);
+    visibility: hidden;
+}
+.desktop-menu-collapsed .main-content,
+.desktop-menu-collapsed .footer {
+    margin-left: 0;
+}
+.desktop-menu-collapsed .nav-toggle-icon {
+    transform: rotate(180deg);
+}
+
+/* Compact Mode (Icon Rail - 76px) */
+@media (min-width: 1024px) {
+    html.desktop-menu-compact {
+        --navigation-width: 76px;
+    }
+
+    .desktop-menu-compact .navigation-drawer .drawer-header {
+        padding: 16px 8px;
+    }
+
+    .desktop-menu-compact .navigation-drawer .drawer-header h3,
+    .desktop-menu-compact .navigation-drawer .drawer-header p {
+        display: none;
+    }
+
+    .desktop-menu-compact .navigation-drawer .drawer-header .profile-image {
+        width: 44px;
+        height: 44px;
+        margin: 0 auto;
+        font-size: 1.1rem;
+    }
+
+    .desktop-menu-compact .navigation-drawer .menu-item {
+        justify-content: center;
+        padding: 14px 0;
+        gap: 0;
+        position: relative;
+    }
+
+    .desktop-menu-compact .navigation-drawer .menu-item > span,
+    .desktop-menu-compact .navigation-drawer .menu-item > .menu-label-full,
+    .desktop-menu-compact .navigation-drawer .menu-item > .menu-label-short {
+        display: none;
+    }
+
+    .desktop-menu-compact .navigation-drawer .theme-switch-container {
+        flex-direction: column;
+        padding: 10px 4px;
+        gap: 6px;
+        align-items: center;
+    }
+
+    .desktop-menu-compact .navigation-drawer .theme-switch-container span {
+        display: none;
+    }
+
+    .desktop-menu-compact .navigation-drawer .theme-switch-container .switch {
+        margin: 0;
+        transform: scale(0.75);
+    }
+
+    /* Floating Tooltip in Compact Mode */
+    .desktop-menu-compact .navigation-drawer .menu-item::after {
+        content: attr(data-tooltip);
+        position: absolute;
+        left: calc(100% + 12px);
+        top: 50%;
+        transform: translateY(-50%) scale(0.95);
+        background: #0f172a;
+        color: #f1f5f9;
+        padding: 6px 12px;
+        border-radius: 7px;
+        font-size: 0.75rem;
+        font-weight: 500;
+        white-space: nowrap;
+        pointer-events: none;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.15s ease, transform 0.15s ease, visibility 0.15s;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+        border: 1px solid #334155;
+        z-index: 1002;
+    }
+
+    .desktop-menu-compact .navigation-drawer .menu-item:hover::after {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(-50%) scale(1);
+    }
+
+    .light-mode.desktop-menu-compact .navigation-drawer .menu-item::after {
+        background: #ffffff;
+        color: #1e293b;
+        border-color: #cbd5e1;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+    }
+}
+
+/* Right-positioned side menu */
+@media (min-width: 1024px) {
+    html.menu-position-right .navigation-drawer {
+        left: auto;
+        right: 0;
+        border-right: none;
+        border-left: 1px solid #344457;
+    }
+
+    html.menu-position-right.light-mode .navigation-drawer {
+        border-color: var(--day-border);
+    }
+
+    html.menu-position-right .main-content,
+    html.menu-position-right .footer {
+        margin-left: 0;
+        margin-right: var(--navigation-width);
+    }
+
+    html.menu-position-right.desktop-menu-collapsed .navigation-drawer {
+        transform: translateX(100%);
+        visibility: hidden;
+    }
+
+    html.menu-position-right.desktop-menu-collapsed .main-content,
+    html.menu-position-right.desktop-menu-collapsed .footer {
+        margin-right: 0;
+    }
+
+    html.menu-position-right .desktop-menu-collapsed .nav-toggle-icon {
+        transform: rotate(0deg);
+    }
+
+    html.menu-position-right:not(.desktop-menu-collapsed) .nav-toggle-icon {
+        transform: rotate(180deg);
+    }
+
+    /* Tooltip placed to the left in right-positioned compact menu */
+    html.desktop-menu-compact.menu-position-right .navigation-drawer .menu-item::after {
+        left: auto;
+        right: calc(100% + 12px);
+    }
+}
+
+/* Quick toggle / action button at bottom of drawer */
+.drawer-footer-actions {
+    margin-top: auto;
+    padding: 14px 16px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.light-mode .drawer-footer-actions {
+    border-top-color: var(--day-border);
+}
+
+.drawer-action-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 12px;
+    border-radius: 9px;
+    border: 1px solid #344457;
+    background: rgba(255, 255, 255, 0.04);
+    color: inherit;
+    cursor: pointer;
+    font-size: 0.825rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.drawer-action-btn:hover {
+    background: rgba(16, 185, 129, 0.12);
+    border-color: #10b981;
+    color: #10b981;
+}
+
+.drawer-action-btn svg {
+    transition: transform 0.25s ease;
+}
+
+.light-mode .drawer-action-btn {
+    border-color: var(--day-border);
+    background: var(--day-surface);
+}
+
+.light-mode .drawer-action-btn:hover {
+    background: rgba(16, 185, 129, 0.12);
+    border-color: #10b981;
+}
+
+.desktop-menu-compact .drawer-footer-actions {
+    padding: 12px 6px;
+}
+
+.desktop-menu-compact .drawer-action-btn {
+    justify-content: center;
+    padding: 9px 0;
+}
+
+.desktop-menu-compact .drawer-action-btn .drawer-action-text {
+    display: none;
+}
+
+.desktop-menu-compact .drawer-action-btn svg {
+    transform: rotate(180deg);
+}
+
+/* Match the editor's available width after the sidebar takes its space */
+@media (min-width: 1024px) and (max-width: 1220px) {
+    html:not(.desktop-menu-collapsed):not(.desktop-menu-compact) .editor-layout {
+        grid-template-columns: minmax(0, 1fr);
+    }
+    html:not(.desktop-menu-collapsed):not(.desktop-menu-compact) .editor-sidebar {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+    }
+}
+
+@media (max-width: 1023px) {
+    html { scroll-padding-bottom: calc(var(--mobile-navigation-height) + env(safe-area-inset-bottom, 0px) + 16px); }
+    body { padding-bottom: calc(var(--mobile-navigation-height) + env(safe-area-inset-bottom, 0px)); }
+    .main-content, .footer { margin-left: 0 !important; margin-right: 0 !important; }
+    .navigation-drawer, .desktop-menu-collapsed .navigation-drawer {
+        top: auto;
+        bottom: 0;
+        left: 0;
+        right: auto;
+        width: 100%;
+        height: calc(var(--mobile-navigation-height) + env(safe-area-inset-bottom, 0px));
+        padding: 6px 8px calc(6px + env(safe-area-inset-bottom, 0px));
+        border: 0;
+        border-top: 1px solid #344457;
+        box-shadow: 0 -6px 24px #00000016;
+        transform: none;
+        visibility: visible;
+        transition: none;
+    }
+    .navigation-drawer .drawer-header,
+    .navigation-drawer .theme-switch-container,
+    .drawer-footer-actions,
+    .menu-button,
+    .menu-label-full { display: none !important; }
+    .menu-label-short { display: inline; }
+    .navigation-drawer .drawer-menu {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+        grid-auto-rows: minmax(58px, 1fr);
+        gap: 4px;
+        height: 100%;
+        padding: 0;
+        overflow: hidden;
+    }
+    .navigation-drawer .menu-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+        padding: 6px 2px;
+        min-width: 0;
+        margin: 0;
+        border: 1px solid transparent;
+        border-radius: 10px;
+        font-size: 0.6875rem;
+        line-height: 1.25;
+        text-align: center;
+        overflow-wrap: anywhere;
+    }
+    .navigation-drawer .menu-item[aria-current="page"] { border: 1px solid #32876b; border-radius: 10px; }
+    .light-mode .navigation-drawer .menu-item[aria-current="page"] { border-color: #88ad94; }
+    .navigation-drawer .nav-icon { width: 22px; height: 22px; margin: 0; }
+    .navigation-drawer a[href="?page=home"] { order: 1; }
+    .navigation-drawer a[href="?page=code-editor"] { order: 2; }
+    .navigation-drawer a[href="?page=solutions"] { order: 3; }
+    .navigation-drawer a[href="?page=sample-problems"] { order: 4; }
+    .navigation-drawer a[href="?page=profile"] { order: 5; }
+    .navigation-drawer a[href="?page=contact"] { order: 6; }
+    .navigation-drawer a[href="?page=settings"] { order: 7; }
+    .navigation-drawer a[href="?page=login"] { order: 8; }
+    .toolbar { gap: 8px; padding: 12px 16px; }
+    .toolbar .logo-container { gap: 4px; }
+    .toolbar .toolbar-actions { gap: 4px; }
+    .toast { bottom: calc(var(--mobile-navigation-height) + env(safe-area-inset-bottom, 0px) + 16px); }
+}
+
+@media (max-width: 420px) {
+    .toolbar .toolbar-title { font-size: 1.1rem; }
+    .toolbar .toolbar-mark { width: 30px; font-size: .9rem; }
+    .toolbar .account-toolbar-link { padding: 6px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .navigation-drawer, .drawer-action-btn svg, .main-content, .footer { transition: none; }
+}
+
+@media print {
+    .navigation-drawer, .menu-button { display: none; }
+    .main-content, .footer { margin-left: 0; margin-right: 0; }
+    body { padding-bottom: 0; }
+}
+
+html.menu-hidden .navigation-drawer, html.menu-hidden .drawer-overlay{display:none !important;} html.menu-hidden .main-content{margin-left:0 !important;}
+
+.drag-handle{cursor:grab;margin-right:6px;opacity:.6;} .menu-item.dragging{opacity:.5;}

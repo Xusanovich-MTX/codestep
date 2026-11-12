@@ -1,0 +1,7 @@
+/storage/*.sqlite*
+/storage/*.db*
+/.env
+/.osp/
+/.vscode/
+/.tools/
+node_modules/

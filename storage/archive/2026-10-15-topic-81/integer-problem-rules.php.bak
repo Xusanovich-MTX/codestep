@@ -1,0 +1,234 @@
+<?php
+/**
+ * Server-owned contracts for section 1.1.4. The public requirements explain
+ * editorial decisions where the supplied book text is ambiguous. Expected
+ * values and test inputs must remain on the server.
+ */
+function integerProblemRules(): array
+{
+    static $rules = null;
+    if ($rules !== null) return $rules;
+
+    $make = static function (array $requirements, array $cases, string $kind = 'number_list'): array {
+        $requirements[] = $kind === 'decimal_list'
+            ? 'Natijalarni ko‘rsatilgan tartibda, bo‘sh joy yoki yangi qator bilan ajratib chiqaring. Izoh va sarlavha yozmang. Kasr uchun nuqta ishlating; har bir qiymatning mutlaq xatosi 0.000001 dan oshmasin.'
+            : 'Natijalarni ko‘rsatilgan tartibda, bo‘sh joy yoki yangi qator bilan ajratib chiqaring. Faqat o‘nlik butun sonlar yozing; izoh, sarlavha va a), b) kabi belgilarni chiqarmang.';
+        $rule = [
+            'kind' => $kind,
+            'requirements' => $requirements,
+            'input_hint' => $cases[0][0],
+            'tests' => array_map(static fn(array $case): array => [
+                'stdin' => $case[0] === '' ? '' : $case[0] . "\n",
+                'expected' => $case[1],
+            ], $cases),
+        ];
+        if ($kind === 'decimal_list') $rule['tolerance'] = 0.000001;
+        return $rule;
+    };
+
+    $rules = [];
+    $rules['1.1.101'] = $make([
+        'Kirish: bitta k butun soni, 100 ≤ k ≤ 10¹².',
+        'Chiqish: k sonining oxiridan uchinchi raqami — h.',
+    ], [['130985', '9'], ['100', '1'], ['98007', '0']]);
+
+    $digitProductRequirements = [
+        'Kirish: bitta to‘rt xonali natural son, 1000 ≤ n ≤ 9999.',
+        'Chiqish: uning to‘rtta raqami ko‘paytmasi.',
+    ];
+    $rules['1.1.102'] = $make($digitProductRequirements, [['1234', '24'], ['1000', '0'], ['9999', '6561']]);
+    $rules['1.1.103'] = $make([
+        'Manbadagi kirish jumlasi noaniq. Ushbu tekshiruvda ikkita nolga teng bo‘lmagan a va b butun soni beriladi; |a|, |b| ≤ 10⁶.',
+        'Chiqish tartibi: |a − b|, a / b haqiqiy bo‘linmasi, (a + b)². Bo‘linmani butun songa yaxlitlamang.',
+        'C++ da kasrni yetarli aniqlikda chiqarish uchun, masalan, setprecision(12) dan foydalaning.',
+    ], [['8 3', '5 2.6666666666666667 121'], ['-7 2', '9 -3.5 25'], ['4 -4', '8 -1 0']], 'decimal_list');
+    $rules['1.1.104'] = $make($digitProductRequirements, [['2468', '384'], ['9001', '0'], ['1111', '1']]);
+
+    $rules['1.1.105'] = $make([
+        'Kirish: dastlabki A, B, C butun sonlari, har birining moduli 10⁹ dan oshmaydi.',
+        'Manbadagi yo‘nalish jumlasi va misol bir-biriga mos emas. Tekshiruv misolga asoslanadi: yangi A = eski C, yangi B = eski A, yangi C = eski B.',
+        'Chiqish: yangi A, B, C. Masalan, 2 3 5 kiritilsa, 5 2 3 chiqadi.',
+    ], [['2 3 5', '5 2 3'], ['0 -7 12', '12 0 -7'], ['9 4 -2', '-2 9 4']]);
+    $rules['1.1.106'] = $make([
+        'Kirish: bitta uch xonali natural son, 100 ≤ n ≤ 999.',
+        'Chiqish: uning uchta raqami yig‘indisi.',
+    ], [['123', '6'], ['100', '1'], ['999', '27']]);
+    $rules['1.1.107'] = $make([
+        'Kirish: bitta uch xonali natural son, 100 ≤ n ≤ 999.',
+        'Oxirgi raqamni boshiga o‘tkazing: abc → cab. Chiqish: hosil bo‘lgan son; boshidagi nolni yozish shart emas.',
+    ], [['231', '123'], ['100', '10'], ['907', '790']]);
+    $rules['1.1.108'] = $make([
+        'Kirish: a va b butun sonlari, |a|, |b| ≤ 10⁹.',
+        'Ularning qiymatlarini almashtiring. Chiqish: yangi a, yangi b.',
+    ], [['2 7', '7 2'], ['0 -5', '-5 0'], ['-9 12', '12 -9']]);
+    $rules['1.1.109'] = $make([
+        'Kirish: dastlabki a, b, c butun sonlari, har birining moduli 10⁹ dan oshmaydi.',
+        'Manbadagi a) bandda yo‘nalish takrorlangan. Ushbu tekshiruvda a) yangi (a, b, c) = eski (c, a, b); b) yangi (a, b, c) = eski (b, c, a) deb olinadi.',
+        'Ikkala bandni ham dastlabki qiymatlardan alohida hisoblang. Chiqish: avval a) bandning uchta, keyin b) bandning uchta qiymati — jami 6 ta son.',
+    ], [['2 3 5', '5 2 3 3 5 2'], ['0 -7 12', '12 0 -7 -7 12 0'], ['9 4 -2', '-2 9 4 4 -2 9']]);
+
+    $rules['1.1.110'] = $make([
+        'Kirish: bitta a butun soni, −10 ≤ a ≤ 10.',
+        'Chiqish: a), b), c), d), e), f), g), h), j), k), l) bandlari tartibida a⁴, a⁶, a⁷, a⁸, a⁹, a¹⁰, a¹³, a¹⁵, a²¹, a²⁸, a⁶⁴ — jami 11 ta son.',
+        'Har bir bandni alohida hisoblang. Faqat ko‘paytirishdan foydalaning; bandlar uchun mos ravishda 2, 3, 4, 3, 4, 4, 5, 5, 6, 6, 6 ta ko‘paytirish talab qilingan.',
+        'Katta natijalarni aniq o‘nlik butun son sifatida chiqaring. Python int yetarli; C++ da boost::multiprecision::cpp_int kabi katta butun son turidan foydalaning. long long barcha natijalarni sig‘dirmaydi.',
+        'Avtomatik tekshiruv faqat natijalarni tekshiradi. Faqat ko‘paytirish ishlatilgani va amallar soni kodni alohida ko‘rib chiqishda baholanadi.',
+    ], [
+        ['2', '16 64 128 256 512 1024 8192 32768 2097152 268435456 18446744073709551616'],
+        ['-3', '81 729 -2187 6561 -19683 59049 -1594323 -14348907 -10460353203 22876792454961 3433683820292512484657849089281'],
+        ['0', '0 0 0 0 0 0 0 0 0 0 0'],
+    ]);
+    $rules['1.1.110']['method_review_required'] = true;
+
+    $rules['1.1.111'] = $make([
+        'Kirish: bitta a butun soni, −10 ≤ a ≤ 10.',
+        'Chiqish: a) a³, a¹⁰; b) a⁴, a²⁰; c) a⁵, a¹³; d) a⁵, a¹⁹; e) a², a⁵, a¹⁷; f) a⁴, a¹², a²⁸ — shu tartibda jami 14 ta son.',
+        'Har bir bandni alohida, faqat ko‘paytirish orqali hisoblang. Manbada bandlar uchun mos ravishda 4, 5, 5, 5, 6, 6 ta amal ko‘rsatilgan.',
+        'Manbadagi d) bandning 5 amal talabi ziddiyatli: umumiy a uchun a⁵ va a¹⁹ ni birgalikda faqat beshta ko‘paytirishda hosil qilib bo‘lmaydi. Bu bandda olti ko‘paytirishli yechimdan foydalanish mumkin.',
+        'Katta natijalarni aniq o‘nlik butun son sifatida chiqaring. Python int yoki C++ da boost::multiprecision::cpp_int kabi katta butun son turidan foydalaning.',
+        'Avtomatik tekshiruv faqat natijalarni tekshiradi. Faqat ko‘paytirish ishlatilgani va amallar soni kodni alohida ko‘rib chiqishda baholanadi.',
+    ], [
+        ['2', '8 1024 16 1048576 32 8192 32 524288 4 32 131072 16 4096 268435456'],
+        ['-3', '-27 59049 81 3486784401 -243 -1594323 -243 -1162261467 9 -243 -129140163 81 531441 22876792454961'],
+        ['0', '0 0 0 0 0 0 0 0 0 0 0 0 0 0'],
+    ]);
+    $rules['1.1.111']['method_review_required'] = true;
+
+    $rules['1.1.112'] = $make([
+        'Kirish: santimetrdagi masofa — 0 ≤ n ≤ 10¹² bo‘lgan butun son.',
+        'Chiqish: masofadagi to‘liq metrlar soni. Qoldiq santimetrlar hisobga olinmaydi.',
+    ], [['250', '2'], ['99', '0'], ['1200', '12']]);
+    $rules['1.1.113'] = $make([
+        'Kirish: kilogrammdagi massa — 0 ≤ n ≤ 10¹² bo‘lgan butun son.',
+        'Chiqish: massadagi to‘liq sentnerlar soni. Bir sentner 100 kilogramm.',
+    ], [['2099', '20'], ['99', '0'], ['100', '1']]);
+    $rules['1.1.114'] = $make([
+        'Kirish: kilogrammdagi massa — 0 ≤ n ≤ 10¹² bo‘lgan butun son.',
+        'Chiqish: massadagi to‘liq tonnalar soni. Bir tonna 1000 kilogramm.',
+    ], [['3250', '3'], ['999', '0'], ['1000', '1']]);
+    $rules['1.1.115'] = $make([
+        'Kirish: metrdagi masofa — 0 ≤ n ≤ 10¹² bo‘lgan butun son.',
+        'Chiqish: masofadagi to‘liq kilometrlar soni. Bir kilometr 1000 metr.',
+    ], [['7599', '7'], ['999', '0'], ['1000', '1']]);
+    $rules['1.1.116'] = $make([
+        'Kirish ma’lumoti yo‘q: masalada 234 kun berilgan.',
+        'Chiqish: 234 kun ichidagi to‘liq haftalar soni; qolgan kunlar hisobga olinmaydi.',
+    ], [['', '33']]);
+    $rules['1.1.117'] = $make([
+        'Kirish: kun boshidan o‘tgan N soniya, 0 ≤ N < 86400 bo‘lgan butun son.',
+        'Chiqish: a) kun boshidan o‘tgan to‘liq soatlar; b) joriy soat boshlanganidan o‘tgan to‘liq daqiqalar; c) joriy daqiqa boshlanganidan o‘tgan soniyalar.',
+    ], [['3661', '1 1 1'], ['0', '0 0 0'], ['86399', '23 59 59']]);
+    $rules['1.1.118'] = $make([
+        'Kirish: ikki xonali natural son, 10 ≤ n ≤ 99.',
+        'Chiqish: a) o‘nliklar raqami; b) birliklar raqami; v) raqamlar yig‘indisi.',
+    ], [['42', '4 2 6'], ['10', '1 0 1'], ['99', '9 9 18']]);
+
+    $rules['1.1.119'] = $make([
+        'Kirish: uch xonali natural son, 100 ≤ n ≤ 999.',
+        'Birinchi raqamni oxiriga o‘tkazing: abc → bca. Chiqish: hosil bo‘lgan son; boshidagi nolni yozish shart emas.',
+    ], [['231', '312'], ['100', '1'], ['907', '79']]);
+    $rules['1.1.120'] = $make([
+        'Kirish: uch xonali natural son, 100 ≤ n ≤ 999.',
+        'Oxirgi raqamni boshiga o‘tkazing: abc → cab. Chiqish: hosil bo‘lgan son; boshidagi nolni yozish shart emas.',
+    ], [['231', '123'], ['100', '10'], ['907', '790']]);
+    $rules['1.1.121'] = $make([
+        'Kirish: uch xonali natural son, 100 ≤ n ≤ 999.',
+        'Birinchi va ikkinchi raqamni almashtiring: abc → bac. Chiqish: hosil bo‘lgan son; boshidagi nolni yozish shart emas.',
+    ], [['123', '213'], ['105', '15'], ['980', '890']]);
+    $rules['1.1.122'] = $make([
+        'Kirish: uch xonali natural son, 100 ≤ n ≤ 999.',
+        'Ikkinchi va uchinchi raqamni almashtiring: abc → acb. Chiqish: hosil bo‘lgan son.',
+    ], [['123', '132'], ['105', '150'], ['980', '908']]);
+    $rules['1.1.123'] = $make([
+        'Kirish: raqamlari bir-biridan farqli uch xonali natural son, 100 ≤ n ≤ 999.',
+        'Chiqish: uchta raqamning barcha oltita o‘rin almashtirishidan hosil bo‘lgan sonlar. Oltita sonni istalgan tartibda, har birini aynan bir marta chiqaring.',
+        'Nol birinchi o‘ringa kelishi mumkin. Masalan, 012 o‘rniga 12 yozish mumkin; bu o‘rin almashtirish ham oltita natijadan biri hisoblanadi.',
+    ], [['123', '123 132 213 231 312 321'], ['102', '102 120 12 21 201 210'], ['907', '907 970 97 79 790 709']], 'integer_set');
+    // Unlike ordered lists, every permutation order is valid for this exercise.
+    $rules['1.1.123']['requirements'][count($rules['1.1.123']['requirements']) - 1] = 'Natijalarni bo‘sh joy yoki yangi qator bilan ajrating. Faqat oltita o‘nlik butun son yozing; izoh yoki sarlavha chiqarmang.';
+    $rules['1.1.124'] = $make([
+        'Kirish: to‘rt xonali natural son, 1000 ≤ n ≤ 9999; uning raqamlarini abcd deb belgilang.',
+        'Chiqish: a) dcba; b) badc; c) acbd; d) cdab — shu tartibda to‘rtta son. Har bir bandni dastlabki n dan alohida hisoblang.',
+        'Natija boshidagi nollarni yozish shart emas. Masalan, 7048 uchun b) natijasi 784, 7304 uchun d) natijasi 473 bo‘ladi.',
+    ], [['5434', '4345 4543 5344 3454'], ['7048', '8407 784 7408 4870'], ['7304', '4037 3740 7034 473']]);
+
+    $rules['1.1.125'] = $make([
+        'Kirish: natural n soni, 9 < n ≤ 10¹².',
+        'Chiqish: a) birliklar raqami; b) o‘nliklar raqami. Bu yerda har bir javob 0 dan 9 gacha bo‘lgan bitta raqamdir.',
+    ], [['10', '0 1'], ['130985', '5 8'], ['999999999999', '9 9']]);
+    $rules['1.1.126'] = $make([
+        'Kirish: natural n soni, 99 < n ≤ 10¹².',
+        'Chiqish: a) o‘nliklar raqami; b) yuzliklar raqami. Har bir javob 0 dan 9 gacha bo‘lgan bitta raqamdir.',
+    ], [['100', '0 1'], ['130985', '8 9'], ['999999999999', '9 9']]);
+    $rules['1.1.127'] = $make([
+        'Kirish: natural n soni, 999 < n ≤ 10¹².',
+        'Chiqish: a) yuzliklar raqami; b) mingliklar raqami. Har bir javob 0 dan 9 gacha bo‘lgan bitta raqamdir.',
+    ], [['1000', '0 1'], ['130985', '9 0'], ['999999999999', '9 9']]);
+    $rules['1.1.128'] = $make([
+        'Kirish ma’lumoti yo‘q. Uch xonali x ning oxirgi raqami boshiga o‘tkazilganda 237 hosil bo‘lgan.',
+        'Chiqish: dastlabki x soni.',
+    ], [['', '372']]);
+    $rules['1.1.129'] = $make([
+        'Kirish: 10 ≤ n ≤ 999 bo‘lgan butun son; n ning o‘nliklar raqami nol emas.',
+        'Uch xonali x ning oxirgi raqami boshiga o‘tkazilganda n hosil bo‘lgan. Chiqish: dastlabki x. Manbadagi «n ni toping» jumlasi o‘rniga berilgan n dan x tiklanadi.',
+        'n ikki xonali bo‘lsa, raqamlarni almashtirishda uning boshidagi yuzlik raqami 0 deb olinadi.',
+    ], [['237', '372'], ['10', '100'], ['910', '109']]);
+    $rules['1.1.130'] = $make([
+        'Kirish ma’lumoti yo‘q. Uch xonali x ning birinchi raqami oxiriga o‘tkazilganda 564 hosil bo‘lgan.',
+        'Chiqish: dastlabki x soni.',
+    ], [['', '456']]);
+    $rules['1.1.131'] = $make([
+        'Kirish: 1 ≤ n ≤ 999 bo‘lgan butun son.',
+        'Uch xonali x ning birinchi raqami oxiriga o‘tkazilganda n hosil bo‘lgan. Chiqish: dastlabki x.',
+        'x uch xonali bo‘lishi uchun n ning birliklar raqami nol bo‘lmasligi kerak; tekshiruvda faqat shunday n beriladi. Yetishmayotgan yuqori xona raqamlarini 0 deb oling.',
+    ], [['564', '456'], ['1', '100'], ['999', '999']]);
+    $rules['1.1.132'] = $make([
+        'Kirish: 10 ≤ n ≤ 999 bo‘lgan butun son; n ning o‘nliklar raqami nol emas.',
+        'Manba jumlasi noaniq. Ushbu tekshiruvda x ning o‘rtadagi raqami olinib, qolgan ikki raqamning chapiga yoziladi: x = abc → n = bac.',
+        'Chiqish: berilgan n dan tiklangan dastlabki uch xonali x. n ikki xonali bo‘lsa, uning yuzlik raqamini 0 deb oling.',
+    ], [['213', '123'], ['10', '100'], ['980', '890']]);
+    $rules['1.1.133'] = $make([
+        'Kirish ma’lumoti yo‘q. x ning o‘rtadagi raqami olinib, qolgan ikki raqamning o‘ngiga yozilganda 456 hosil bo‘lgan: abc → acb.',
+        'Chiqish: dastlabki x soni.',
+    ], [['', '465']]);
+    $rules['1.1.134'] = $make([
+        'Kirish: 100 ≤ n ≤ 999 bo‘lgan butun son.',
+        'Uch xonali x ning o‘rtadagi raqami olinib, qolgan ikki raqamning o‘ngiga yozilganda n hosil bo‘lgan: abc → acb. Chiqish: dastlabki x.',
+    ], [['456', '465'], ['100', '100'], ['907', '970']]);
+    $rules['1.1.135'] = $make([
+        'Kirish ma’lumoti yo‘q. x ning oxirgi raqami olib tashlangan, qolgan ikki raqam almashtirilgan va olingan raqam ularning chapiga yozilganda 654 hosil bo‘lgan: abc → cba.',
+        'Chiqish: dastlabki x soni.',
+    ], [['', '456']]);
+    $rules['1.1.136'] = $make([
+        'Kirish: 1 ≤ n ≤ 999 bo‘lgan butun son; n ning birliklar raqami nol emas.',
+        'Uch xonali x ning raqamlari teskari tartibda yozilganda n hosil bo‘lgan: abc → cba. Chiqish: dastlabki x.',
+        'n bir yoki ikki xonali bo‘lsa, yetishmayotgan yuqori xona raqamlarini 0 deb oling.',
+    ], [['654', '456'], ['1', '100'], ['709', '907']]);
+
+    $rules['1.1.137'] = $make([
+        'Kirish: h, m, s butun sonlari; 0 ≤ h ≤ 23, 0 ≤ m ≤ 59, 0 ≤ s ≤ 59.',
+        'Chiqish: soat strelkasining 12 belgisi bilan hosil qilgan, soat yo‘nalishida o‘lchanadigan burchagi (graduslarda), 0 ≤ burchak < 360.',
+        'Bu tekshiruv strelkaning ayni paytdagi holatini oladi: 12:00:00 da burchak 0. Kun davomida to‘plangan to‘liq aylanishlar qo‘shilmaydi.',
+        'C++ da kasrni yetarli aniqlikda chiqarish uchun, masalan, setprecision(12) dan foydalaning.',
+    ], [['0 0 0', '0'], ['12 30 0', '15'], ['23 59 59', '359.9916666666667']], 'decimal_list');
+    $rules['1.1.138'] = $make([
+        'Kirish: soat strelkasining burilish burchagi y haqiqiy soni, 0 ≤ y < 360; kasr uchun nuqta yozing.',
+        'Chiqish: avval o‘tgan to‘liq soatlar, keyin shu 12 soatlik davr boshidan o‘tgan jami to‘liq daqiqalar soni.',
+        'Qoldiq vaqtni yuqoriga yaxlitlamang. Ikkinchi natija joriy soat ichidagi daqiqalar emas, jami daqiqalar sonidir.',
+    ], [['95.75', '3 191'], ['0', '0 0'], ['359.9', '11 719']]);
+    $rules['1.1.139'] = $make([
+        'Kirish: h va m butun sonlari, 0 ≤ h < 12 va 0 ≤ m ≤ 59. Boshlang‘ich soniya 0 deb olinadi.',
+        'Chiqish: a) strelkalar ustma-ust tushguncha; b) bir-biriga perpendikulyar bo‘lguncha kutiladigan vaqt ichidagi to‘liq daqiqalar soni.',
+        'Har bir band uchun boshlang‘ich vaqtdan boshlab eng yaqin hodisani alohida toping. Strelkalar uzluksiz harakatlanadi; b) bandda 90° ham, 270° ham olinadi.',
+        'Aniqlik uchun: kerakli holat hozirning o‘zida mavjud bo‘lsa, kutish 0. Aks holda hodisagacha bo‘lgan aniq vaqtning kasr qismini tashlang, yuqoriga yaxlitlamang. Masalan, 16.36 daqiqa kutishda 16 ta to‘liq daqiqa bor.',
+    ], [['0 0', '0 16'], ['3 0', '16 0'], ['11 59', '1 17']]);
+    $rules['1.1.140'] = $make([
+        'Kirish: nolga teng bo‘lmagan a va b butun sonlari, |a|, |b| ≤ 10⁹. Nolga bo‘lish holati berilmaydi.',
+        'Chiqish: a soni b ga yoki b soni a ga qoldiqsiz bo‘linsa, aynan 1 raqami. Aks holda 0, 2, 3, 4, 5, 6, 7, 8, 9 raqamlaridan istalgan bittasini chiqaring.',
+        'Shartli operatorlar (if, shartli ifoda, switch) va sikllardan foydalanmang.',
+        'Avtomatik tekshiruv faqat natijani tekshiradi. Shartli operatorlar va sikllar ishlatilmagani kodni alohida ko‘rib chiqishda baholanadi.',
+    ], [['12 3', '1'], ['-4 20', '1'], ['7 3', '0']], 'divisibility_digit');
+    $rules['1.1.140']['method_review_required'] = true;
+
+    return $rules;
+}

@@ -1,0 +1,428 @@
+{
+  "14": {
+    "intro": "Bu namunalarda butun sonlarni ikkilik sanoq sistemasiga o‘tkazish va berilgan razryadda ifodalash o‘rganiladi. Manfiy sonlar qo‘shimcha kod (two’s complement) usulida ifodalanadi.",
+    "examples": [
+      {
+        "number": 1,
+        "title": "Manfiy sonni 12 bitda ifodalash",
+        "statement": "N = −858 butun manfiy son berilgan. Mashina razryadi k = 12 ga teng. Ushbu manfiy butun sonni mashina xotirasida ifodalang.",
+        "steps": [
+          {
+            "text": "Avval sonning modulini, ya’ni 858 ni ikkilik sanoq sistemasiga o‘tkazamiz. Buning uchun sonni 2 ga ketma-ket bo‘lib, qoldiqlarni oxiridan boshiga qarab yozamiz. Natija 10 bitni egallaydi.",
+            "formula": "858₁₀ = 1101011010₂"
+          },
+          {
+            "text": "Mashina razryadi 12 bit bo‘lgani uchun boshiga 2 ta nol qo‘shamiz.",
+            "formula": "001101011010"
+          },
+          {
+            "text": "Manfiy sonning qo‘shimcha kodini olish uchun barcha bitlarni teskarisiga almashtiramiz: 0 o‘rniga 1, 1 o‘rniga 0 yozamiz.",
+            "formula": "001101011010 → 110010100101"
+          },
+          {
+            "text": "Hosil bo‘lgan songa ikkilik sanoq sistemasida 1 qo‘shamiz. Shu bilan −858 ning 12 bitli qo‘shimcha kodi hosil bo‘ladi.",
+            "formula": "110010100101₂ + 1₂ = 110010100110₂"
+          }
+        ],
+        "answer": "−858₁₀ = 110010100110₂ (12 bitli qo‘shimcha kod)"
+      },
+      {
+        "number": 2,
+        "title": "Musbat sonni 15 bitda ifodalash",
+        "statement": "N = 5656 butun musbat son berilgan. Mashina razryadi k = 15 ga teng. Ushbu manfiy emas butun sonni mashina xotirasida ifodalang.",
+        "steps": [
+          {
+            "text": "5656 ni 2 ga ketma-ket bo‘lamiz. Har bir bo‘lishdagi qoldiqni oxiridan boshiga qarab o‘qib, sonning ikkilik yozuvini olamiz. Bu yozuv 13 bitdan iborat.",
+            "formula": "5656₁₀ = 1011000011000₂"
+          },
+          {
+            "text": "15 bitni to‘ldirish uchun boshiga 2 ta nol qo‘shamiz. Boshiga nol qo‘shish sonning qiymatini o‘zgartirmaydi.",
+            "formula": "1011000011000 → 001011000011000"
+          },
+          {
+            "text": "Son musbat bo‘lgani uchun bitlarni teskarilash yoki 1 qo‘shish kerak emas. To‘ldirilgan ikkilik yozuv sonning xotiradagi ko‘rinishi bo‘ladi.",
+            "formula": "001011000011000"
+          }
+        ],
+        "answer": "5656₁₀ = 001011000011000₂ (15 bit)"
+      },
+      {
+        "number": 3,
+        "title": "Qo‘shimcha koddagi manfiy sonni o‘nlikka o‘tkazish",
+        "statement": "Mashina xotirasida ifodalangan manfiy butun son (ikkilik) N = 1000111111111011 berilgan. Ushbu sonning 10 lik sanoq sistemasida qanday son ekanligini aniqlang.",
+        "steps": [
+          {
+            "text": "Berilgan yozuv 16 bitdan iborat. Uni 16 bitli qo‘shimcha kod deb olamiz. Bu usulda eng chapdagi bit 1 bo‘lsa, son manfiy bo‘ladi.",
+            "formula": "N = 1000111111111011₂"
+          },
+          {
+            "text": "Sonning modulini topish uchun barcha bitlarni teskarisiga almashtiramiz.",
+            "formula": "1000111111111011 → 0111000000000100"
+          },
+          {
+            "text": "Hosil bo‘lgan ikkilik songa 1 qo‘shamiz.",
+            "formula": "0111000000000100₂ + 1₂ = 0111000000000101₂"
+          },
+          {
+            "text": "Natijani o‘nlik sanoq sistemasiga o‘tkazamiz. Buning uchun 1 turgan razryadlarning qiymatlarini qo‘shamiz.",
+            "formula": "0111000000000101₂\n= 2¹⁴ + 2¹³ + 2¹² + 2² + 2⁰\n= 16384 + 8192 + 4096 + 4 + 1\n= 28677₁₀"
+          },
+          {
+            "text": "Dastlabki son manfiy bo‘lgani uchun topilgan modul oldiga minus ishorasini qo‘yamiz.",
+            "formula": "N = −28677"
+          }
+        ],
+        "answer": "1000111111111011₂ = −28677₁₀ (16 bitli qo‘shimcha kod)"
+      }
+    ]
+  },
+  "16": {
+    "intro": "Ushbu namunalarda matematik formulalarni dasturlash tillarida (Python va C++) ifodalash, koordinatalar orqali geometrik kattaliklarni (perimetr va yuza) hisoblash hamda yordamchi o‘zgaruvchilar yordamida darajalarni samarali hisoblash usullari ko‘rib chiqiladi.",
+    "examples": [
+      {
+        "number": 1,
+        "title": "Uchburchakning perimetri va yuzasini topish",
+        "statement": "Uchburchak uning uchlari koordinatalari bilan aniqlanadi. Uchburchakning perimetri va yuzasini topish dasturini tuzing.",
+        "steps": [
+          {
+            "text": "1. Uchburchak uchlarining koordinatalari kiritiladi: (x1, y1), (x2, y2), (x3, y3).",
+            "formula": "A(x1, y1), B(x2, y2), C(x3, y3)"
+          },
+          {
+            "text": "2. Ikki nuqta orasidagi masofa formulasi orqali uchburchak tomonlari (a, b, c) hisoblanadi.",
+            "formula": "a = √((x2 - x1)² + (y2 - y1)²)\nb = √((x3 - x2)² + (y3 - y2)²)\nc = √((x1 - x3)² + (y1 - y3)²)"
+          },
+          {
+            "text": "3. Uchburchakning perimetri tomonlar yig‘indisiga teng: perimeter = a + b + c. Yarim perimetr: s = perimeter / 2.",
+            "formula": "perimeter = a + b + c,   s = perimeter / 2"
+          },
+          {
+            "text": "4. Geron formulasi orqali uchburchak yuzasi topiladi.",
+            "formula": "area = √(s * (s - a) * (s - b) * (s - c))"
+          }
+        ],
+        "implementations": [
+          {
+            "language": "python",
+            "title": "Python yechimi",
+            "explanation": "math kutubxonasidan sqrt funksiyasi va f-string orqali natijalarni chiqarish:",
+            "code": "import math\n\n# Uchburchakning uchlari koordinatalarini kiritish\nx1, y1 = map(float, input(\"Birinchi nuqtaning koordinatalarini kiritish (x1, y1): \").split())\nx2, y2 = map(float, input(\"Ikkinchi nuqtaning koordinatalarini kiritish (x2, y2): \").split())\nx3, y3 = map(float, input(\"Uchinchi nuqtaning koordinatalarini kiritish (x3, y3): \").split())\n\n# Uchburchakning uch tomonining uzunliklarini hisoblash\na = math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2)\nb = math.sqrt((x3 - x2) ** 2 + (y3 - y2) ** 2)\nc = math.sqrt((x1 - x3) ** 2 + (y1 - y3) ** 2)\n\n# Perimetrni hisoblash\nperimeter = a + b + c\n\n# Yuzani hisoblash uchun Geron formulasi\ns = perimeter / 2\narea = math.sqrt(s * (s - a) * (s - b) * (s - c))\n\n# Natijalarni chiqarish\nprint(f\"Uchburchakning perimetri: {perimeter}\")\nprint(f\"Uchburchakning yuzi: {area}\")",
+            "stdin": "0 0\n4 0\n0 3",
+            "output": "Uchburchakning perimetri: 12.0\nUchburchakning yuzi: 6.0"
+          },
+          {
+            "language": "cpp",
+            "title": "C++ yechimi",
+            "explanation": "<cmath> kutubxonasining sqrt va pow funksiyalaridan foydalanib yechish:",
+            "code": "#include <iostream>\n#include <cmath>\nusing namespace std;\n\nint main() {\n    double x1, y1, x2, y2, x3, y3;\n    // Uchburchakning uchlari koordinatalarini kiritish\n    cout << \"Birinchi nuqtaning koordinatalarini kiritish (x1, y1): \";\n    cin >> x1 >> y1;\n    cout << \"Ikkinchi nuqtaning koordinatalarini kiritish (x2, y2): \";\n    cin >> x2 >> y2;\n    cout << \"Uchinchi nuqtaning koordinatalarini kiritish (x3, y3): \";\n    cin >> x3 >> y3;\n\n    // Uchburchakning uch tomonining uzunliklarini hisoblash\n    double a = sqrt(pow(x2 - x1, 2) + pow(y2 - y1, 2));\n    double b = sqrt(pow(x3 - x2, 2) + pow(y3 - y2, 2));\n    double c = sqrt(pow(x1 - x3, 2) + pow(y1 - y3, 2));\n\n    // Perimetrni hisoblash\n    double perimeter = a + b + c;\n\n    // Yuzani hisoblash uchun Heron formulasi\n    double s = perimeter / 2;\n    double area = sqrt(s * (s - a) * (s - b) * (s - c));\n\n    // Natijalarni chiqarish\n    cout << \"Uchburchakning perimetri: \" << perimeter << endl;\n    cout << \"Uchburchakning yuzi: \" << area << endl;\n    return 0;\n}",
+            "stdin": "0 0\n4 0\n0 3",
+            "output": "Uchburchakning perimetri: 12\nUchburchakning yuzi: 6"
+          }
+        ],
+        "answer": "Geron formulasi orqali perimetr va yuza hisoblanadi."
+      },
+      {
+        "number": 2,
+        "title": "X ning ko‘rsatilgan darajalarini hisoblash",
+        "statement": "X soni berilgan. X², X⁴, X⁵ ketma-ketlik uchun yordamchi o‘zgaruvchilardan foydalanib 3 ta ko‘paytirish amalini bajarib, X⁵ hisoblansin va barcha X ning ko‘rsatilgan darajalari ekranga chiqarish dasturini tuzing.",
+        "steps": [
+          {
+            "text": "1-ko‘paytirish: X2 = X * X (X² hisoblanadi).",
+            "formula": "X² = X * X"
+          },
+          {
+            "text": "2-ko‘paytirish: X4 = X2 * X2 (X⁴ hisoblanadi, ya’ni X² ning kvadrati).",
+            "formula": "X⁴ = X² * X²"
+          },
+          {
+            "text": "3-ko‘paytirish: X5 = X * X4 (X⁵ hisoblanadi). Jami 3 ta ko‘paytirish amali bajarildi.",
+            "formula": "X⁵ = X * X⁴"
+          }
+        ],
+        "implementations": [
+          {
+            "language": "python",
+            "title": "Python yechimi",
+            "explanation": "Faqat 3 ta ko‘paytirish amali yordamida X², X⁴, X⁵ ni topish:",
+            "code": "# X qiymatini kiritish\nX = float(input(\"X sonini kiriting: \"))\n\n# Yordamchi o'zgaruvchilar\nX2 = X * X  # X² (1-ko'paytirish)\nX4 = X2 * X2  # X⁴ (2-ko'paytirish)\nX5 = X * X4  # X⁵ (3-ko'paytirish)\n\n# Natijalarni chiqarish\nprint(f\"X^2: {X2}\")\nprint(f\"X^4: {X4}\")\nprint(f\"X^5: {X5}\")",
+            "stdin": "2",
+            "output": "X^2: 4.0\nX^4: 16.0\nX^5: 32.0"
+          },
+          {
+            "language": "cpp",
+            "title": "C++ yechimi",
+            "explanation": "C++ da yordamchi o‘zgaruvchilar bilan 3 ta ko‘paytirish amalini bajarish:",
+            "code": "#include <iostream>\nusing namespace std;\n\nint main() {\n    double X;\n    // X qiymatini kiritish\n    cout << \"X sonini kiriting: \";\n    cin >> X;\n\n    // Yordamchi o'zgaruvchilar\n    double X2, X4, X5;\n    // X² ni hisoblash (1-ko'paytirish)\n    X2 = X * X;\n    // X⁴ ni hisoblash (2-ko'paytirish: X² ning kvadrati)\n    X4 = X2 * X2;\n    // X⁵ ni hisoblash (3-ko'paytirish: X * X⁴)\n    X5 = X * X4;\n\n    // Natijalarni chiqarish\n    cout << \"X^2: \" << X2 << endl;\n    cout << \"X^4: \" << X4 << endl;\n    cout << \"X^5: \" << X5 << endl;\n    return 0;\n}",
+            "stdin": "2",
+            "output": "X^2: 4\nX^4: 16\nX^5: 32"
+          }
+        ],
+        "answer": "X² = X·X,  X⁴ = X²·X²,  X⁵ = X·X⁴ (jami 3 ta ko‘paytirish amali)."
+      }
+    ]
+  },
+  "17": {
+    "intro": "Bu namunalarda mantiqiy ifodalarni baholash va tuzish o'rganiladi.",
+    "examples": [
+      {
+        "number": 1,
+        "title": "B soni A va C orasida yotishini tekshirish",
+        "statement": "A, B, C butun sonlar berilgan. B soni A va C sonlar orasida yotishi rostlikka tekshirilsin.",
+        "implementations": [
+          {
+            "language": "python",
+            "title": "Python yechimi",
+            "explanation": "Mantiqiy shart orqali tekshirish",
+            "code": "A, B, C = map(int, input(\"A, B, C sonlarini kiriting: \").split())\nresult = (A <= B <= C) or (C <= B <= A)\nprint(f\"B soni A va C orasida yotadimi? {result}\")",
+            "stdin": "1 2 3",
+            "output": "B soni A va C orasida yotadimi? True",
+            "output_label": "Dastur natijasi"
+          },
+          {
+            "language": "cpp",
+            "title": "C++ yechimi",
+            "explanation": "Mantiqiy shart orqali tekshirish",
+            "code": "#include <iostream>\nusing namespace std;\nint main() {\n    int A, B, C;\n    cout << \"A, B, C sonlarini kiriting: \";\n    cin >> A >> B >> C;\n    bool result = (A <= B && B <= C) || (C <= B && B <= A);\n    cout << \"B soni A va C orasida yotadimi? \" << result << endl;\n    return 0;\n}",
+            "stdin": "1 2 3",
+            "output": "B soni A va C orasida yotadimi? 1",
+            "output_label": "Dastur natijasi"
+          }
+        ],
+        "answer": "Mantiqiy shart orqali tekshiriladi."
+      },
+      {
+        "number": 2,
+        "title": "Uchburchak tomonlarini tekshirish",
+        "statement": "Uchta butun son berilgan. Shu sonlarning uchburchakning tomonlarini tashkil etishini aniqlash dasturini tuzing.",
+        "implementations": [
+          {
+            "language": "python",
+            "title": "Python yechimi",
+            "explanation": "Uchburchak tengsizliklari orqali tekshirish",
+            "code": "A, B, C = map(int, input(\"A, B, C sonlarini kiriting: \").split())\nresult = (A + B > C) and (A + C > B) and (B + C > A)\nprint(f\"Berilgan sonlar uchburchak tomonlari bo'la oladimi? {result}\")",
+            "stdin": "3 4 5",
+            "output": "Berilgan sonlar uchburchak tomonlari bo'la oladimi? True",
+            "output_label": "Dastur natijasi"
+          },
+          {
+            "language": "cpp",
+            "title": "C++ yechimi",
+            "explanation": "Uchburchak tengsizliklari orqali tekshirish",
+            "code": "#include <iostream>\nusing namespace std;\nint main() {\n    int A, B, C;\n    cout << \"A, B, C sonlarini kiriting: \";\n    cin >> A >> B >> C;\n    bool result = (A + B > C) && (A + C > B) && (B + C > A);\n    cout << \"Berilgan sonlar uchburchak tomonlari bo'la oladimi? \" << result << endl;\n    return 0;\n}",
+            "stdin": "3 4 5",
+            "output": "Berilgan sonlar uchburchak tomonlari bo'la oladimi? 1",
+            "output_label": "Dastur natijasi"
+          }
+        ],
+        "answer": "Uchburchak tengsizliklari orqali tekshiriladi."
+      }
+    ]
+  },
+  "18": {
+    "intro": "Bu namunalarda shart operatorlari yordamida son raqamlarini solishtirish va berilgan sonlar ichidan musbatlarini sanash ko‘rib chiqiladi.",
+    "examples": [
+      {
+        "number": 1,
+        "title": "Uch xonali son raqamlarini tekshirish",
+        "statement": "Uch xonali son berilgan. Quyidagilarni aniqlash dasturini tuzing:\na) uning barcha raqamlari bir xilmi;\nb) hech bo‘lmaganda ikkita raqami bir xilmi.",
+        "steps": [
+          {
+            "text": "Uch xonali x sonini kiritamiz. Yuzlik raqamini butun bo‘lish orqali, o‘nlik va birlik raqamlarini esa qoldiq olish orqali ajratamiz.",
+            "formula": "A = x // 100\nB = (x // 10) % 10\nC = x % 10"
+          },
+          {
+            "text": "Barcha raqamlar bir xil bo‘lishi uchun yuzlik, o‘nlik va birlik raqamlari o‘zaro teng bo‘lishi kerak.",
+            "formula": "A = B = C"
+          },
+          {
+            "text": "Hech bo‘lmaganda ikki raqam teng bo‘lishi uchun uchta juftlikdan bittasi teng bo‘lishi kifoya.",
+            "formula": "A = B yoki B = C yoki A = C"
+          }
+        ],
+        "implementations": [
+          {
+            "language": "python",
+            "title": "Python yechimi",
+            "explanation": "Son raqamlarini ajratib, avval uchtalasi tengligini, keyin esa kamida bir juft raqam tengligini tekshiramiz.",
+            "code": "# Uch xonali sonni kiritish\nx = int(input(\"Uch xonali sonni kiriting: \"))\n\n# Raqamlarni ajratib olish\nA = x // 100  # Yuzlik xonasi\nB = (x // 10) % 10  # O'nlik xonasi\nC = x % 10  # Birlik xonasi\n\n# a) Barcha raqamlar bir xilmi?\nif A == B == C:\n    print(\"Barcha raqamlar bir xil.\")\nelse:\n    print(\"Barcha raqamlar bir xil emas.\")\n\n# b) Hech bo'lmaganda ikkita raqam bir xilmi?\nif A == B or B == C or A == C:\n    print(\"Hech bo'lmaganda ikkita raqam bir xil.\")\nelse:\n    print(\"Barcha raqamlar har xil.\")",
+            "stdin": "777",
+            "output_label": "Konsoldagi namuna",
+            "output": "Uch xonali sonni kiriting: Barcha raqamlar bir xil.\nHech bo'lmaganda ikkita raqam bir xil."
+          },
+          {
+            "language": "cpp",
+            "title": "C++ yechimi",
+            "explanation": "Butun bo‘lish va qoldiq olish orqali raqamlarni topib, ularni shartlar yordamida taqqoslaymiz.",
+            "code": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int x;\n    cout << \"Uch xonali sonni kiriting: \";\n    cin >> x;\n\n    // Raqamlarni ajratib olish\n    int A = x / 100;\n    int B = (x / 10) % 10;\n    int C = x % 10;\n\n    // a) Barcha raqamlar bir xilmi?\n    if (A == B && B == C) {\n        cout << \"Barcha raqamlar bir xil.\" << endl;\n    } else {\n        cout << \"Barcha raqamlar bir xil emas.\" << endl;\n    }\n\n    // b) Hech bo'lmaganda ikkita raqam bir xilmi?\n    if (A == B || B == C || A == C) {\n        cout << \"Hech bo'lmaganda ikkita raqam bir xil.\" << endl;\n    } else {\n        cout << \"Barcha raqamlar har xil.\" << endl;\n    }\n    return 0;\n}",
+            "stdin": "777",
+            "output_label": "Konsoldagi namuna",
+            "output": "Uch xonali sonni kiriting: Barcha raqamlar bir xil.\nHech bo'lmaganda ikkita raqam bir xil."
+          }
+        ],
+        "answer": "Uch xonali sonning raqamlari x // 100, (x // 10) % 10 va x % 10 orqali olinadi. Uchtalasi teng bo‘lsa, barcha raqamlar bir xil; juftliklardan kamida bittasi teng bo‘lsa, kamida ikkita raqam bir xil bo‘ladi."
+      },
+      {
+        "number": 2,
+        "title": "Uchta son orasidagi musbatlarni sanash",
+        "statement": "Uchta butun son berilgan. Ular orasidan musbatlarini sanash dasturini tuzing.",
+        "steps": [
+          {
+            "text": "A, B va C butun sonlarini kiritamiz va musbat sonlar sonini saqlash uchun count o‘zgaruvchisini nolga tenglaymiz."
+          },
+          {
+            "text": "Har bir sonni alohida tekshiramiz. Son noldan katta bo‘lsa, count qiymatini bittaga oshiramiz.",
+            "formula": "A > 0, B > 0, C > 0"
+          },
+          {
+            "text": "Uchala tekshiruvdan so‘ng count ichida musbat sonlarning umumiy soni bo‘ladi va uni ekranga chiqaramiz."
+          }
+        ],
+        "implementations": [
+          {
+            "language": "python",
+            "title": "Python yechimi",
+            "explanation": "Uch sonni bitta qatordan o‘qib, har birining musbatligini alohida tekshiramiz.",
+            "code": "A, B, C = map(int, input(\"Uchta butun sonni kiriting: \").split())\n\n# Musbat sonlarni sanash\ncount = 0\nif A > 0:\n    count += 1\nif B > 0:\n    count += 1\nif C > 0:\n    count += 1\n\nprint(f\"Musbat sonlar soni: {count}\")",
+            "stdin": "-2 0 5",
+            "output_label": "Konsoldagi namuna",
+            "output": "Uchta butun sonni kiriting: Musbat sonlar soni: 1"
+          },
+          {
+            "language": "cpp",
+            "title": "C++ yechimi",
+            "explanation": "Har bir kiritilgan son noldan katta bo‘lsa, count hisoblagichini bittaga oshiramiz.",
+            "code": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int A, B, C;\n    cout << \"Uchta butun sonni kiriting: \";\n    cin >> A >> B >> C;\n\n    int count = 0;\n    if (A > 0) count++;\n    if (B > 0) count++;\n    if (C > 0) count++;\n\n    cout << \"Musbat sonlar soni: \" << count << endl;\n    return 0;\n}",
+            "stdin": "-2 0 5",
+            "output_label": "Konsoldagi namuna",
+            "output": "Uchta butun sonni kiriting: Musbat sonlar soni: 1"
+          }
+        ],
+        "answer": "Musbat bo‘lgan har bir son uchun hisoblagich bittaga oshiriladi. −2, 0 va 5 misolida faqat 5 musbat, natija 1."
+      },
+      {
+        "number": 3,
+        "title": "Ikki to‘rtburchakni qamrab oluvchi minimal to‘rtburchak",
+        "statement": "Yon tomonlari koordinata o‘qlariga parallel yoki perpendikulyar bo‘lgan ikkita to‘rtburchak berilgan. Ularning har birining pastki chap va yuqori o‘ng burchaklarining koordinatalari ma’lum. Ikkala to‘rtburchakni qamrab oluvchi minimal to‘rtburchakning pastki chap va yuqori o‘ng burchaklari koordinatalarini topish dasturini tuzing.",
+        "steps": [
+          {
+            "text": "Har bir to‘rtburchakning pastki chap va yuqori o‘ng burchaklari koordinatalarini kiritamiz: birinchi to‘rtburchak uchun (x1, y1), (x2, y2), ikkinchisi uchun (x3, y3), (x4, y4)."
+          },
+          {
+            "text": "Umumiy to‘rtburchakning pastki chap burchagi ikkala pastki chap nuqtaning koordinatalaridan eng kichiklarini oladi.",
+            "formula": "Xmin = min(x1, x3)\nYmin = min(y1, y3)"
+          },
+          {
+            "text": "Yuqori o‘ng burchak esa ikkala yuqori o‘ng nuqtaning koordinatalaridan eng kattalarini oladi.",
+            "formula": "Xmax = max(x2, x4)\nYmax = max(y2, y4)"
+          },
+          {
+            "text": "Hisoblangan pastki chap va yuqori o‘ng burchak koordinatalarini ekranga chiqaramiz."
+          }
+        ],
+        "implementations": [
+          {
+            "language": "python",
+            "title": "Python yechimi",
+            "explanation": "Pastki chap burchak uchun X va Y koordinatalarining minimumini, yuqori o‘ng burchak uchun maksimumini topamiz.",
+            "code": "# Foydalanuvchidan koordinatalarni olish\nx1, y1, x2, y2 = map(int, input(\"Birinchi to'rtburchak (x1, y1, x2, y2): \" ).split())\nx3, y3, x4, y4 = map(int, input(\"Ikkinchi to'rtburchak (x3, y3, x4, y4): \" ).split())\n\n# Minimal X va Y topish\nXmin = x1\nif x3 < Xmin:\n    Xmin = x3\nYmin = y1\nif y3 < Ymin:\n    Ymin = y3\n\n# Maksimal X va Y topish\nXmax = x2\nif x4 > Xmax:\n    Xmax = x4\nYmax = y2\nif y4 > Ymax:\n    Ymax = y4\n\n# Natijani chiqarish\nprint(\"Minimal to'rtburchak koordinatalari:\")\nprint(f\"Pastki chap burchak: ({Xmin}, {Ymin})\")\nprint(f\"Yuqori o'ng burchak: ({Xmax}, {Ymax})\")",
+            "stdin": "1 1 4 3\n3 0 6 4",
+            "output_label": "Konsoldagi namuna",
+            "output": "Birinchi to'rtburchak (x1, y1, x2, y2): Ikkinchi to'rtburchak (x3, y3, x4, y4): Minimal to'rtburchak koordinatalari:\nPastki chap burchak: (1, 0)\nYuqori o'ng burchak: (6, 4)"
+          },
+          {
+            "language": "cpp",
+            "title": "C++ yechimi",
+            "explanation": "Koordinatalarni alohida taqqoslab, minimal pastki chap va maksimal yuqori o‘ng burchakni aniqlaymiz.",
+            "code": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int x1, y1, x2, y2;\n    int x3, y3, x4, y4;\n\n    // Birinchi to'rtburchak koordinatalari\n    cout << \"Birinchi to'rtburchak (x1, y1, x2, y2): \";\n    cin >> x1 >> y1 >> x2 >> y2;\n    // Ikkinchi to'rtburchak koordinatalari\n    cout << \"Ikkinchi to'rtburchak (x3, y3, x4, y4): \";\n    cin >> x3 >> y3 >> x4 >> y4;\n\n    // Minimal X va Y topish\n    int Xmin = x1;\n    if (x3 < Xmin) Xmin = x3;\n    int Ymin = y1;\n    if (y3 < Ymin) Ymin = y3;\n\n    // Maksimal X va Y topish\n    int Xmax = x2;\n    if (x4 > Xmax) Xmax = x4;\n    int Ymax = y2;\n    if (y4 > Ymax) Ymax = y4;\n\n    // Natijani chiqarish\n    cout << \"Minimal to'rtburchak koordinatalari:\\n\";\n    cout << \"Pastki chap burchak: (\" << Xmin << \", \" << Ymin << \")\\n\";\n    cout << \"Yuqori o'ng burchak: (\" << Xmax << \", \" << Ymax << \")\\n\";\n    return 0;\n}",
+            "stdin": "1 1 4 3\n3 0 6 4",
+            "output_label": "Konsoldagi namuna",
+            "output": "Birinchi to'rtburchak (x1, y1, x2, y2): Ikkinchi to'rtburchak (x3, y3, x4, y4): Minimal to'rtburchak koordinatalari:\nPastki chap burchak: (1, 0)\nYuqori o'ng burchak: (6, 4)"
+          }
+        ],
+        "answer": "Pastki chap burchak: (min(x1, x3), min(y1, y3)); yuqori o‘ng burchak: (max(x2, x4), max(y2, y4))."
+      }
+    ]
+  },
+  "19": {
+    "intro": "Ushbu namunada koordinata o‘qlariga parallel tomonli ikkita to‘rtburchakni qamrab oladigan eng kichik to‘rtburchak koordinatalari topiladi.",
+    "examples": [
+      {
+        "number": 1,
+        "title": "Ikkita to‘rtburchakni qamrab oluvchi minimal to‘rtburchak",
+        "statement": "Tomonlari koordinata o‘qlariga parallel yoki perpendikulyar bo‘lgan ikkita to‘g‘ri to‘rtburchak berilgan. Ularning har birining pastki chap va pastki o‘ng burchaklarining koordinatalari ma’lum. Aniqlangan to‘rtburchaklar joylashgan minimal to‘rtburchakning pastki chap va yuqori o‘ng burchaklarining koordinatalarini topish dasturini tuzing.",
+        "steps": [
+          {
+            "text": "Birinchi to‘rtburchakning pastki chap va yuqori o‘ng burchaklarini (x1, y1), (x2, y2), ikkinchi to‘rtburchaknikini esa (x3, y3), (x4, y4) koordinatalari bilan kiritamiz."
+          },
+          {
+            "text": "Qamrab oluvchi to‘rtburchakning pastki chap burchagi ikkita chap-pastki burchak koordinatalarining kichiklaridan tuziladi.",
+            "formula": "Xmin = min(x1, x3)\nYmin = min(y1, y3)"
+          },
+          {
+            "text": "Yuqori o‘ng burchak koordinatalari esa ikkita yuqori-o‘ng burchak koordinatalarining kattalaridan tuziladi.",
+            "formula": "Xmax = max(x2, x4)\nYmax = max(y2, y4)"
+          },
+          {
+            "text": "Hisoblangan ikkala burchak koordinatalarini ekranga chiqaramiz."
+          }
+        ],
+        "implementations": [
+          {
+            "language": "python",
+            "title": "Python yechimi",
+            "explanation": "Har bir to‘rtburchakning pastki chap va yuqori o‘ng koordinatalarini o‘qiymiz. Minimumlardan pastki chap, maksimumlardan yuqori o‘ng burchakni hosil qilamiz.",
+            "code": "# Foydalanuvchidan koordinatalarni olish\nx1, y1, x2, y2 = map(int, input(\"Birinchi to'rtburchak (x1, y1, x2, y2): \" ).split())\nx3, y3, x4, y4 = map(int, input(\"Ikkinchi to'rtburchak (x3, y3, x4, y4): \" ).split())\n\n# Minimal X va Y topish\nXmin = x1\nif x3 < Xmin:\n    Xmin = x3\nYmin = y1\nif y3 < Ymin:\n    Ymin = y3\n\n# Maksimal X va Y topish\nXmax = x2\nif x4 > Xmax:\n    Xmax = x4\nYmax = y2\nif y4 > Ymax:\n    Ymax = y4\n\n# Natijani chiqarish\nprint(\"Minimal to'rtburchak koordinatalari:\")\nprint(f\"Pastki chap burchak: ({Xmin}, {Ymin})\")\nprint(f\"Yuqori o'ng burchak: ({Xmax}, {Ymax})\")",
+            "stdin": "1 1 4 3\n3 0 6 4",
+            "output_label": "Konsoldagi namuna",
+            "output": "Birinchi to'rtburchak (x1, y1, x2, y2): Ikkinchi to'rtburchak (x3, y3, x4, y4): Minimal to'rtburchak koordinatalari:\nPastki chap burchak: (1, 0)\nYuqori o'ng burchak: (6, 4)"
+          },
+          {
+            "language": "cpp",
+            "title": "C++ yechimi",
+            "explanation": "Xmin va Ymin qiymatlarini koordinatalar minimumidan, Xmax va Ymax qiymatlarini esa maksimumidan aniqlaymiz.",
+            "code": "#include <iostream>\n#include <algorithm>\nusing namespace std;\n\nint main() {\n    int x1, y1, x2, y2, x3, y3, x4, y4;\n    cout << \"Birinchi to'rtburchak (x1, y1, x2, y2): \";\n    cin >> x1 >> y1 >> x2 >> y2;\n    cout << \"Ikkinchi to'rtburchak (x3, y3, x4, y4): \";\n    cin >> x3 >> y3 >> x4 >> y4;\n\n    int Xmin = min(x1, x3), Ymin = min(y1, y3);\n    int Xmax = max(x2, x4), Ymax = max(y2, y4);\n\n    cout << \"Minimal to'rtburchak koordinatalari:\" << endl;\n    cout << \"Pastki chap burchak: (\" << Xmin << \", \" << Ymin << \")\" << endl;\n    cout << \"Yuqori o'ng burchak: (\" << Xmax << \", \" << Ymax << \")\" << endl;\n    return 0;\n}",
+            "stdin": "1 1 4 3\n3 0 6 4",
+            "output_label": "Konsoldagi namuna",
+            "output": "Birinchi to'rtburchak (x1, y1, x2, y2): Ikkinchi to'rtburchak (x3, y3, x4, y4): Minimal to'rtburchak koordinatalari:\nPastki chap burchak: (1, 0)\nYuqori o'ng burchak: (6, 4)"
+          }
+        ],
+        "answer": "Pastki chap burchak: (min(x1, x3), min(y1, y3)); yuqori o‘ng burchak: (max(x2, x4), max(y2, y4))."
+      }
+    ]
+  },
+  "20": {
+    "intro": "Ushbu namunalarda tanlash operatorlari yordamida kiritilgan qiymatga mos natijani topish o‘rganiladi. Python’da match-case, C++ da switch-case operatorlaridan foydalanamiz.",
+    "examples": [
+      {
+        "number": 1,
+        "title": "Hafta kunini aniqlash",
+        "statement": "1 dan 7 gacha butun son berilgan. Shu raqamga mos hafta kuni nomini chiqaruvchi dastur tuzing.",
+        "steps": [
+          {"text": "Foydalanuvchidan hafta kunining raqamini olamiz. Dushanba 1, yakshanba 7 bilan belgilanadi.", "formula": "1 — dushanba, 2 — seshanba, 3 — chorshanba, 4 — payshanba, 5 — juma, 6 — shanba, 7 — yakshanba"},
+          {"text": "Tanlash operatori orqali raqamga mos nomni belgilaymiz. 1–7 oralig‘idan tashqaridagi qiymat uchun xato xabarini chiqaramiz."},
+          {"text": "Tanlangan hafta kuni nomini ekranga chiqaramiz."}
+        ],
+        "implementations": [
+          {"language": "python", "title": "Python yechimi", "explanation": "match-case har bir raqamga mos hafta kunini tanlaydi.", "code": "kun = int(input(\"Hafta kunining raqamini kiriting (1-7): \"))\n\nmatch kun:\n    case 1: nom = \"Dushanba\"\n    case 2: nom = \"Seshanba\"\n    case 3: nom = \"Chorshanba\"\n    case 4: nom = \"Payshanba\"\n    case 5: nom = \"Juma\"\n    case 6: nom = \"Shanba\"\n    case 7: nom = \"Yakshanba\"\n    case _: nom = \"Noto‘g‘ri raqam\"\n\nprint(nom)", "stdin": "3", "output_label": "Konsoldagi namuna", "output": "Hafta kunining raqamini kiriting (1-7): Chorshanba"},
+          {"language": "cpp", "title": "C++ yechimi", "explanation": "switch-case operatoridagi har bir case bitta hafta kuniga mos keladi.", "code": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int kun;\n    cout << \"Hafta kunining raqamini kiriting (1-7): \";\n    cin >> kun;\n\n    switch (kun) {\n        case 1: cout << \"Dushanba\"; break;\n        case 2: cout << \"Seshanba\"; break;\n        case 3: cout << \"Chorshanba\"; break;\n        case 4: cout << \"Payshanba\"; break;\n        case 5: cout << \"Juma\"; break;\n        case 6: cout << \"Shanba\"; break;\n        case 7: cout << \"Yakshanba\"; break;\n        default: cout << \"Noto'g'ri raqam\";\n    }\n    return 0;\n}", "stdin": "3", "output_label": "Konsoldagi namuna", "output": "Hafta kunining raqamini kiriting (1-7): Chorshanba"}
+        ],
+        "answer": "3 raqami haftaning Chorshanba kuniga mos keladi."
+      },
+      {
+        "number": 2,
+        "title": "Tanlangan arifmetik amalni bajarish",
+        "statement": "N butun soni 1–4 oralig‘ida, A va B haqiqiy sonlari berilgan (B ≠ 0). N=1 bo‘lsa qo‘shish, N=2 bo‘lsa ayirish, N=3 bo‘lsa ko‘paytirish, N=4 bo‘lsa bo‘lish amalini bajarib, natijani chiqaring.",
+        "steps": [
+          {"text": "Amal raqami N va A, B operandlarini kiritamiz. Bo‘lish amalida B nolga teng bo‘lmasligini tekshiramiz."},
+          {"text": "N ning qiymatiga qarab mos amalni bajaramiz.", "formula": "N=1: A+B\nN=2: A-B\nN=3: A*B\nN=4: A/B"},
+          {"text": "N 1–4 oralig‘ida bo‘lmasa, xato xabarini chiqaramiz."}
+        ],
+        "implementations": [
+          {"language": "python", "title": "Python yechimi", "explanation": "match-case amal raqamiga mos hisoblashni tanlaydi.", "code": "n = int(input(\"Amal raqamini kiriting (1-4): \"))\na = float(input(\"A ni kiriting: \"))\nb = float(input(\"B ni kiriting: \"))\n\nmatch n:\n    case 1: natija = a + b\n    case 2: natija = a - b\n    case 3: natija = a * b\n    case 4 if b != 0: natija = a / b\n    case 4:\n        print(\"Nolga bo‘lish mumkin emas\")\n        exit()\n    case _:\n        print(\"Noto‘g‘ri amal raqami\")\n        exit()\n\nprint(\"Natija:\", natija)", "stdin": "1\n12\n5", "output_label": "Konsoldagi namuna", "output": "Amal raqamini kiriting (1-4): A ni kiriting: B ni kiriting: Natija: 17.0"},
+          {"language": "cpp", "title": "C++ yechimi", "explanation": "switch-case mos amalni bajaradi; bo‘lishdan oldin maxraj tekshiriladi.", "code": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int n;\n    double a, b;\n    cout << \"Amal raqamini kiriting (1-4): \";\n    cin >> n;\n    cout << \"A va B ni kiriting: \";\n    cin >> a >> b;\n\n    switch (n) {\n        case 1: cout << \"Natija: \" << a + b; break;\n        case 2: cout << \"Natija: \" << a - b; break;\n        case 3: cout << \"Natija: \" << a * b; break;\n        case 4:\n            if (b == 0) cout << \"Nolga bo'lish mumkin emas\";\n            else cout << \"Natija: \" << a / b;\n            break;\n        default: cout << \"Noto'g'ri amal raqami\";\n    }\n    return 0;\n}", "stdin": "1\n12 5", "output_label": "Konsoldagi namuna", "output": "Amal raqamini kiriting (1-4): A va B ni kiriting: Natija: 17"}
+        ],
+        "answer": "N=1, A=12 va B=5 bo‘lganda natija 12+5=17 bo‘ladi."
+      }
+    ]
+  }
+}

@@ -1,0 +1,249 @@
+<?php
+declare(strict_types=1);
+
+require_once dirname(__DIR__) . '/public/includes/programming-topics.php';
+require_once dirname(__DIR__) . '/public/includes/problem-rules.php';
+require_once dirname(__DIR__) . '/public/includes/problem-judge.php';
+
+// All execution is injected. No submitted program, compiler or network is used.
+$checks = 0;
+$failures = [];
+function integerCheck(string $name, callable $test): void
+{
+    global $checks, $failures;
+    $checks++;
+    try { $test(); } catch (Throwable $error) { $failures[] = $name . ': ' . $error->getMessage(); }
+}
+function integerAssert(bool $condition, string $message = 'Assertion failed'): void
+{
+    if (!$condition) throw new RuntimeException($message);
+}
+function integerCanonical(string $value): string
+{
+    $negative = str_starts_with($value, '-');
+    $digits = ltrim(ltrim($value, '+-'), '0');
+    return $digits === '' ? '0' : ($negative ? '-' : '') . $digits;
+}
+function integerPower(int $base, int $exponent): string
+{
+    // Independent decimal arithmetic keeps a^64 exact beyond PHP_INT_MAX.
+    $digits = '1';
+    for ($step = 0; $step < $exponent; $step++) {
+        $carry = 0;
+        $next = '';
+        for ($i = strlen($digits) - 1; $i >= 0; $i--) {
+            $value = (int) $digits[$i] * abs($base) + $carry;
+            $next = (string) ($value % 10) . $next;
+            $carry = intdiv($value, 10);
+        }
+        while ($carry > 0) {
+            $next = (string) ($carry % 10) . $next;
+            $carry = intdiv($carry, 10);
+        }
+        $digits = integerCanonical($next);
+    }
+    return $base < 0 && $exponent % 2 !== 0 && $digits !== '0' ? '-' . $digits : $digits;
+}
+function integerClockWait(int $hour, int $minute, bool $perpendicular): int
+{
+    // Walk exact 1/11-minute ticks. Relative hand motion is 1/2 degree per tick.
+    $difference = 60 * $hour - 11 * $minute;
+    for ($tick = 0; $tick < 720; $tick++) {
+        $position = (($difference - $tick) % 720 + 720) % 720;
+        if ($perpendicular ? in_array($position, [180, 540], true) : $position === 0) {
+            return intdiv($tick, 11);
+        }
+    }
+    throw new RuntimeException('Clock event not found');
+}
+function integerReference(int $exercise, string $stdin): array
+{
+    $inputs = trim($stdin) === '' ? [] : preg_split('/\s+/', trim($stdin));
+    $a = (int) ($inputs[0] ?? 0);
+    $b = (int) ($inputs[1] ?? 0);
+    $c = (int) ($inputs[2] ?? 0);
+    $digits = str_pad((string) abs($a), 3, '0', STR_PAD_LEFT);
+    $number = static fn(string $text): string => integerCanonical($text);
+    switch ($exercise) {
+        case 101: return [strrev((string) $a)[2]];
+        case 102:
+        case 104: return [(string) array_product(array_map('intval', str_split((string) $a)))];
+        case 103: return [(string) abs($a - $b), sprintf('%.12f', $a / $b), (string) (($a + $b) ** 2)];
+        case 105: return [(string) $c, (string) $a, (string) $b];
+        case 106: return [(string) array_sum(array_map('intval', str_split($digits)))];
+        case 107:
+        case 120: return [$number($digits[2] . $digits[0] . $digits[1])];
+        case 108: return [(string) $b, (string) $a];
+        case 109: return array_map('strval', [$c, $a, $b, $b, $c, $a]);
+        case 110: return array_map(static fn(int $power): string => integerPower($a, $power), [4, 6, 7, 8, 9, 10, 13, 15, 21, 28, 64]);
+        case 111: return array_map(static fn(int $power): string => integerPower($a, $power), [3, 10, 4, 20, 5, 13, 5, 19, 2, 5, 17, 4, 12, 28]);
+        case 112:
+        case 113: return [(string) intdiv($a, 100)];
+        case 114:
+        case 115: return [(string) intdiv($a, 1000)];
+        case 116: return ['33'];
+        case 117: return array_map('strval', [intdiv($a, 3600), intdiv($a % 3600, 60), $a % 60]);
+        case 118: return array_map('strval', [intdiv($a, 10), $a % 10, intdiv($a, 10) + $a % 10]);
+        case 119: return [$number($digits[1] . $digits[2] . $digits[0])];
+        case 121:
+        case 132: return [$number($digits[1] . $digits[0] . $digits[2])];
+        case 122:
+        case 134: return [$number($digits[0] . $digits[2] . $digits[1])];
+        case 123:
+            $permutations = [];
+            foreach ([[0, 1, 2], [0, 2, 1], [1, 0, 2], [1, 2, 0], [2, 0, 1], [2, 1, 0]] as $order) {
+                $permutations[] = $number($digits[$order[0]] . $digits[$order[1]] . $digits[$order[2]]);
+            }
+            return $permutations;
+        case 124:
+            return array_map($number, [strrev($digits), $digits[1] . $digits[0] . $digits[3] . $digits[2], $digits[0] . $digits[2] . $digits[1] . $digits[3], $digits[2] . $digits[3] . $digits[0] . $digits[1]]);
+        case 125: return array_map('strval', [$a % 10, intdiv($a, 10) % 10]);
+        case 126: return array_map('strval', [intdiv($a, 10) % 10, intdiv($a, 100) % 10]);
+        case 127: return array_map('strval', [intdiv($a, 100) % 10, intdiv($a, 1000) % 10]);
+        case 128: return ['372'];
+        case 129: return [$number($digits[1] . $digits[2] . $digits[0])];
+        case 130: return ['456'];
+        case 131: return [$number($digits[2] . $digits[0] . $digits[1])];
+        case 133: return ['465'];
+        case 135: return ['456'];
+        case 136: return [$number(strrev($digits))];
+        case 137: return [sprintf('%.12f', ($a % 12) * 30 + $b / 2 + $c / 120)];
+        case 138: return array_map('strval', [(int) floor((float) $inputs[0] / 30), (int) floor((float) $inputs[0] * 2)]);
+        case 139: return array_map('strval', [integerClockWait($a, $b, false), integerClockWait($a, $b, true)]);
+        case 140: return [($a % $b === 0 || $b % $a === 0) ? '1' : '0'];
+    }
+    throw new RuntimeException('Missing reference for ' . $exercise);
+}
+
+$catalog = programmingTopicsCatalog();
+$index = programmingTopicsIndex($catalog);
+$topics = array_values(array_filter($index, static fn(array $topic): bool => ($topic['number'] ?? '') === '1.1.4'));
+$topic = $topics[0] ?? [];
+$topicId = (int) ($topic['id'] ?? 0);
+
+integerCheck('Catalog contains exactly one new topic with 40 ordered exercises', static function () use ($topics, $topic): void {
+    integerAssert(count($topics) === 1, 'Topic 1.1.4 must occur exactly once');
+    integerAssert(($topic['title'] ?? '') === 'Butun sonlarga oid masalalar', 'Wrong topic title');
+    integerAssert(($topic['chapter_number'] ?? '') === '1.1' && ($topic['section_number'] ?? '') === 'I', 'Wrong chapter or section');
+    integerAssert(array_column($topic['problems'], 'number') === array_map(static fn(int $number): string => '1.1.' . $number, range(101, 140)), 'Missing, duplicate or misordered exercise');
+    foreach ($topic['problems'] as $problem) integerAssert(trim($problem['statement']) !== '', 'Empty exercise statement');
+});
+
+integerCheck('Existing first 100 exercises retain their topic IDs and order', static function () use ($index): void {
+    foreach ([[14, 1, 20], [15, 21, 55], [16, 56, 100]] as [$id, $first, $last]) {
+        integerAssert(array_column($index[$id]['problems'], 'number') === array_map(static fn(int $number): string => '1.1.' . $number, range($first, $last)), 'Prior problem numbers changed in topic ' . $id);
+    }
+});
+
+for ($exercise = 101; $exercise <= 140; $exercise++) {
+    integerCheck('Independent expected values and output rejection for ' . $exercise, static function () use ($topicId, $exercise): void {
+        $rule = problemRule($topicId, '1.1.' . $exercise);
+        integerAssert($rule !== null, 'Missing rule');
+        integerAssert(count($rule['requirements'] ?? []) > 0, 'No visible acceptance requirements');
+        integerAssert(count($rule['tests'] ?? []) >= 1 && count($rule['tests']) <= 3, 'Unsupported test count');
+        foreach ($rule['tests'] as $test) {
+            $reference = implode(' ', integerReference($exercise, $test['stdin']));
+            integerAssert(problemOutputMatches($rule, $reference, $test), 'Independent result rejected for stdin ' . json_encode($test['stdin']) . ': ' . $reference);
+            integerAssert(problemOutputMatches($rule, " \t" . str_replace(' ', "\r\n", $reference) . "\n", $test), 'Whitespace variation rejected');
+            foreach (['', 'Salom dunyo', 'Natija: ' . $reference, $reference . ' 999', 'NaN', 'INF', '1e999'] as $invalid) {
+                integerAssert(!problemOutputMatches($rule, $invalid, $test), 'Invalid output accepted: ' . $invalid);
+            }
+            // Change a digit without altering the output shape or count.
+            $wrong = preg_replace_callback('/[0-9]/', static fn(array $digit): string => $digit[0] === '9' ? '8' : (string) ((int) $digit[0] + 1), $reference, 1);
+            if ($exercise !== 140) integerAssert(!problemOutputMatches($rule, $wrong, $test), 'Incorrect numeric value accepted: ' . $wrong);
+        }
+    });
+
+    integerCheck('Python and C++ judge use every server-owned test for ' . $exercise, static function () use ($topicId, $exercise): void {
+        $rule = problemRule($topicId, '1.1.' . $exercise);
+        integerAssert($rule !== null, 'Missing rule');
+        foreach (['python', 'cpp'] as $language) {
+            $seen = [];
+            $result = problemJudge($rule, $language, 'synthetic reference fixture', 'UNTRUSTED CLIENT INPUT', static function (string $actualLanguage, string $code, string $stdin) use ($language, $exercise, &$seen): array {
+                integerAssert($actualLanguage === $language && $code === 'synthetic reference fixture', 'Execution arguments changed');
+                integerAssert($stdin !== 'UNTRUSTED CLIENT INPUT', 'Client input replaced authoritative tests');
+                $seen[] = $stdin;
+                return ['status' => 200, 'error' => false, 'output' => implode(' ', integerReference($exercise, $stdin))];
+            });
+            $expectedStatus = in_array($exercise, [110, 111, 140], true) ? 'structure_passed' : 'accepted';
+            integerAssert($result['status'] === 200 && $result['error'] === false, 'Successful execution failed');
+            integerAssert(($result['verdict']['status'] ?? '') === $expectedStatus, 'Wrong verdict scope');
+            integerAssert($seen === array_column($rule['tests'], 'stdin'), 'Test input order changed or tests skipped');
+            integerAssert($result['verdict']['checks_passed'] === count($rule['tests']), 'Wrong passed count');
+        }
+    });
+}
+
+integerCheck('Integer output comparison preserves precision beyond 64 bits', static function (): void {
+    $rule = ['kind' => 'number_list'];
+    $test = ['expected' => '18446744073709551616 -9223372036854775809 0'];
+    integerAssert(problemOutputMatches($rule, '+018446744073709551616 -09223372036854775809 -0', $test), 'Canonical integer spellings rejected');
+    foreach (['18446744073709551617 -9223372036854775809 0', '18446744073709551616 -9223372036854775808 0', '1.8446744073709552e19 -9223372036854775809 0', '18446744073709551616.0 -9223372036854775809 0'] as $wrong) {
+        integerAssert(!problemOutputMatches($rule, $wrong, $test), 'Imprecise or incorrect large integer accepted');
+    }
+});
+
+integerCheck('Digit permutations accept arbitrary order and reject repetitions', static function () use ($topicId): void {
+    $rule = problemRule($topicId, '1.1.123');
+    foreach ($rule['tests'] as $test) {
+        $values = integerReference(123, $test['stdin']);
+        integerAssert(problemOutputMatches($rule, implode(' ', array_reverse($values)), $test), 'Different permutation order rejected');
+        $values[0] = $values[1];
+        integerAssert(!problemOutputMatches($rule, implode(' ', $values), $test), 'Duplicate permutation accepted');
+    }
+});
+
+integerCheck('Decimal tolerance rejects nonfinite values and errors beyond tolerance', static function (): void {
+    $rule = ['kind' => 'decimal_list', 'tolerance' => 0.000001];
+    $test = ['expected' => '2.5 359.991666666667'];
+    integerAssert(problemOutputMatches($rule, '2.5000005 3.59991666666667e2', $test), 'Valid decimal approximation rejected');
+    foreach (['2.50001 359.991666666667', '2.5 359.9917', '2.5 NaN', '2.5 INF', '2.5 1e999', '2,5 359.991666666667'] as $wrong) {
+        integerAssert(!problemOutputMatches($rule, $wrong, $test), 'Invalid decimal output accepted');
+    }
+});
+
+integerCheck('Divisibility uses the permitted alternative single-digit outputs', static function () use ($topicId): void {
+    $rule = problemRule($topicId, '1.1.140');
+    foreach ($rule['tests'] as $test) {
+        $divisible = integerReference(140, $test['stdin'])[0] === '1';
+        for ($digit = 0; $digit <= 9; $digit++) {
+            integerAssert(problemOutputMatches($rule, (string) $digit, $test) === ($divisible ? $digit === 1 : $digit !== 1), 'Wrong divisibility verdict for digit ' . $digit);
+        }
+        foreach (['01', '+1', '-1', '10', '0.0', 'true', 'false', '1 0'] as $wrong) {
+            integerAssert(!problemOutputMatches($rule, $wrong, $test), 'Non-digit divisibility output accepted');
+        }
+    }
+});
+
+integerCheck('Multiplication and no-branching requirements are never fully auto-accepted', static function () use ($topicId): void {
+    foreach ([110, 111, 140] as $exercise) {
+        $rule = problemRule($topicId, '1.1.' . $exercise);
+        integerAssert(!empty($rule['method_review_required']), 'Missing manual method-review flag');
+        $result = problemJudge($rule, 'python', 'fixture', '', static fn(string $language, string $code, string $stdin): array => ['status' => 200, 'error' => false, 'output' => implode(' ', integerReference($exercise, $stdin))]);
+        integerAssert($result['verdict']['status'] === 'structure_passed', 'Output-only check falsely accepted algorithm constraints');
+        integerAssert($result['verdict']['scope'] === 'structure_only', 'Partial check scope changed');
+        integerAssert(str_contains($result['verdict']['message'], 'usul') || str_contains($result['verdict']['message'], 'amal'), 'Partial check does not explain its limitation');
+    }
+});
+
+integerCheck('A constant answer fails variable input exercises', static function () use ($topicId): void {
+    foreach ([101, 103, 105, 110, 117, 123, 129, 137, 138, 139, 140] as $exercise) {
+        $rule = problemRule($topicId, '1.1.' . $exercise);
+        $constant = implode(' ', integerReference($exercise, $rule['tests'][0]['stdin']));
+        $result = problemJudge($rule, 'cpp', 'constant fixture', '', static fn(): array => ['status' => 200, 'error' => false, 'output' => $constant]);
+        integerAssert($result['verdict']['status'] === 'wrong_answer', 'Constant output passed exercise ' . $exercise);
+    }
+});
+
+integerCheck('Unknown and mismatched topic/problem identifiers have no contract', static function () use ($topicId): void {
+    foreach ([[14, '1.1.101'], [16, '1.1.101'], [$topicId, '1.1.100'], [$topicId, '1.1.141'], [$topicId, '1.1.0101'], [99999, '1.1.101']] as [$id, $number]) {
+        integerAssert(problemRule($id, $number) === null, 'Unexpected contract for ' . $id . ':' . $number);
+    }
+});
+
+if ($failures !== []) {
+    foreach ($failures as $failure) fwrite(STDERR, 'FAIL: ' . $failure . PHP_EOL);
+    fwrite(STDERR, count($failures) . ' of ' . $checks . ' checks failed.' . PHP_EOL);
+    exit(1);
+}
+echo 'PASS: ' . $checks . ' checks across all 40 integer exercise contracts, both language paths and exact output boundaries.' . PHP_EOL;

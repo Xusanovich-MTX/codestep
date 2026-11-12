@@ -1,0 +1,1697 @@
+{
+  "introduction": {
+    "id": 13,
+    "title": "Kirish",
+    "publication": {
+      "citation": "Yusupov O.R., Eshonqulov E.Sh., Abduraxmonov M.S., Malikov Z.A. Dasturlashdan masalalar to‘plami (O‘quv qo‘llanma). – Samarqand: SamDU Tahririy nashriyoti, 2025. – 446 bet.",
+      "annotation": "Dasturlashdan masalalar to‘plami fundamental bilimlarni shakllantirish, mantiqiy fikrlashni rivojlantirish va ilk mashg‘ulotlarni olib borish uchun muhim qo‘llanmadir. Ushbu masalalar to‘plami oliy o‘quv yurtlarida “Dasturlash” kurslarini o‘qiydigan barcha talabalar uchun, shuningdek, dasturlash sohasiga qiziqishi bo‘lgan, ushbu sohani endi o‘rganishni boshlagan har qanday yoshdagi o‘quvchi uchun foydali bo‘lishi mumkin.",
+      "reviewers": [
+        "Mirzayev N. - Raqamli texnologiyalar va sun’iy intellektni rivojlantirish ilmiy-tadqiqot instituti katta ilmiy xodimi, texnika fanlari doktori, professor;",
+        "Qobilov S.S. - Sharof Rashidov nomidagi Samarqand davlat universiteti dasturiy injiniring kafedrasi dotsenti, fizika-matematika fanlari nomzodi."
+      ],
+      "recommendation": "Ushbu o‘quv qo‘llanma Samarqand davlat universiteti Kengashining 2024-yil 07-dekabrdagi 4-son qo‘shma yig‘ilish qarori bilan nashrga tavsiya etilgan.",
+      "isbn": "ISBN 978-9910-9810-0-5"
+    },
+    "content": [
+      "Algoritmlar tahlili va dasturlash tamoyillarini rivojlantirgan mashhur olim, dasturlash nazariyotchisi Donald Ervin Knut o‘zining “The Art of Computer Programming” kitobida dasturlashga nafaqat texnik, balki ijodiy jarayon deb ta’rif beradi. Kod yozish jarayonida dasturchi e’tiborga olishi lozim bo‘lgan juda ko‘plab talablar mavjud. Bu talablarni dasturchi yirik loyihalarni bajarishdan avval, kichik masalalar ustida ishlab o‘rganib boradi. Sodda masalalarni hal qilish orqali dasturchi fundamental bilimlarni o‘zlashtirishda samaradorlikka erishishi mumkin.",
+      "Qo‘lingizdagi ushbu masalalar to‘plami fundamental bilimlarni shakllantirish, mantiqiy fikrlashni rivojlantirish va ilk mashg‘ulotlarni olib borish uchun yetarlicha xizmat qiladi deb hisoblaymiz. Ushbu masalalar to‘plami oliy o‘quv yurtlarida “Dasturlash” kurslarini o‘qiydigan barcha talabalar uchun, shuningdek, dasturlash sohasiga qiziqishi bo‘lgan, ushbu sohani endi o‘rganishni boshlagan har qanday yoshdagi o‘quvchi uchun foydali bo‘lishi mumkin.",
+      "Masalalar to‘plami 3 ta katta bo‘limga ajratilgan bo‘lib, dastlabki bo‘lim dasturlash asoslariga ajratilgan, ikkinchi bo‘limda obyektga yo‘naltirilgan dasturlash prinsiplariga oid masalalar berilgan. Uchinchi bo‘lim esa dasturlashning vizual qismini qo‘llashni o‘rganishga bag‘ishlanadi.",
+      "Har bir bo‘limda mavzuni o‘rganish uchun kichik qismlarga ajratilgan bo‘lib, har bir qism yakunida Python va C++ dasturlash tillarida ayrim masalalarning yechilishi berilgan. Ushbu berilgan yechimlar orqali yetarlicha ko‘nikmalar shakllanishi mumkin bo‘ladi. Vizual dasturlashga oid masalalar Vizual C# dasturlash tilida yozilgan bo‘lib, dastur qismida vizual qismda qo‘llanilgan komponentlar va hodisalar keltirilgan.",
+      "Masalalar to‘plamida masalalarni to‘plash va yozish jarayonida mualliflarning bir necha yillik izlanishlari yotibdi. Masalalar M.E. Abramyan, D.M. Zlatopolsky, V.V. Laptev, N.S. Lagutina kabi mualliflarning kitoblari orqali to‘plab borilgan. Shuningdek, ushbu adabiyotlarga asoslanib, obyektga yo‘naltirilgan dasturlash va vizual dasturlash masalalari uchun ko‘plab masalalar mualliflar tomonidan ishlab chiqildi."
+    ],
+    "problems": []
+  },
+  "sections": [
+    {
+      "number": "I",
+      "title": "Dasturlash asoslari",
+      "chapters": [
+        {
+          "number": "1.1",
+          "title": "Sonli ma’lumotlar",
+          "topics": [
+            {
+              "id": 14,
+              "number": "1.1.1",
+              "title": "Ma’lumotlarni mashina xotirasida ifodalash",
+              "problems": [
+                {
+                  "number": "1.1.1",
+                  "statement": "N = 1254 butun musbat son berilgan. Mashina razryadi k = 16 ga teng. Ushbu manfiy emas butun sonni mashina xotirasida ifodalang (avval o‘tkazish algoritmini keltiring, keyin algoritm qadamlari bo‘yicha masalani yeching)."
+                },
+                {
+                  "number": "1.1.2",
+                  "statement": "N = 2541 butun musbat son berilgan. Mashina razryadi k = 16 ga teng. Ushbu manfiy emas butun sonni mashina xotirasida ifodalang."
+                },
+                {
+                  "number": "1.1.3",
+                  "statement": "N = 3675 butun musbat son berilgan. Mashina razryadi k = 15 ga teng. Ushbu manfiy emas butun sonni mashina xotirasida ifodalang."
+                },
+                {
+                  "number": "1.1.4",
+                  "statement": "N = 7458 butun musbat son berilgan. Mashina razryadi k = 17 ga teng. Ushbu manfiy emas butun sonni mashina xotirasida ifodalang."
+                },
+                {
+                  "number": "1.1.5",
+                  "statement": "N = 7654 butun musbat son berilgan. Mashina razryadi k = 18 ga teng. Ushbu manfiy emas butun sonni mashina xotirasida ifodalang."
+                },
+                {
+                  "number": "1.1.6",
+                  "statement": "N = -7654 butun manfiy son berilgan. Mashina razryadi k = 18 ga teng. Ushbu manfiy butun sonni mashina xotirasida ifodalang."
+                },
+                {
+                  "number": "1.1.7",
+                  "statement": "N = -1025 butun manfiy son berilgan. Mashina razryadi k = 16 ga teng. Ushbu manfiy butun sonni mashina xotirasida ifodalang."
+                },
+                {
+                  "number": "1.1.8",
+                  "statement": "N = -5232 butun manfiy son berilgan. Mashina razryadi k = 16 ga teng. Ushbu manfiy butun sonni mashina xotirasida ifodalang."
+                },
+                {
+                  "number": "1.1.9",
+                  "statement": "N = -5879 butun manfiy son berilgan. Mashina razryadi k = 14 ga teng. Ushbu manfiy butun sonni mashina xotirasida ifodalang."
+                },
+                {
+                  "number": "1.1.10",
+                  "statement": "N = -7895 butun manfiy son berilgan. Mashina razryadi k = 18 ga teng. Ushbu manfiy butun sonni mashina xotirasida ifodalang."
+                },
+                {
+                  "number": "1.1.11",
+                  "statement": "Mashina xotirasida ifodalangan manfiy butun son (ikkilik) N = 101111111001 berilgan. Ushbu sonning 10 lik sanoq sistemasida qanday son ekanligini aniqlang."
+                },
+                {
+                  "number": "1.1.12",
+                  "statement": "Mashina xotirasida ifodalangan manfiy butun son (ikkilik) N = 10111111100101 berilgan. Ushbu sonning 10 lik sanoq sistemasida qanday son ekanligini aniqlang."
+                },
+                {
+                  "number": "1.1.13",
+                  "statement": "Mashina xotirasida ifodalangan manfiy butun son (ikkilik) N = 101111110111001 berilgan. Ushbu sonning 10 lik sanoq sistemasida qanday son ekanligini aniqlang."
+                },
+                {
+                  "number": "1.1.14",
+                  "statement": "Mashina xotirasida ifodalangan manfiy butun son (ikkilik) N = 10110011111101 berilgan. Ushbu sonning 10 lik sanoq sistemasida qanday son ekanligini aniqlang."
+                },
+                {
+                  "number": "1.1.15",
+                  "statement": "Mashina xotirasida ifodalangan manfiy butun son (ikkilik) N = 100011111111011 berilgan. Ushbu sonning 10 lik sanoq sistemasida qanday son ekanligini aniqlang."
+                },
+                {
+                  "number": "1.1.16",
+                  "statement": "Mashina xotirasida ifodalangan manfiy butun son (ikkilik) N = 101111111001 berilgan. Ushbu sonning 10 lik sanoq sistemasida qanday son ekanligini aniqlang."
+                },
+                {
+                  "number": "1.1.17",
+                  "statement": "Mashina xotirasida ifodalangan manfiy butun son (ikkilik) N = 10111111100101 berilgan. Ushbu sonning 10 lik sanoq sistemasida qanday son ekanligini aniqlang."
+                },
+                {
+                  "number": "1.1.18",
+                  "statement": "Mashina xotirasida ifodalangan manfiy butun son (ikkilik) N = 101111110111001 berilgan. Ushbu sonning 10 lik sanoq sistemasida qanday son ekanligini aniqlang."
+                },
+                {
+                  "number": "1.1.19",
+                  "statement": "Mashina xotirasida ifodalangan manfiy butun son (ikkilik) N = 10110011111101 berilgan. Ushbu sonning 10 lik sanoq sistemasida qanday son ekanligini aniqlang."
+                },
+                {
+                  "number": "1.1.20",
+                  "statement": "Mashina xotirasida ifodalangan manfiy butun son (ikkilik) N = 100011111111011 berilgan. Ushbu sonning 10 lik sanoq sistemasida qanday son ekanligini aniqlang."
+                }
+              ]
+            },
+            {
+              "id": 15,
+              "number": "1.1.2",
+              "title": "Ma’lumotlarni chop etish",
+              "problems": [
+                {
+                  "number": "1.1.21",
+                  "statement": "“Dasturlash asoslari” matnini besh marta ekranga yonma-yon chop etadigan dastur tuzing."
+                },
+                {
+                  "number": "1.1.22",
+                  "statement": "π sonini ekranga chop etish dasturini tuzing."
+                },
+                {
+                  "number": "1.1.23",
+                  "statement": "50 va 10 sonlarini ostma-ost ketma-ketligida ekranga chiqaring."
+                },
+                {
+                  "number": "1.1.24",
+                  "statement": "Ixtiyoriy to‘rtta sonni “ustun” shaklida chop etadigan dastur tuzing."
+                },
+                {
+                  "number": "1.1.25",
+                  "statement": "Ism va familiyangizni ekranga yonma-yon va “ustun” shaklida chop etish dasturini tuzing."
+                },
+                {
+                  "number": "1.1.26",
+                  "statement": "Shaxsiy ma’lumotlaringizni (ism-familiya, tug‘ilgan yil, yosh, manzil, telefon raqam) ekranga “ustun” shaklida chop etish dasturini tuzing."
+                },
+                {
+                  "number": "1.1.27",
+                  "statement": "Ixtiyoriy davlat haqidagi ma’lumotlarni (poytaxti, aholisi, millati, pul birligi) ekranga “ustun” shaklida chop etish dasturini tuzing."
+                },
+                {
+                  "number": "1.1.28",
+                  "statement": "Noutbukingizning ma’lumotlarini ekranga chop etadigan dastur tuzing."
+                },
+                {
+                  "number": "1.1.29",
+                  "statement": "Ixtiyoriy shahar ma’lumotlarini ekranga chop etadigan dastur tuzing."
+                },
+                {
+                  "number": "1.1.30",
+                  "statement": "Ixtiyoriy badiiy kitob ma’lumotlarini ekranga chop etadigan dastur tuzing."
+                },
+                {
+                  "number": "1.1.31",
+                  "statement": "Mobil telefoningiz ma’lumotlarini ekranga chop etadigan dastur tuzing."
+                },
+                {
+                  "number": "1.1.32",
+                  "statement": "O‘qish joyi ma’lumotlarini ekranga chop etadigan dastur tuzing."
+                },
+                {
+                  "number": "1.1.33",
+                  "statement": "Tugatgan ta’lim muassasangiz ma’lumotlarini ekranga chop etadigan dastur tuzing."
+                },
+                {
+                  "number": "1.1.34",
+                  "statement": "Tumaningiz ma’lumotlarini ekranga chop etadigan dastur tuzing."
+                },
+                {
+                  "number": "1.1.35",
+                  "statement": "Qishlog‘ingiz ma’lumotlarini ekranga chop etadigan dastur tuzing."
+                },
+                {
+                  "number": "1.1.36",
+                  "statement": "Guruhingiz ma’lumotlarini ekranga chop etadigan dastur tuzing."
+                },
+                {
+                  "number": "1.1.37",
+                  "statement": "4 qatordan iborat ixtiyoriy she’r matnini va muallifini ekranga chop etadigan dastur tuzing."
+                },
+                {
+                  "number": "1.1.38",
+                  "statement": "Fakultet ma’lumotlarini ekranga chop etadigan dastur tuzing."
+                },
+                {
+                  "number": "1.1.39",
+                  "statement": "Yo‘nalish ma’lumotlarini ekranga chop etadigan dastur tuzing."
+                },
+                {
+                  "number": "1.1.40",
+                  "statement": "Mamlakatimizdagi milliy bayramlar ro‘yxatini ekranga chop etadigan dastur tuzing."
+                },
+                {
+                  "number": "1.1.41",
+                  "statement": "Fakultet tarkibidagi yo‘nalishlar va guruhlar ma’lumotlarini ekranga chop etadigan dastur tuzing."
+                },
+                {
+                  "number": "1.1.42",
+                  "statement": "Futbol chempionati turnir jadvali haqidagi ma’lumotlarni ekranga chop etadigan dastur tuzing."
+                },
+                {
+                  "number": "1.1.43",
+                  "statement": "Maktab sinflari o‘quvchilari soni haqidagi ma’lumotlarni ekranga chop etadigan dastur tuzing."
+                },
+                {
+                  "number": "1.1.44",
+                  "statement": "Badiiy adabiyotlar ro‘yxati (muallifi va kitob nomi)ni ekranga chop etadigan dastur tuzing."
+                },
+                {
+                  "number": "1.1.45",
+                  "statement": "O‘tiladigan fanlar va o‘qituvchilar ro‘yxatini ekranga chop etadigan dastur tuzing."
+                },
+                {
+                  "number": "1.1.46",
+                  "statement": "Dars jadvalini ekranga chop etadigan dastur tuzing."
+                },
+                {
+                  "number": "1.1.47",
+                  "statement": "Talabalar ismi-familiyasini ekranga chop etadigan dastur tuzing."
+                },
+                {
+                  "number": "1.1.48",
+                  "statement": "π sonini yuzdan bir qismigacha aniq ko‘rsatish dasturini tuzing."
+                },
+                {
+                  "number": "1.1.49",
+                  "statement": "e raqamini (natural logarifmning asosi) o‘ndan bir qismigacha aniq ko‘rsating."
+                },
+                {
+                  "number": "1.1.50",
+                  "statement": "Klaviaturadan kiritilgan raqamni aks ettirish dasturini yozing."
+                },
+                {
+                  "number": "1.1.51",
+                  "statement": "Ko‘rsatilgan raqamdan oldin “Siz raqam kiritdingiz” xabarini ko‘rsatadigan dastur tuzing."
+                },
+                {
+                  "number": "1.1.52",
+                  "statement": "Klaviaturadan kiritilgan raqamni aks ettirish dasturini yozing."
+                },
+                {
+                  "number": "1.1.53",
+                  "statement": "Bir qatorga 1, 13 va 49 raqamlarini ular orasida bitta bo‘sh joy qoldirib chop eting."
+                },
+                {
+                  "number": "1.1.54",
+                  "statement": "Ekrandagi “ustun”da istalgan to‘rtta raqamni ko‘rsatish dasturini yozing."
+                },
+                {
+                  "number": "1.1.55",
+                  "statement": "Ekranda quyidagi ma’lumotlarni ko‘rsatish uchun dastur yozing:\na) 5 10\nb) 100 t\nc) x 25\nd) 7 sm\ne) 1949 v\nf) x y"
+                }
+              ]
+            },
+            {
+              "id": 16,
+              "number": "1.1.3",
+              "title": "Matematik formulalar yordamida hisoblashlar",
+              "problems": [
+                {
+                  "number": "1.1.56",
+                  "statement": "O‘rganilayotgan dasturlash tili qoidalariga ko‘ra quyidagi ifodalarni yozing:\n1) 2x\n2) |n|\n3) sin(α)cos(β) + cos(α)sin(β)\n4) sin(x)\n5) 5cos(y)\n6) a*sqrt(2b)\n7) a^2\n8) -7.5a^2\n9) 3sin(2α)cos(3β)\n10) sqrt(x)\n11) 3*sqrt(x)\n12) -5*sqrt(x + sqrt(y))"
+                },
+                {
+                  "number": "1.1.57",
+                  "statement": "O‘rganilayotgan dasturlash tili qoidalariga ko‘ra quyidagi ifodalarni yozing:\n1) -1 / x^2\n2) (a + b) / 2\n3) (-b + 1/a) / (2/c)\n4) a / (b*c)\n5) 5.45 * (a + 2b) / (2 - a)\n6) 1 / (1 + (a + b)/2)\n7) (a / b) * c\n8) (-b + sqrt(b^2 - 4ac)) / (2a)\n9) 1 / (1 + 1 / (2 + 1 / (2 + 3/5)))"
+                },
+                {
+                  "number": "1.1.58",
+                  "statement": "O‘rganilayotgan dasturlash tili qoidalariga muvofiq quyidagi ifodalarni yozing:\n1) sqrt(x1^2 + x2^2)\n2) 2*π*R\n3) (a*d + b*c) / (a*d)\n4) x1*x2 + x1*x3 + x2*x3\n5) b^2 - 4ac\n6) sqrt(1 - sin^2(x))\n7) v0*t + (a*t^2)/2\n8) γ * (m1*m2)/r^2\n9) 1 / sqrt(a*x^2 + b*x + c)\n10) (m*v^2)/2 + m*g*h\n11) I^2 * R\n12) (sqrt(x + 1) + sqrt(x - 1)) / (2*sqrt(x))\n13) 1/R1 + 1/R2\n14) a * b * sin(c)\n15) |x| + |x + 1|\n16) m*g*cos(α)\n17) sqrt(a^2 + b^2 - 2ab*cos(c))\n18) |1 - |x||"
+                },
+                {
+                  "number": "1.1.59",
+                  "statement": "O‘rganilayotgan dasturlash tili qoidalariga muvofiq quyidagi ifodalarni yozing:\n1) G = (tan(x^4 - 6) - cos^3(z + x*y)) / (cos^4(x^3 * c^2))\n2) S = (4.351*y^3 + 2*t*ln(t)) / b\n3) U = (tan^3(y) + sin^5(x)*sqrt(b - c)) / sqrt(a - b + c)\n4) K = (sqrt(x + b - a) + ln(y)) / arctg(b + a)\n5) N = (5*root(z + sqrt(z*x))) / (e^x + a^5 * arctg(x))\n6) D = (cos(x^3 + 6) - sin(y - a)) / (ln(x^4) - 2*sin^5(x))"
+                },
+                {
+                  "number": "1.1.60",
+                  "statement": "O‘rganilayotgan dasturlash tili qoidalariga muvofiq quyidagi ifodalarni yozing:\n1) t = (2*cos(x - π/6) / (0.5 + sin^2(y))) * (1 + z^2 / (3 - z^2 / 5))\n2) u = ((8 + |x - y|^2 + 1)^(1/3)) / (x^2 + y^2 + 2) - e^(|x - y|) * (tg^2(z) + 1)^x\n3) v = ((1 + sin^2(x + y)) / |x - 2y / (1 + x^2*y^2)|) * x^(|y|) + cos^2(arctg(1/z))\n4) w = |cos(x) - cos(y)|^(1 + 2*sin^2(y)) * (1 + z + z^2/2 + z^3/3 + z^4/4)\n5) α = ln(y^(-sqrt(|x|))) * (x - y/2) + sin^2(arctg(z))\n6) β = sqrt(10*(x^(1/3) + x^(y+2))) * (arcsin^2(z) - |x - y|)\n7) γ = 5*arctg(x) - (1/4)*arccos(x) * (x + 3*|x - y| + x^2) / (|x - y|*z + x^2)\n8) φ = (e^(|x - y|) * |x - y|^(x+y)) / (arctg(x) + arctg(z)) + (x^6 + ln^2(y))^(1/3)\n9) ψ = |x^(y/x) - (y/x)^(1/3)| + (y - x) * (cos(y) - z/(y - x)) / (1 + (y - x)^2)\n10) a = 2^(-x) * sqrt(x + (y)^(1/4)) * (e^(x - 1/sin(z)))^(1/3)\n11) b = (y^(|x|^(1/3)) + cos^3(y)) * (|x - y| * (1 + sin^2(z) / sqrt(x + y))) / (e^(|x - y|) + x/2)\n12) c = 2^(y^x) + (3^x)^y - (y * (arctg(z) - π/6)) / (|x| + 1 / (y^2 + 1))\n13) f = ((y + (x - 1)^(1/3))^(1/4)) / (|x - y| * (sin^2(z) + tg(z)))\n14) g = (y^(x+1) / (|y - 2|^(1/3) + 3)) + ((x + y/2) / |2x + y|) * (x + 1)^(-1/sin(z))\n15) h = ((x^(y+1) + e^(y-1)) / (1 + x*|y - tg(z)|)) * (1 + |y - x|) + |y - x|^2 / 2 - |y - x|^3 / 3"
+                },
+                {
+                  "number": "1.1.61",
+                  "statement": "Quyidagi dasturlarni yozing:\na) x ning istalgan qiymati uchun y = 7x^2 - 3x + 6 funksiya qiymatini hisoblash;\nb) a ning istalgan qiymati uchun x = 12a^2 + 7a - 16 funksiya qiymatini hisoblash."
+                },
+                {
+                  "number": "1.1.62",
+                  "statement": "a ning istalgan qiymati uchun y = (a^2 + 10) / sqrt(a^2 + 1) funksiya qiymatini hisoblash dasturini tuzing."
+                },
+                {
+                  "number": "1.1.63",
+                  "statement": "Quyidagi dasturlarni tuzing:\na) x ning istalgan qiymati uchun y = sin((3.2 + sqrt(1 + x)) / |5x|) funksiya qiymatini hisoblash;\nb) a ning istalgan qiymati uchun x = sqrt((2a + sin|3a|) / 3.56) funksiya qiymatini hisoblash."
+                },
+                {
+                  "number": "1.1.64",
+                  "statement": "Kvadratning yon tomoni berilgan. Uning perimetrini topish dasturini tuzing."
+                },
+                {
+                  "number": "1.1.65",
+                  "statement": "Doira radiusi berilgan. Uning diametrini topish dasturini tuzing."
+                },
+                {
+                  "number": "1.1.66",
+                  "statement": "Yer radiusi R ≈ 6350 km bo‘lgan ideal shar deb faraz qilib, Yerdan ma’lum h balandlikdagi nuqtadan gorizontgacha bo‘lgan masofani aniqlash dasturini tuzing."
+                },
+                {
+                  "number": "1.1.67",
+                  "statement": "Kubning qirrasining uzunligi berilgan. Kubning hajmini va uning yon yuzasining maydonini topish dasturini tuzing."
+                },
+                {
+                  "number": "1.1.68",
+                  "statement": "Dastur tuzing:\na) x va y ning istalgan qiymatlari uchun z = x^3 - 2.5xy + 1.78x^2 - 2.5y + 1 funksiya qiymatini hisoblash;\nb) a va b ning istalgan qiymati uchun x = 3.56a + b^3 - 5.8b^2 + 3.8a - 1.5 funksiya qiymatini hisoblash."
+                },
+                {
+                  "number": "1.1.69",
+                  "statement": "Ikkita butun son berilgan. Quyidagilarni topish dasturini tuzing:\na) ularning o‘rta arifmetik qiymatini;\nb) ularning o‘rta geometrik qiymatini."
+                },
+                {
+                  "number": "1.1.70",
+                  "statement": "Shtatdagi aholi soni va uning hududi ma’lum. Bu davlatdagi aholi zichligini aniqlash dasturini tuzing. Aholi zichligi aholi sonining hudud maydoniga nisbati orqali topiladi."
+                },
+                {
+                  "number": "1.1.71",
+                  "statement": "Chiziqli tenglamani yechish dasturini yozing. Chiziqli tenglama ax + b = 0, bu yerda a ≠ 0 va b ≠ 0 deb hisoblansin."
+                },
+                {
+                  "number": "1.1.72",
+                  "statement": "To‘g‘ri burchakli uchburchakning katetlari berilgan. Uning gipotenuzasini topish dasturini tuzing."
+                },
+                {
+                  "number": "1.1.73",
+                  "statement": "Berilgan tashqi va ichki radiuslar yordamida halqaning yuzasini aniqlash dasturini tuzing."
+                },
+                {
+                  "number": "1.1.74",
+                  "statement": "To‘g‘ri burchakli uchburchakning katetlari berilgan. Uning perimetrini topish dasturini tuzing."
+                },
+                {
+                  "number": "1.1.75",
+                  "statement": "Teng yonli trapetsiyaning asoslari va balandligi berilgan. Uning perimetrini topish dasturini tuzing."
+                },
+                {
+                  "number": "1.1.76",
+                  "statement": "Ikki nuqtaning tekislikdagi koordinatalari ma’lum. Ularning orasidagi masofani hisoblash dasturini yozing."
+                },
+                {
+                  "number": "1.1.77",
+                  "statement": "1 kg shirinlik, pechenye va olma narxi ma’lum. Agar siz x kg shirinliklar, y kg pechenye va z kg olma sotib olgan bo‘lsangiz, butun xarid narxini topish dasturini tuzing."
+                },
+                {
+                  "number": "1.1.78",
+                  "statement": "Monitor, tizim bloki, klaviatura va sichqonchaning narxi ma’lum. Ushbu elementlarning 3 ta kompyuteri qancha turadi? N ta kompyuter-chi? Ushbu savollarga javob beradigan dastur tuzing."
+                },
+                {
+                  "number": "1.1.79",
+                  "statement": "Anvarning yoshi X yil, Zafarning yoshi esa Y yil. Ularning o‘rtacha yoshini topish, shuningdek, har bir bolaning yoshi o‘rtacha yoshdan qanchalik farq qilishini aniqlash dasturini tuzing."
+                },
+                {
+                  "number": "1.1.80",
+                  "statement": "Ikki mashina bir-biriga qarab doimiy tezlikda v1 va v2 km/soat tezlikda harakatlanmoqda. Agar ular orasidagi masofa S km bo‘lsa, mashinalar qancha vaqtdan keyin uchrashishini aniqlash dasturini tuzing."
+                },
+                {
+                  "number": "1.1.81",
+                  "statement": "Ikki mashina bir-birining orqasidan doimiy tezlikda v1 va v2 km/soat (v1 > v2) bilan harakatlanadi. Birinchi mashina ikkinchisidan S km oldinda bo‘lganidan keyin 30 minut o‘tgach, ular orasidagi masofa qanday bo‘lishini aniqlash dasturini tuzing."
+                },
+                {
+                  "number": "1.1.82",
+                  "statement": "Selsiy shkalasi bo‘yicha harorat qiymati ma’lum. Shkalada mos keladigan harorat qiymatini topish dasturini tuzing:\na) Farengeyt;\nb) Kelvin.\n(Farengeyt shkalasiga aylantirish uchun berilgan harorat qiymatini 1,8 ga ko‘paytirish va natijaga 32 ni qo‘shish kerak, Kelvin shkalasida esa nolning mutlaq qiymati 273,15 daraja Selsiyga to‘g‘ri keladi)."
+                },
+                {
+                  "number": "1.1.83",
+                  "statement": "Koordinatalari (x1, y1) va (x2, y2) bo‘lgan ikki nuqta orasidagi masofani topish dasturini tuzing."
+                },
+                {
+                  "number": "1.1.84",
+                  "statement": "y = kx + b funksiyaning qiymatini hisoblash dasturini tuzing. Bu yerda k, x va b haqiqiy sonlar."
+                },
+                {
+                  "number": "1.1.85",
+                  "statement": "Tomonlari a va b ga balandligi esa h ga teng bo‘lgan trapetsiyaning yuzini topish dasturini tuzing."
+                },
+                {
+                  "number": "1.1.86",
+                  "statement": "Agar hozir sutkaning k-sekundi bo‘lsa, sutka boshidan o‘tgan aniq vaqt - soat(h), minut(m) va sekund(s) hisoblash dasturini tuzing. (Masalan, agar k = 13257 = 3 * 3600 + 40 * 60 + 57 bo‘lsa, h = 3, m = 40 va s = 57)."
+                },
+                {
+                  "number": "1.1.87",
+                  "statement": "Og‘irligi bir kilogramm bo‘lgan mahsulotning narxi berilgan. Uning og‘irligi grammlarda kiritilsin va to‘lash zarur bo‘lgan pul miqdori chop etish dasturini tuzing."
+                },
+                {
+                  "number": "1.1.88",
+                  "statement": "Bolalar sport to‘garagiga bir oylik to‘lov 100000 so‘m (bir oy - 28 kun). Agar bola to‘garakka N (0 < N < 29) kun kelmagan bo‘lsa, bir oy uchun qancha to‘lash kerak bo‘ladi? Ushbu savolga javob berish dasturini tuzing."
+                },
+                {
+                  "number": "1.1.89",
+                  "statement": "Xodimning oylik ish haqiga 45% mukofot puli qo‘shilsin. Hosil bo‘lgan miqdordan 17% daromad solig‘i, 1.5% kasaba uyushmasi va 1% nafaqa solig‘i ushlab qolinsin. Qo‘lga tegadigan pul miqdori chop etish dasturini tuzing."
+                },
+                {
+                  "number": "1.1.90",
+                  "statement": "Berilgan ikki tomoni va ular orasidagi burchak (gradusda) asosida uchburchakning uchinchi tomoni va yuzasi topilsin."
+                },
+                {
+                  "number": "1.1.91",
+                  "statement": "Doiraning diametri D berilgan. Uning uzunligi va yuzasini topish dasturini tuzing. π qiymatini konstanta sifatida oling."
+                },
+                {
+                  "number": "1.1.92",
+                  "statement": "Kubning a tomoni berilgan. Uning hajmini va to‘la sirti yuzasini topish dasturini tuzing."
+                },
+                {
+                  "number": "1.1.93",
+                  "statement": "Aylananing uzunligi L berilgan. Ushbu aylana bilan chegaralangan doiraning yuzasini topish dasturini tuzing."
+                },
+                {
+                  "number": "1.1.94",
+                  "statement": "Umumiy markazga ega bo‘lgan ikkita doira bir-biriga ichki chizilgan. Ichki va tashqi doiralarning radiuslari berilgan. Hosil bo‘lgan halqaning yuzini topish dasturini tuzing. π qiymatini konstanta sifatida oling."
+                },
+                {
+                  "number": "1.1.95",
+                  "statement": "Tomonlari m, n, k bo‘lgan uchburchakka ichki chizilgan aylananing yuzasini topish dasturini tuzing."
+                },
+                {
+                  "number": "1.1.96",
+                  "statement": "Uchburchakning barcha uchlarining koordinatalari berilgan. Ushbu uchburchakning yuzasini topish dasturini tuzing."
+                },
+                {
+                  "number": "1.1.97",
+                  "statement": "Aylana, yuzasi berilgan kvadratga ichki chizilgan. Bu aylanaga ichki chizilgan kvadrat yuzasini topish dasturini tuzing."
+                },
+                {
+                  "number": "1.1.98",
+                  "statement": "Tomoni a ga teng kvadratga kvadrat ichki chizilgan. Berilgan kvadrat yuzasidan ichki chizilgan kvadrat yuzasi necha marta kichikligini chop etish dasturini tuzing."
+                },
+                {
+                  "number": "1.1.99",
+                  "statement": "A1, B1, C1, A2, B2, C2 koeffitsiyentlari bilan berilgan, chiziqli tenglamalar sistemasi yechimlarini topuvchi dastur tuzing:\n1) A1*x + B1*y = C1\n2) A2*x + B2*y = C2\nx = ? y = ?\nBunda A1*B2 - A2*B1 ≠ 0 deb hisoblang."
+                },
+                {
+                  "number": "1.1.100",
+                  "statement": "Sonlar o‘qida A, B, C nuqtalar berilgan. AC va BC kesmalarning uzunligini va kesmalar uzunligining ko‘paytmasini topish dasturi tuzing."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "number": "1.2",
+          "title": "Taqqoslash va mantiqiy amallar",
+          "topics": [
+            {
+              "id": 17,
+              "number": "1.2.1",
+              "title": "Mantiqiy ifodalarni baholash va tuzishga oid masalalar",
+              "problems": [
+                {
+                  "number": "1.2.1",
+                  "statement": "Berilgan to'rt xonali son boshidagi ikkita raqamlar yig'indisining qolgan raqamlari yig'indisiga teng yoki yo'qligi aniqlash dasturini tuzing."
+                },
+                {
+                  "number": "1.2.2",
+                  "statement": "Berilgan uch xonali son kvadrati, uning raqamlari yig'indisining kubiga tengligini aniqlash dasturini tuzing."
+                },
+                {
+                  "number": "1.2.3",
+                  "statement": "Berilgan uch xonali son raqamlari orasida bir xillari borligini aniqlash dasturini tuzing."
+                },
+                {
+                  "number": "1.2.4",
+                  "statement": "A butun soni berilgan. Uning musbatligini tekshirish aniqlash dasturini tuzing."
+                },
+                {
+                  "number": "1.2.5",
+                  "statement": "A butun soni berilgan. Uning juftligini rostlikka tekshirish aniqlash dasturini tuzing."
+                },
+                {
+                  "number": "1.2.6",
+                  "statement": "A butun soni berilgan. Uning toqligi rostlikka tekshirish aniqlash dasturini tuzing."
+                },
+                {
+                  "number": "1.2.7",
+                  "statement": "A va B butun sonlar berilgan bo'lsin, ularni (A>2 va B<=3) bo'lgan hol uchun rostlikka tekshirish aniqlash dasturini tuzing."
+                },
+                {
+                  "number": "1.2.8",
+                  "statement": "A va B butun sonlar berilgan bo'lsin, ularni (A>=0 va B<-2) bo'lgan hol uchun rostlikka tekshirish aniqlash dasturini tuzing."
+                },
+                {
+                  "number": "1.2.9",
+                  "statement": "A, B, C butun sonlar berilgan. Ular (A<=B<=C) holat uchun rostlikka tekshirish aniqlash dasturini tuzing."
+                },
+                {
+                  "number": "1.2.10",
+                  "statement": "A, B, C butun sonlar berilgan. B soni A va C sonlar orasida yotishi rostlikka tekshirish aniqlash dasturini tuzing."
+                },
+                {
+                  "number": "1.2.11",
+                  "statement": "A va B butun sonlar berilgan, ular har biri toq bo'lmagan hol uchun rostlikka tekshirish aniqlash dasturini tuzing."
+                },
+                {
+                  "number": "1.2.12",
+                  "statement": "A, B, C butun sonlar berilgan. B soni A va C sonlar orasida yotishi rostlikka tekshirilsin."
+                },
+                {
+                  "number": "1.2.13",
+                  "statement": "a,b,c butun sonlar berilgan bo'lib, ular uchburchakning tomonlarini tashkil etadi. Shu uchburchakning to'g'ri burchakli ekanligini aniqlash dasturini tuzing."
+                },
+                {
+                  "number": "1.2.14",
+                  "statement": "A, B, C butun sonlar berilgan. B soni A va C sonlar orasida yotishi rostlikka tekshirilsin."
+                },
+                {
+                  "number": "1.2.15",
+                  "statement": "A va B butun sonlar berilgan, ularning hech bo'lmaganda bittasi toq ekanligi rostlikka tekshirilsin."
+                },
+                {
+                  "number": "1.2.16",
+                  "statement": "A va B butun sonlar berilgan, bu sonlardan biri toq ekanligi rostlikka tekshirilsin."
+                },
+                {
+                  "number": "1.2.17",
+                  "statement": "A va B butun sonlar berilgan, ularning bir xil juftlikka ega ekanligi tekshirilsin."
+                },
+                {
+                  "number": "1.2.18",
+                  "statement": "A, B, C butun sonlar berilgan. Ularning har birini musbat ekanligi rostlikka tekshirilsin."
+                },
+                {
+                  "number": "1.2.19",
+                  "statement": "A, B, C butun sonlar berilgan. Ularning hech bo'lmaganda bittasi musbat ekanligi rostlikka tekshirilsin."
+                },
+                {
+                  "number": "1.2.20",
+                  "statement": "A, B, C butun sonlar berilgan. Faqat ulardan bittasi musbatligi rostlikka tekshirilsin."
+                },
+                {
+                  "number": "1.2.21",
+                  "statement": "A, B, C butun sonlar berilgan. Ulardan faqat ikkitasi bir vaqtda musbat ekanligi rostlikka tekshirilsin."
+                },
+                {
+                  "number": "1.2.22",
+                  "statement": "Butun musbat son berilgan. Uning juftligi va ikki xonali ekanligi rostlikka tekshirilsin."
+                },
+                {
+                  "number": "1.2.23",
+                  "statement": "Butun musbat son berilgan. Ularning toqligi va uch xonali ekanligi rostlikka tekshirilsin."
+                },
+                {
+                  "number": "1.2.24",
+                  "statement": "Berilgan uchta sondan olingan juftlik o'zaro teng bo'lishi rostlikka tekshirilsin."
+                },
+                {
+                  "number": "1.2.25",
+                  "statement": "Berilgan uchta butun sonlar orasidan olingan juftliklardan hech bo'lmaganda bittasi o'zaro qarama-qarshi juftlikni tashkil etishini aniqlash dasturini tuzing."
+                },
+                {
+                  "number": "1.2.26",
+                  "statement": "To'rt xonali natural son berilgan. Bu son raqamlarining har xil ekanligini aniqlash dasturini tuzing."
+                },
+                {
+                  "number": "1.2.27",
+                  "statement": "To'rt xonali natural berilgan. Uning raqamlari o'suvchi ketma-ketlik tashkil etishini aniqlash dasturini tuzing."
+                },
+                {
+                  "number": "1.2.28",
+                  "statement": "To'rt xonali natural son berilgan. Uning raqamlari o'suvchi yoki kamayuvchi ketma-ketlik tashkil etishini aniqlash dasturini tuzing."
+                },
+                {
+                  "number": "1.2.29",
+                  "statement": "To'rt xonali son berilgan. Uni chapdan o'ngga va o'ngdan chapga o'qiganda bir xil o'qilishini aniqlash dasturini tuzing."
+                },
+                {
+                  "number": "1.2.30",
+                  "statement": "A, B, C sonlar berilgan (A≠0). Bu sonlarni kvadrat tenglama koeffisientlari deb hisoblab shu kvadrat tenglamaning haqiqiy yechimga ega ekanligini aniqlash dasturini tuzing."
+                },
+                {
+                  "number": "1.2.31",
+                  "statement": "x, y sonlari berilgan. Ularni koordinatalar deb hisoblab 1-chorakda yotishini aniqlash dasturini tuzing."
+                },
+                {
+                  "number": "1.2.32",
+                  "statement": "x, y sonlari berilgan. Ularni koordinatalar deb hisoblab koordinata boshida yotishini aniqlash dasturini tuzing."
+                },
+                {
+                  "number": "1.2.33",
+                  "statement": "x, y sonlari berilgan. Ularni koordinatalar deb hisoblab 1- yoki 2-chorakda yotishini aniqlash dasturini tuzing."
+                },
+                {
+                  "number": "1.2.34",
+                  "statement": "x, y sonlari berilgan. Ularni koordinatalar deb hisoblab 2-yoki 3-chorakda yotishini aniqlash dasturini tuzing."
+                },
+                {
+                  "number": "1.2.35",
+                  "statement": "Tekislikda nuqta x va y koordinatalari bilan berilgan. Shu nuqtaning yuqori chap burchagi (x1,y1), quyi o'ng burchagi (x3,y3) bo'lgan hamda tomonlari koordinata o'qlariga parallel to'g'ri burchakli to'rtburchakning ichida yotishi yoki yotmasligi aniqlash dasturini tuzing."
+                },
+                {
+                  "number": "1.2.36",
+                  "statement": "a,b,c butun sonlar berilgan bo'lib, ular uchburchakning tomonlarini tashkil etadi. Shu uchburchakning teng tomonli ekanligini aniqlash dasturini tuzing."
+                },
+                {
+                  "number": "1.2.37",
+                  "statement": "a,b,c butun sonlar berilgan bo'lib, ular uchburchakning tomonlarini tashkil etadi. Shu uchburchakning teng yonli ekanligini aniqlash dasturini tuzing."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "number": "1.3",
+          "title": "Shartli jarayonlar",
+          "topics": [
+            {
+              "id": 18,
+              "number": "1.3.1",
+              "title": "Sodda shartli jarayonga oid masalalar",
+              "problems": [
+                {
+                  "number": "1.3.1",
+                  "statement": "x ning berilgan qiymati uchun y qiymatini hisoblash dasturini tuzing:",
+                  "piecewise": {
+                    "variable": "y",
+                    "cases": [
+                      {
+                        "expression": "sin² x",
+                        "condition": "agar x > 0"
+                      },
+                      {
+                        "expression": "1 − 2 sin x²",
+                        "condition": "aks holda."
+                      }
+                    ]
+                  }
+                },
+                {
+                  "number": "1.3.2",
+                  "statement": "Maydonlarning qaysi biri — I yoki II — berilgan koordinatalarga ega bo‘lgan nuqtaga to‘g‘ri kelishini aniqlash dasturini tuzing. Oddiylik uchun, nuqta sohalar chegarasiga tushmaydi deb hisoblang.",
+                  "figures": [
+                    {
+                      "src": "assest/images/problems/1-3-2-region-1.svg",
+                      "alt": "1) x = 4 vertikal chiziqning chap tomonida I soha, o‘ng tomonida II soha."
+                    },
+                    {
+                      "src": "assest/images/problems/1-3-2-region-2.svg",
+                      "alt": "2) y = 3 gorizontal chiziqning yuqorisida I soha, pastida II soha."
+                    }
+                  ]
+                },
+                {
+                  "number": "1.3.3",
+                  "statement": "Grafik ko‘rsatilgan funksiyalar uchun x ning berilgan qiymati uchun y qiymatini aniqlash dasturini tuzing.",
+                  "figures": [
+                    {
+                      "src": "assest/images/problems/1-3-3-function-1.svg",
+                      "alt": "1) x < 2 bo‘lsa y = x, aks holda y = 2. Grafikning burilish nuqtasi: (2; 2)."
+                    },
+                    {
+                      "src": "assest/images/problems/1-3-3-function-2.svg",
+                      "alt": "2) x < 3 bo‘lsa y = −x, aks holda y = −3. Grafikning burilish nuqtasi: (3; −3)."
+                    }
+                  ]
+                },
+                {
+                  "number": "1.3.4",
+                  "statement": "Ikki xil haqiqiy son berilgan. Quyidagilarni aniqlash dasturini tuzing:\na) qaysi biri kattaroq;\nb) qaysi biri kichikroq."
+                },
+                {
+                  "number": "1.3.5",
+                  "statement": "Ikki masofa ma’lum: biri kilometrda, ikkinchisi futda (1 fut = 0,305 m). Qaysi masofa kichikroq ekanligini aniqlash dasturini tuzing."
+                },
+                {
+                  "number": "1.3.6",
+                  "statement": "Ikkita tezlik ma’lum: biri soatiga kilometrda, ikkinchisi soniyasiga metrda. Qaysi tezlik yuqoriroq ekanligini aniqlash dasturini tuzing."
+                },
+                {
+                  "number": "1.3.7",
+                  "statement": "Aylana radiusi va kvadrat tomoni berilgan. Qaysi shakl katta yuzaga egaligini aniqlash dasturini tuzing."
+                },
+                {
+                  "number": "1.3.8",
+                  "statement": "Haqiqiy a, b, c sonlar berilgan (a ≠ 0). ax² + bx + c = 0 tenglama haqiqiy ildizga ega ekanligini aniqlang. Agar haqiqiy ildizlar mavjud bo‘lsa, ularni toping, aks holda ekranda tegishli xabarni ko‘rsatish dasturini tuzing."
+                },
+                {
+                  "number": "1.3.9",
+                  "statement": "Insonning tug‘ilgan yili va oyi, shuningdek, bugungi yil va oyi (1 — yanvar va boshqalar) ma’lum. Shaxsning yoshini aniqlash dasturini tuzing (tugallangan yillar soni). Agar ko‘rsatilgan oy raqamlari mos kelsa, to‘liq yil o‘tgan deb hisoblang."
+                },
+                {
+                  "number": "1.3.10",
+                  "statement": "Doira va kvadratning yuzalari ma’lum. Quyidagilarni aniqlash dasturini tuzing:\na) aylana kvadratga joylashadimi?\nb) kvadrat aylana ichiga joylashadimi?"
+                },
+                {
+                  "number": "1.3.11",
+                  "statement": "1–999 oralig‘idagi butun son berilgan. Uni quyidagi satr ko‘rinishida ifodalash dasturini tuzing: “2 xonali juft son”, “3 xonali toq son” va hokazo."
+                },
+                {
+                  "number": "1.3.12",
+                  "statement": "Agar m butun soni n ga bo‘linadigan bo‘lsa, bo‘linish qismini ko‘rsating, aks holda “m n ga bo‘linmaydi” xabarini ko‘rsatish dasturini tuzing."
+                },
+                {
+                  "number": "1.3.13",
+                  "statement": "a soni b sonining bo‘luvchisi ekanligini aniqlash dasturini tuzing."
+                },
+                {
+                  "number": "1.3.14",
+                  "statement": "Natural son berilgan. Quyidagilarni aniqlash dasturini tuzing:\na) juft sonmi?\nb) 7 raqami bilan tugaydimi?"
+                },
+                {
+                  "number": "1.3.15",
+                  "statement": "Ikki xonali son berilgan. Quyidagilarni aniqlash dasturini tuzing:\na) uning qaysi raqamlari kattaroq: birinchi yoki ikkinchi;\nb) uning raqamlari bir xilmi?"
+                },
+                {
+                  "number": "1.3.16",
+                  "statement": "Ikki xonali raqam berilgan. Bu raqamning kvadrati uning raqamlari kublari yig'indisini to'rt barobarga teng yoki yo'qligini aniqlash dasturini tuzing. Masalan, 48 raqami uchun javob rost, 52 raqami uchun yolg'on."
+                },
+                {
+                  "number": "1.3.17",
+                  "statement": "Ikki xonali raqam berilgan. Quyidagilarni aniqlash dasturini tuzing. a) uning raqamlari yig'indisi ikki xonali son bo'ladimi; b) son uning raqamlari yig'indisidan kattami?"
+                },
+                {
+                  "number": "1.3.18",
+                  "statement": "Ikki xonali son berilgan. Quyidagilarni aniqlash dasturini tuzing: a) uning raqamlari yig'indisi uchga karralimi? b) uning raqamlari yig'indisi a ga karrali."
+                },
+                {
+                  "number": "1.3.19",
+                  "statement": "Uch xonali son berilgan. Bu palindrom, ya'ni o'nlik belgisi chapdan o'ngga va o'ngdan chapga bir xil o'qiladigan son ekanligini aniqlash dasturini tuzing."
+                },
+                {
+                  "number": "1.3.20",
+                  "statement": "Uch xonali son berilgan. Uning qaysi raqamlari kattaroq ekanligini aniqlash dasturini tuzing: a) birinchi yoki oxirgi; b) birinchi yoki ikkinchi; c) ikkinchi yoki oxirgi."
+                },
+                {
+                  "number": "1.3.21",
+                  "statement": "Uch xonali son berilgan. Bu raqamning kvadrati uning raqamlari kublari yig'indisiga teng yoki yo'qligini aniqlash dasturini tuzing."
+                },
+                {
+                  "number": "1.3.22",
+                  "statement": "Uch xonali son berilgan. Quyidagilarni aniqlash dasturini tuzing: a) uning raqamlari yig'indisi ikki xonali son bo'ladimi; b) uning raqamlari ko'paytmasi uch xonali son bo'ladimi; c) uning raqamlari ko'paytmasidan katta son; d) uning raqamlari yig'indisi beshga karralimi? e) uning raqamlari yig'indisi a ga karrali."
+                },
+                {
+                  "number": "1.3.23",
+                  "statement": "To'rt xonali son berilgan. Quyidagilarni aniqlash dasturini tuzing: a) uning birinchi ikki raqamining yig'indisi oxirgi ikki raqamining yig'indisiga teng; b) uning raqamlari yig'indisi uchga karralimi? c) uning raqamlarining ko'paytmasi to'rtga karralimi? d) uning raqamlarining ko'paytmasi a ga karrali."
+                },
+                {
+                  "number": "1.3.24",
+                  "statement": "Natural son berilgan. Quyidagilarni aniqlash dasturini tuzing. a) Juft son bilan tugashi rostmi? b) Toq son bilan tugashi rostmi?"
+                },
+                {
+                  "number": "1.3.25",
+                  "statement": "N natural soni berilgan bo'lsin. Uning juft yoki toqligini aniqlash dasturini tuzing."
+                },
+                {
+                  "number": "1.3.26",
+                  "statement": "a va b butun sonlari berilgan. Tekshiring: tengsizlik bajarilsa, u holda bu sonlarni 999 bilan almashtiring, aks holda o'zgarishsiz chiqarish dasturini tuzing."
+                },
+                {
+                  "number": "1.3.27",
+                  "statement": "Ikkita butun son berilgan bo'lsin. Agarda birinchisi ikkinchisiga teng bo'lsa, bu sonlarni nol bilan almashtiring."
+                },
+                {
+                  "number": "1.3.28",
+                  "statement": "3 ta haqiqiy son berilgan bo'lsin. Bu sonlarni [10,27] intervalga tegishlilarini chiqarish dasturini tuzing."
+                },
+                {
+                  "number": "1.3.29",
+                  "statement": "Uchta butun son berilgan bo'lsin. Ularning manfiylarini nol bilan almashtirish dasturini tuzing."
+                },
+                {
+                  "number": "1.3.30",
+                  "statement": "3 ta butun son berilgan. Ularning musbatini kvadrati bilan almashtirish dasturini tuzing."
+                },
+                {
+                  "number": "1.3.31",
+                  "statement": "Butun son berilgan. Agar u musbat bo'lsa unga 10 qo'shilsin, aks holda 10 ga kamaytirilsin. Olingan sonni chiqarish dasturini tuzing."
+                },
+                {
+                  "number": "1.3.32",
+                  "statement": "x,y,z butun musbat sonlar berilgan. x,y,z uzunlikka ega tomonli uchburchak mavjudmi? Agar mavjud bo'lsa YES aks holda NO so'zini chiqarish dasturini tuzing."
+                },
+                {
+                  "number": "1.3.33",
+                  "statement": "Agar o'zaro farqli x, y, z haqiqiy sonlar birdan kichik bo'lsa, u holda bu uchta sondan eng kichigini boshqa ikkitasining yarmi yig'indisi bilan almashtiring. Aks holda o'zgarishsiz qoldiring."
+                },
+                {
+                  "number": "1.3.34",
+                  "statement": "Butun son berilgan. Agar u manfiy bo'lsa unga qo'shilsin, aks holda 2 ayirib tashlansin. Olingan son chiqarilsin."
+                },
+                {
+                  "number": "1.3.35",
+                  "statement": "Butun son berilgan. Agar u manfiy bo'lsa 2 ni ayiring, 0 ga teng bo'lsa 10 bilan almashtirilsin. Olingan son chiqarish dasturini tuzing."
+                },
+                {
+                  "number": "1.3.36",
+                  "statement": "Uchta butun son berilgan. Ular orasidan musbatlari sonini topish dasturini tuzing."
+                },
+                {
+                  "number": "1.3.37",
+                  "statement": "Uchta butun son berilgan. Ular orasidan musbatlari va manfiylari sonini topish dasturini tuzing."
+                },
+                {
+                  "number": "1.3.38",
+                  "statement": "Ikkita son berilgan. Ulardan kichigining tartib raqami chiqarish dasturini tuzing."
+                },
+                {
+                  "number": "1.3.39",
+                  "statement": "Ikkita haqiqiy turga tegishli X va Y o'zgaruvchilari berilgan. Ularning qiymatlari quyidagicha qayta taqsimlangan: X ga kichik, Y ga katta qiymat. X va Y larning yangi qiymatlarini chiqarish dasturini tuzing."
+                },
+                {
+                  "number": "1.3.40",
+                  "statement": "Ikkita butun turga tegishli X va Y o'zgaruvchilar berilgan, agar ularning qiymatlari teng bo'lmasa har bir o'zgaruvchiga qiymatlar yig'indisi berilsin, aks holda har bir o'zgaruvchiga 0 qiymat berilsin. O'zgaruvchilarning qiymatlarini chop etish dasturini tuzing."
+                },
+                {
+                  "number": "1.3.41",
+                  "statement": "Ikkita butun turga tegishli A va B o'zgaruvchilar berilgan, agar ularning qiymatlari teng bo'lmasa har ikkala o'zgaruvchiga ham qiymatlarning kattasi ta'minlansin, aks holda har ikkala o'zgaruvchiga 0 qiymati berilsin. O'zgaruvchilarning natijaviy qiymatlarini chiqarish dasturini tuzing."
+                },
+                {
+                  "number": "1.3.42",
+                  "statement": "Uchta son berilgan. Ular orasidan eng kichigining kvadratini topish dasturini tuzing."
+                },
+                {
+                  "number": "1.3.43",
+                  "statement": "Uchta son berilgan. Ular orasidan o'rtachasi topish dasturi tuzilsin."
+                },
+                {
+                  "number": "1.3.44",
+                  "statement": "Uchta son berilgan. Ular orasidan dastlab eng kichigi keyin o'rtanchasi so'ngra eng kattasini chiqarish dasturini tuzing."
+                },
+                {
+                  "number": "1.3.45",
+                  "statement": "Uchta son berilgan. Ularning ikkita eng kattasining ko'paytmasini aniqlash dasturini tuzing."
+                },
+                {
+                  "number": "1.3.46",
+                  "statement": "Haqiqiy turga tegishli uchta A, B, C o'zgaruvchilar berilgan. Agar ularning qiymatlari o'sish tartibida joylashgan bo'lsa, ularning qiymatlarini uch marta oshiring, aks holda har bir o'zgaruvchining qiymatini 10 ga ko'paytiring. O'zgaruvchilarning yangi qiymatlarini aniqlash dasturini tuzing."
+                },
+                {
+                  "number": "1.3.47",
+                  "statement": "Haqiqiy turga tegishli uchta A, B, C o'zgaruvchilar berilgan. Agar o'zgaruvchilarning qiymatlari o'sish yoki kamayish tartibida joylashgan bo'lsa, har birining qiymatini ikki martaga oshiring, aks holda o'zgaruvchilarning qiymatlari qarama-qarshisi bilan almashtirilsin. O'zgaruvchilarning yangi qiymatlarini aniqlash dasturini tuzing."
+                },
+                {
+                  "number": "1.3.48",
+                  "statement": "Uchta butun son berilgan. Ulardan bittasi qolgan ikkitasidan ishoralari bilan farq qilsa, shu farq qiluvchi sonning tartib raqamini aniqlash dasturini tuzing."
+                },
+                {
+                  "number": "1.3.49",
+                  "statement": "To'rtta butun son berilgan. Ulardan bittasi qolgan uchtasidan farq qilsa (juft toqligi bilan) bu sonning tartib raqamini aniqlash dasturini tuzing."
+                },
+                {
+                  "number": "1.3.50",
+                  "statement": "Sonlar o'qida uchta A, B, C nuqta joylashgan. B va C nuqtalarning A nuqtaga eng yaqini hamda A nuqta bilan yaqin nuqta orasidagi masofa aniqlash dasturini tuzing."
+                },
+                {
+                  "number": "1.3.51",
+                  "statement": "Tekislikda butun sonlardan iborat koordinatalarga ega nuqta joylashgan. Agar u koordinata boshi bilan ustma-ust tushsa 0, OX o'qida joylashgan bo'lsa 1, OY o'qida joylashgan bo'lsa 2, aks holda 3, qiymat chiqarilsin."
+                },
+                {
+                  "number": "1.3.52",
+                  "statement": "OX va OY o'qlarida yotmaydigan nuqta koordinatalari berilgan. Uning qaysi chorakka tegishliligi aniqlanib chiqarilsin."
+                },
+                {
+                  "number": "1.3.53",
+                  "statement": "To'g'ri to'rtburchakning 3 ta uchi butun sonlardan iborat koordinatalar bilan berilgan va shu uchlar orasidagi tomonlar koordinata o'qlariga parallel."
+                },
+                {
+                  "number": "1.3.54",
+                  "statement": "Berilgan haqiqiy x o‘zgaruvchining qiymatiga mos keluvchi f(x) funksiya qiymatini hisoblang.",
+                  "note": "1)–4) bandlardagi funksiyalar alohida topshiriqlar hisoblanadi.",
+                  "piecewise": [
+                    {
+                      "variable": "1) f(x)",
+                      "cases": [
+                        { "expression": "2 sin x", "condition": "x > 0" },
+                        { "expression": "6 − x", "condition": "x ≤ 0" }
+                      ]
+                    },
+                    {
+                      "variable": "2) f(x)",
+                      "cases": [
+                        { "expression": "2x", "condition": "x < −2 yoki x > 2" },
+                        { "expression": "−3x", "condition": "aks holda" }
+                      ]
+                    },
+                    {
+                      "variable": "3) f(x)",
+                      "cases": [
+                        { "expression": "−x", "condition": "x ≤ 0" },
+                        { "expression": "x²", "condition": "0 < x < 2" },
+                        { "expression": "4", "condition": "x ≥ 2" }
+                      ]
+                    },
+                    {
+                      "variable": "4) f(x)",
+                      "cases": [
+                        { "expression": "0", "condition": "x < 0" },
+                        { "expression": "1", "condition": "x ∈ [0,1) ∪ [2,3)" },
+                        { "expression": "−1", "condition": "x ∈ [1,2) ∪ [3,4)" }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "number": "1.3.55",
+                  "statement": "Butun son berilgan. Uni satr ko‘rinishida “manfiy juft son”, “nol soni”, “musbat toq son” va hokazo shaklda chiqarish dasturini tuzing."
+                },
+                {
+                  "number": "1.3.56",
+                  "statement": "A(x, y) nuqta berilgan. Ushbu nuqtaning berilgan shtrixlangan sohaga tegishli yoki tegishli emasligini aniqlash dasturini tuzing.",
+                  "figures": [
+                    {
+                      "src": "assest/images/problems/1-3-56-region-1.svg",
+                      "alt": "1) x = −2 dan chapda va y = 1 dan yuqorida joylashgan shtrixlangan soha."
+                    },
+                    {
+                      "src": "assest/images/problems/1-3-56-region-2.svg",
+                      "alt": "2) −2 ≤ x ≤ 2 va −2 ≤ y ≤ 1.5 oralig‘idagi to‘rtburchak soha."
+                    },
+                    {
+                      "src": "assest/images/problems/1-3-56-region-3.svg",
+                      "alt": "3) Uchlari (0,0), (2,4), (4,0) bo‘lgan uchburchak soha."
+                    },
+                    {
+                      "src": "assest/images/problems/1-3-56-region-4.svg",
+                      "alt": "4) Parabola va qiya chiziq bilan ko‘rsatilgan shtrixlangan grafik soha."
+                    },
+                    {
+                      "src": "assest/images/problems/1-3-56-region-5.svg",
+                      "alt": "5) 1 ≤ x ≤ 2 va 1 ≤ y ≤ 4 oralig‘idagi to‘rtburchak soha."
+                    },
+                    {
+                      "src": "assest/images/problems/1-3-56-region-6.svg",
+                      "alt": "6) 1 ≤ x ≤ 2 va 2 ≤ y ≤ 4 oralig‘idagi, o‘ng tomoni egri soha."
+                    },
+                    {
+                      "src": "assest/images/problems/1-3-56-region-7.svg",
+                      "alt": "7) x > 2 bo‘lganda y > 1 yoki y < −1.5 bo‘lgan ikki shtrixlangan qism."
+                    },
+                    {
+                      "src": "assest/images/problems/1-3-56-region-8.svg",
+                      "alt": "8) x < −1 va y < −2 bo‘lgan shtrixlangan soha."
+                    },
+                    {
+                      "src": "assest/images/problems/1-3-56-region-9.svg",
+                      "alt": "9) y = 3 gorizontal chizig‘i bilan pastda joylashgan V shaklli chiziq orasidagi soha."
+                    },
+                    {
+                      "src": "assest/images/problems/1-3-56-region-10.svg",
+                      "alt": "10) y = 4 − x² parabolasi bilan x o‘qi orasidagi soha."
+                    },
+                    {
+                      "src": "assest/images/problems/1-3-56-region-11.svg",
+                      "alt": "11) Koordinata boshi, (3,6) nuqtasi va y = 6 chizig‘i bilan chegaralangan uchburchak soha."
+                    },
+                    {
+                      "src": "assest/images/problems/1-3-56-region-12.svg",
+                      "alt": "12) Markazi koordinata boshida, radiusi 3 bo‘lgan chorak doira ichidagi soha."
+                    }
+                  ]
+                },
+                {
+                  "number": "1.3.57",
+                  "statement": "Uchta butun son berilgan. Berilgan sonlardan avval eng kichigini, keyin esa o‘rtada turgan sonni chop etish algoritmi va dasturini tuzing."
+                },
+                {
+                  "number": "1.3.58",
+                  "statement": "Uchta butun son berilgan. Berilgan sonlardan yig‘indisi eng katta bo‘ladigan ikkita sonni aniqlash va chop etish algoritmi va dasturini tuzing."
+                },
+                {
+                  "number": "1.3.59",
+                  "statement": "Butun son berilgan. Uning birlik, o‘nlik yoki yuzlik son ekanligini satr ko‘rinishida chiqaring."
+                },
+                {
+                  "number": "1.3.60",
+                  "statement": "Uch kishining bo‘yi ma’lum. Ularning bo‘yi bir xil yoki yo‘qligini aniqlang."
+                },
+                {
+                  "number": "1.3.61",
+                  "statement": "Ikki xonali son berilgan. Aniqlang:\na) 3 raqamini o‘z ichiga oladimi;\nb) a raqamini o‘z ichiga oladimi?"
+                },
+                {
+                  "number": "1.3.62",
+                  "statement": "Ikki xonali son berilgan. Aniqlang:\na) 4 yoki 7 raqamlarini o‘z ichiga oladimi;\nb) 3, 6 yoki 9 raqamlarini o‘z ichiga oladimi?"
+                },
+                {
+                  "number": "1.3.63",
+                  "statement": "Uch xonali son berilgan. Aniqlang:\na) 6 raqamini o‘z ichiga oladimi;\nb) n raqamini o‘z ichiga oladimi?"
+                },
+                {
+                  "number": "1.3.64",
+                  "statement": "Uch xonali son berilgan. Aniqlang:\na) 4 yoki 7 raqamlarini o‘z ichiga oladimi;\nb) 3, 6 yoki 9 raqamlarini o‘z ichiga oladimi?"
+                },
+                {
+                  "number": "1.3.65",
+                  "statement": "Birinchi kiritilgan sonning absolut qiymati ikkinchi kiritilgan sondan katta bo‘lsa, uni ikki barobarga kamaytiruvchi dastur tuzing."
+                },
+                {
+                  "number": "1.3.66",
+                  "statement": "Ikkita son berilgan. Agar ikkinchi sonning kvadrat ildizi birinchi sondan kichik bo‘lsa, ikkinchi sonni besh marta oshiring."
+                }
+              ]
+            },
+            {
+              "id": 19,
+              "number": "1.3.2",
+              "title": "Murakkab shartli jarayonga oid masalalar",
+              "problems": [
+                {
+                  "number": "1.3.67",
+                  "statement": "Yon tomonlari koordinata o‘qlariga parallel yoki perpendikulyar bo‘lgan ikkita to‘rtburchak berilgan. Ularning har birining pastki chap burchagining koordinatalari va tomonlarining uzunliklari ma’lum. Aniqlangan to‘rtburchaklar joylashgan minimal to‘rtburchakning pastki chap va yuqori o‘ng burchaklarining koordinatalarini topish dasturini tuzing."
+                },
+                {
+                  "number": "1.3.68",
+                  "statement": "Berilgan haqiqiy a, b, c sonlar (a ≠ 0). ax² + bx + c = 0 tenglamani yechish dasturini tuzing. Mumkin bo‘lgan variantlar orasida tenglama ildizlarining tengligi holatini hisobga oling."
+                },
+                {
+                  "number": "1.3.69",
+                  "statement": "a, b, c, d haqiqiy musbat sonlar berilgan. Tomonlari a, b bo‘lgan to‘rtburchakni tomonlari c, d bo‘lgan to‘rtburchak ichiga bitta to‘rtburchakning har bir tomoni ikkinchi to‘rtburchakning har bir tomoniga parallel yoki perpendikulyar bo‘lishi uchun joylashtirish mumkinligini aniqlash dasturini tuzing."
+                },
+                {
+                  "number": "1.3.70",
+                  "statement": "c va d mm o‘lchamlari bo‘lgan to‘rtburchak shaklidagi otkritka o‘lchamlari a va b mm bo‘lgan konvertga mos kelishini aniqlang. Pochta kartasini konvertga joylashtirish uchun har tomondan 1 mm bo‘sh joy kerak."
+                },
+                {
+                  "number": "1.3.71",
+                  "statement": "Zafar boshini a va b sm o‘lchamdagi derazadan tashqariga chiqarishga harakat qilmoqda. Uning boshi diametri d sm bo‘lgan yumaloq deb hisoblab, Zafar buni qila oladimi yoki yo‘qligini aniqlang. Boshning derazadan o‘tishi uchun har tomondan 1 sm bo‘sh joy talab qilinadi."
+                },
+                {
+                  "number": "1.3.72",
+                  "statement": "a, b, c, x, y haqiqiy musbat sonlar berilgan. Tomonlari va balandligi a, b, c bo‘lgan g‘isht x va y tomonlari bo‘lgan to‘rtburchaklar tekisligiga sig‘adimi yoki yo‘qligini aniqlash dasturini tuzing. G‘ishtni tekshirishda faqat uning har bir cheti tekislikning har bir tomoniga parallel yoki perpendikulyar bo‘lishi uchun kiritishga ruxsat beriladi."
+                },
+                {
+                  "number": "1.3.73",
+                  "statement": "Yo‘lovchi saqlash xonasiga a₁, a₂ va a₃ sm o‘lchamdagi parallelepiped shaklidagi bo‘sh chamadonni va b₁, b₂, b₃ sm o‘lchamdagi qutini topshirishi kerak edi. Har bir element uchun to‘lash kerak. Quti chamadonga joylashtirilsa, yo‘lovchi to‘lovni tejashi mumkinmi? Qutini chamadonga joylashtirishda ularning yon tomonlari parallel yoki perpendikulyar bo‘lishi kerak. Buni aniqlash dasturini tuzing."
+                },
+                {
+                  "number": "1.3.74",
+                  "statement": "n (n ≤ 9999) natural soni berilgan. 7777, 8338, 0330 va boshqalar kabi to‘rtta raqamni hisobga olgan holda, bu son palindrom (“teskari”) ekanligini aniqlash dasturini tuzing.",
+                  "note": "Tekshiruvda sonni to‘rtta xonali yozuv sifatida qarang; kerak bo‘lsa boshiga nol qo‘shing."
+                },
+                {
+                  "number": "1.3.75",
+                  "statement": "n (n ≤ 9999) natural soni berilgan. 3363, 4844, 0300 va boshqalar kabi to‘rtta raqamni hisobga olgan holda, bu raqam aynan uchta bir xil raqamdan iborat ekanligini aniqlash dasturini tuzing.",
+                  "note": "Tekshiruvda sonni to‘rtta xonali yozuv sifatida qarang; kerak bo‘lsa boshiga nol qo‘shing."
+                },
+                {
+                  "number": "1.3.76",
+                  "statement": "n (n ≤ 9999) natural soni berilgan. Bu raqamning barcha to‘rtta raqami boshqacha yoki yo‘qligini aniqlash dasturini tuzing. Masalan, 3678 raqamida barcha raqamlar boshqacha, ammo 0278 raqamida ular kamida ikkita 2 tasi bir xil.",
+                  "note": "Tekshiruvda sonni to‘rtta xonali yozuv sifatida qarang; kerak bo‘lsa boshiga nol qo‘shing."
+                },
+                {
+                  "number": "1.3.77",
+                  "statement": "Berilgan olti xonali raqam omadli yoki yo‘qligini aniqlash dasturini tuzing. Omadli olti xonali raqam shundayki, uning birinchi uchta raqamining yig‘indisi oxirgi uchta raqamining yig‘indisiga teng bo‘ladi."
+                },
+                {
+                  "number": "1.3.78",
+                  "statement": "Boshlang‘ich tezligi v₀ bilan quroldan α burchak ostida chiqarib yuborilgan snaryadning trayektoriyasi quyidagi tenglamalar bilan berilgan:\nx = v₀t cos α\ny = v₀t sin α − gt²/2\nBu yerda g = 9,8 m/s² — erkin tushish tezlanishi, t — vaqt.\nα va v₀ qiymatlari berilgan. Snaryad qurol barrel joylashgan vertikal tekislikdagi, R masofada joylashgan P balandlikdagi nishonga H balandlikda tegishini aniqlash dasturini tuzing.",
+                  "figures": [
+                    {
+                      "src": "assest/images/problems/1-3-78-projectile.svg",
+                      "alt": "Snaryad quroldan α burchak ostida uchib, R gorizontal masofadagi balandligi P bo‘lgan nishonga H balandligida tegadigan trayektoriya."
+                    }
+                  ]
+                },
+                {
+                  "number": "1.3.79",
+                  "statement": "Tomonlari koordinata o‘qlariga parallel yoki perpendikulyar bo‘lgan ikkita to‘rtburchak berilgan. Ularning har birining pastki chap burchagining koordinatalari va tomonlarining uzunliklari ma’lum. To‘rtburchaklardan birini birinchi, ikkinchisini ikkinchi deb ataymiz. Quyidagilarni aniqlash dasturini tuzing:\na) Birinchi to‘rtburchakning barcha nuqtalari ikkinchisiga tegishli yoki yo‘qligini aniqlang.\nb) To‘rtburchaklardan birining barcha nuqtalari boshqasiga tegishli yoki yo‘qligini aniqlang.\nc) Bu to‘rtburchaklar kesishishini aniqlang."
+                }
+              ]
+            },
+            {
+              "id": 20,
+              "number": "1.3.3",
+              "title": "Tanlash jarayonlariga oid masalalar",
+              "problems": [
+                {
+                  "number": "1.3.80",
+                  "statement": "Hafta kunining tartib raqamiga qarab (1, 2, ..., 7) uning nomini (dushanba, seshanba, ..., yakshanba) ko‘rsatadigan dastur tuzing."
+                },
+                {
+                  "number": "1.3.81",
+                  "statement": "Oy kunining tartib raqamiga qarab (1, 2, ..., 12) uning nomini (yanvar, fevral, ..., dekabr) ko‘rsatadigan dastur tuzing."
+                },
+                {
+                  "number": "1.3.82",
+                  "statement": "Oy kunining tartib raqamiga qarab (1, 2, ..., 12) ushbu oy tegishli bo‘lgan yil faslini ko‘rsatadigan dastur tuzing."
+                },
+                {
+                  "number": "1.3.83",
+                  "statement": "Oyning tartib raqamiga qarab (1, 2, ..., 12) ushbu oydagi kunlar sonini ko‘rsatadigan dastur tuzing. Ikki holatni ko‘rib chiqish dasturini tuzing:\na) yil kabisa yili emas;\nb) yil kabisa yili bo‘lishi mumkin (bu haqda ma’lumot klaviaturadan kiritiladi)."
+                },
+                {
+                  "number": "1.3.84",
+                  "statement": "Muayyan kunning sanasi uchta natural son bilan tavsiflanadi: g (yil), m (oyning tartib raqami) va n (kun). Berilgan yil, oy va kun uchun quyidagilarni aniqlash dasturini tuzing:\na) oldingi kunning sanasi;\nb) keyingi kunning sanasi."
+                },
+                {
+                  "number": "1.3.85",
+                  "statement": "Uzoq Sharqning ayrim mamlakatlarida (Xitoy, Yaponiya va boshqalar) biz ishlatadigan kalendardan farq qiladigan taqvim ishlatilgan (va hozirda norasmiy ravishda qo‘llanilmoqda). Bu kalendar 60 yillik siklik tizimdir. Har bir 60 yillik sikl beshta 12 yillik ichki sikldan iborat. Yilning har bir kichik siklida hayvonlarning nomlari mavjud: kalamush, sigir, yo‘lbars, quyon, ajdaho, ilon, ot, qo‘y, maymun, xo‘roz, it va cho‘chqa. Bundan tashqari, yil nomi tabiatning besh elementi — Yog‘och (yashil), olov (qizil), Yer (sariq), Metall (oq) va Suv (qora) bilan bog‘liq rangni o‘z ichiga oladi. Har bir rang ikki yil davom etadi va 60 yildan keyin yil nomi takrorlanadi. 1984-yil Yashil kalamush yili deb nomlanadi. n yilni hisobga olib, uning nomini “Kalamush, Yashil” ko‘rinishida chiqaradigan dastur tuzing. Ikki holatni ko‘rib chiqing:\na) n = 1984;\nb) n istalgan natural son bo‘lishi mumkin."
+                },
+                {
+                  "number": "1.3.86",
+                  "statement": "1–7 oralig‘idagi butun son berilgan. Shu songa mos keladigan hafta kuni nomini ekranga chiqarish dasturini tuzing."
+                },
+                {
+                  "number": "1.3.87",
+                  "statement": "Bahoni anglatadigan K soni berilgan. Agar K = 1 bo‘lsa “yomon”, K = 2 bo‘lsa “qoniqarsiz”, K = 3 bo‘lsa “qoniqarli”, K = 4 bo‘lsa “yaxshi”, K = 5 bo‘lsa “a’lo” so‘zlaridan birini, agar K bu oraliqda yotmasa “xato” so‘zini ekranga chiqarish dasturini tuzing."
+                },
+                {
+                  "number": "1.3.88",
+                  "statement": "1–12 oralig‘idagi sonlarga mos keluvchi oy raqamlari berilgan. Shu oylarga mos keladigan yil fasllarini ekranga chiqarish dasturini tuzing."
+                },
+                {
+                  "number": "1.3.89",
+                  "statement": "1–12 oralig‘idagi sonlarga mos keluvchi oy nomeri berilgan. Shu oyga mos keluvchi kunlar sonini aniqlash dasturini tuzing."
+                },
+                {
+                  "number": "1.3.90",
+                  "statement": "Arifmetik amallar quyidagi ko‘rinishda nomerlangan: 1 — “qo‘shish”, 2 — “ayirish”, 3 — “ko‘paytirish”, 4 — “bo‘lish”. N butun soni 1–4 orasida berilgan bo‘lib, A va B (B ≠ 0) haqiqiy sonlari berilganda N ga mos keluvchi amal bajarilsin va ekranga chiqarish dasturini tuzing."
+                },
+                {
+                  "number": "1.3.91",
+                  "statement": "Birliklar quyidagi ko‘rinishda nomerlangan: 1 — km, 2 — m, 3 — dm, 4 — sm, 5 — mm. Kesma uzunligi (haqiqiy son ko‘rinishida) berilib, uning birligi tanlanganda metr dagi ifodasi topish dasturini tuzing."
+                },
+                {
+                  "number": "1.3.92",
+                  "statement": "Massa birliklari quyidagi ko‘rinishda nomerlangan: 1 — mg, 2 — gr, 3 — sentner, 4 — tonna, 5 — kg. Jism massasi berilganda va uning birligi tanlanganda kg dagi ifodasi topish dasturini tuzing."
+                },
+                {
+                  "number": "1.3.93",
+                  "statement": "To‘g‘ri sanani ifodalovchi kabisa bo‘lmagan yilning (D) kuni va (M) oyi butun sonlar ko‘rinishida berilgan. Berilgan sanadan oldingi kunni topib, ekranga chiqarish dasturini tuzing."
+                },
+                {
+                  "number": "1.3.94",
+                  "statement": "To‘g‘ri sanani ifodalovchi kabisa bo‘lmagan yilning (D) kuni va (M) oyi butun sonlar ko‘rinishida berilgan. Berilgan sanadan keyingi kunni topib, ekranga chiqarish dasturini tuzing."
+                },
+                {
+                  "number": "1.3.95",
+                  "statement": "Robot to‘rtta yo‘nalish bo‘yicha harakatlanishi mumkin (1 — Shimol, 2 — G‘arb, 3 — Janub, 4 — Sharq) va uch xil sonli burilish buyrug‘ini qabul qiladi: 0 — harakatni davom ettirish, 1 — chapga burilish, −1 — o‘ngga burilish. C robotning berilgan yo‘nalishi, N esa uzatilgan buyruq bo‘lsin. Buyruq bajarilgandan keyingi robot yo‘nalishini ekranga chiqarish dasturini tuzing."
+                },
+                {
+                  "number": "1.3.96",
+                  "statement": "Lokator dunyoning biror tomoniga qarashga mo‘ljallangan (1 — Shimol, 2 — Sharq, 3 — Janub, 4 — G‘arb) va uch xil sonli burilish buyruqlarini qabul qilishi mumkin: 1 — chapga burilish, −1 — o‘ngga burilish, 2 — 180° ga burilish. C belgisi yordamida yo‘nalish, N₁ va N₂ lar yordamida buyruqlar berilsa, lokatorning buyruqlar bajarilgandan keyingi yo‘nalishini aniqlash dasturini tuzing."
+                },
+                {
+                  "number": "1.3.97",
+                  "statement": "Doira elementlari quyidagi ko‘rinishda nomerlangan: 1 — radius, 2 — diametr D = 2R, 3 — uzunlik L = 2πR, 4 — yuza S = πR². Bu elementlardan birining nomeri va son qiymati berilgan. Berilgan doiraning qolgan elementlari haqidagi ma’lumotlarni ekranga chiqarish dasturini tuzing (π = 3,14)."
+                },
+                {
+                  "number": "1.3.98",
+                  "statement": "Teng yonli to‘g‘ri burchakli uchburchak elementlari berilgan: 1 — katet a, 2 — gipotenuza c, c = a·√2, 3 — balandlik h (gipotenuzaga tushirilgan), h = c/2, 4 — yuza S = c·h/2. Bu elementlardan birining nomeri va son qiymati berilganda qolgan elementlarning qiymatlarini ekranga chiqarish dasturini tuzing."
+                },
+                {
+                  "number": "1.3.99",
+                  "statement": "Teng tomonli uchburchakning elementlari quyidagicha nomerlangan: 1 — tomoni a, 2 — ichki chizilgan aylananing radiusi R₁ = (√3/6)·a, 3 — tashqi chizilgan aylananing radiusi R₂ = 2R₁, 4 — yuza S = a²·√3/4. Bu elementlardan birining nomeri va son qiymati berilganda qolgan elementlarning qiymatlarini ekranga chiqarish dasturini tuzing."
+                },
+                {
+                  "number": "1.3.100",
+                  "statement": "Yoshni anglatuvchi 20–69 gacha bo‘lgan butun son berilgan. Berilgan yoshni so‘z bilan ifodalab ekranga chiqarish dasturini tuzing."
+                },
+                {
+                  "number": "1.3.101",
+                  "statement": "10–40 oralig‘idagi ayrim o‘quv topshiriqlarining sonini bildiruvchi butun son berilgan. Topshiriqlar soni berilganda ekranga ularni satr ko‘rinishida chiqarish dasturini tuzing."
+                },
+                {
+                  "number": "1.3.102",
+                  "statement": "100–999 oralig‘idagi butun son berilgan. Bu sonlarni satr ko‘rinishida ifodalab chiqarish dasturini tuzing."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "number": "1.4",
+          "title": "Takrorlanuvchi jarayonlar",
+          "topics": [
+            {
+              "id": 21,
+              "number": "1.4.1",
+              "title": "Parametrli takrorlanuvchi jarayonlarga oid masalalar",
+              "problems": []
+            },
+            {
+              "id": 22,
+              "number": "1.4.2",
+              "title": "Shart bo‘yicha takrorlanuvchi jarayonlarga oid masalalar",
+              "problems": []
+            },
+            {
+              "id": 23,
+              "number": "1.4.3",
+              "title": "Rekurrent munosabatlar",
+              "problems": []
+            }
+          ]
+        },
+        {
+          "number": "1.5",
+          "title": "Massivlar",
+          "topics": [
+            {
+              "id": 24,
+              "number": "1.5.1",
+              "title": "Bir o‘lchamli massivga oid masalalar",
+              "problems": []
+            },
+            {
+              "id": 25,
+              "number": "1.5.2",
+              "title": "Ikki o‘lchamli massivga oid masalalar",
+              "problems": []
+            },
+            {
+              "id": 26,
+              "number": "1.5.3",
+              "title": "Massivni saralashga oid masalalar",
+              "problems": []
+            },
+            {
+              "id": 27,
+              "number": "1.5.4",
+              "title": "Dinamik massivlardan foydalanishga oid masalalar",
+              "problems": []
+            },
+            {
+              "id": 28,
+              "number": "1.5.5",
+              "title": "Ko‘rsatkichlardan foydalanishga oid masalalar",
+              "problems": []
+            }
+          ]
+        },
+        {
+          "number": "1.6",
+          "title": "Simvollar massivi va satrlar",
+          "topics": [
+            {
+              "id": 29,
+              "number": "1.6.1",
+              "title": "Satrlar, satrlarga ishlov berishga oid masalalar",
+              "problems": []
+            }
+          ]
+        },
+        {
+          "number": "1.7",
+          "title": "Funksiyalar",
+          "topics": [
+            {
+              "id": 30,
+              "number": "1.7.1",
+              "title": "Funksiyalarni e’lon qilish va qo‘llashga oid masalalar",
+              "problems": []
+            },
+            {
+              "id": 31,
+              "number": "1.7.2",
+              "title": "Massiv va satrlarni massiv parametri sifatida qo‘llashga oid masalalar",
+              "problems": []
+            },
+            {
+              "id": 32,
+              "number": "1.7.3",
+              "title": "Rekursiv funksiyalarni qo‘llashga oid masalalar",
+              "problems": []
+            }
+          ]
+        },
+        {
+          "number": "1.8",
+          "title": "Foydalanuvchi tomonidan aniqlangan ma’lumot tiplari",
+          "topics": [
+            {
+              "id": 33,
+              "number": "1.8.1",
+              "title": "Strukturalar e’lon qilish va initsializatsiyalashga oid masalalar",
+              "problems": []
+            },
+            {
+              "id": 34,
+              "number": "1.8.2",
+              "title": "Strukturalar massiviga oid masalalar",
+              "problems": []
+            },
+            {
+              "id": 35,
+              "number": "1.8.3",
+              "title": "Makroslarni ishlatishga oid masalalar",
+              "problems": []
+            },
+            {
+              "id": 36,
+              "number": "1.8.4",
+              "title": "Sanaluvchi tipga oid masalalar",
+              "problems": []
+            },
+            {
+              "id": 37,
+              "number": "1.8.5",
+              "title": "Birlashmalarni e’lon qilish va qo‘llashga oid masalalar",
+              "problems": []
+            }
+          ]
+        },
+        {
+          "number": "1.9",
+          "title": "Fayllarni o‘qish va yozish",
+          "topics": [
+            {
+              "id": 38,
+              "number": "1.9.1",
+              "title": "Fayldagi ma’lumotlarni o‘qishga oid masalalar",
+              "problems": []
+            },
+            {
+              "id": 39,
+              "number": "1.9.2",
+              "title": "Faylga ma’lumotlarni yozishga oid masalalar",
+              "problems": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": "II",
+      "title": "Obyektga yo‘naltirilgan dasturlash asoslari",
+      "chapters": [
+        {
+          "number": "2.1",
+          "title": "Sinf va obyekt tushunchasi",
+          "topics": [
+            {
+              "id": 40,
+              "number": "2.1.1",
+              "title": "Obyektga yo‘naltirilgan dasturlashning prinsiplarini qo‘llashga oid masalalar",
+              "problems": []
+            },
+            {
+              "id": 41,
+              "number": "2.1.2",
+              "title": "Sinflarni e’lon qilish, xossalarni aniqlash, metodlarni ishlab chiqishga oid masalalar",
+              "problems": []
+            },
+            {
+              "id": 42,
+              "number": "2.1.3",
+              "title": "Sinfning konstruktorlari va destruktorlarini aniqlash, obyektlarni yaratishga oid masalalar",
+              "problems": []
+            },
+            {
+              "id": 43,
+              "number": "2.1.4",
+              "title": "Sinfning statik a’zolariga oid masalalar",
+              "problems": []
+            }
+          ]
+        },
+        {
+          "number": "2.2",
+          "title": "Do‘st sinflar va do‘st funksiyalar",
+          "topics": [
+            {
+              "id": 44,
+              "number": "2.2.1",
+              "title": "Sinf va funksiyalarning do‘stligiga oid masalalar",
+              "problems": []
+            },
+            {
+              "id": 45,
+              "number": "2.2.2",
+              "title": "Funksiyaning bir nechta sinflarga do‘st bo‘lishiga oid masalalar",
+              "problems": []
+            },
+            {
+              "id": 46,
+              "number": "2.2.3",
+              "title": "Bir nechta sinflarning do‘st bo‘lishiga oid masalalar",
+              "problems": []
+            },
+            {
+              "id": 47,
+              "number": "2.2.4",
+              "title": "Anonim obyektlar. Sinf tarkibida metodlardan foydalanish",
+              "problems": []
+            }
+          ]
+        },
+        {
+          "number": "2.3",
+          "title": "Obyektlarning o‘zaro aloqasi",
+          "topics": [
+            {
+              "id": 48,
+              "number": "2.3.1",
+              "title": "Obyektlarning o‘zaro bog‘lanishlariga oid masalalar",
+              "problems": []
+            },
+            {
+              "id": 49,
+              "number": "2.3.2",
+              "title": "Sinfning zanjirlash metodlari",
+              "problems": []
+            }
+          ]
+        },
+        {
+          "number": "2.4",
+          "title": "Boshqa sinflarni o‘z ichiga olgan sinflar",
+          "topics": [
+            {
+              "id": 50,
+              "number": "2.4.1",
+              "title": "Sinflarning boshqa sinflardan tashkil topishiga oid masalalar",
+              "problems": []
+            }
+          ]
+        },
+        {
+          "number": "2.5",
+          "title": "Vorislik prinsipi",
+          "topics": [
+            {
+              "id": 51,
+              "number": "2.5.1",
+              "title": "Vorislik zanjiri, sinflardan vorislik olish, avlod sinfga yangi a’zolar qo‘shishga oid masalalar",
+              "problems": []
+            }
+          ]
+        },
+        {
+          "number": "2.6",
+          "title": "Virtual metodlar",
+          "topics": [
+            {
+              "id": 52,
+              "number": "2.6.1",
+              "title": "Ko‘rsatkichlar va havolalarning avlod-ajdod sinfida ishlatilishiga oid masalalar",
+              "problems": []
+            },
+            {
+              "id": 53,
+              "number": "2.6.2",
+              "title": "Virtual metodlarga oid masalalar",
+              "problems": []
+            },
+            {
+              "id": 54,
+              "number": "2.6.3",
+              "title": "Abstrakt sinflarga oid masalalar",
+              "problems": []
+            }
+          ]
+        },
+        {
+          "number": "2.7",
+          "title": "Obyektga yo‘naltirilgan dasturlashda parametrlash",
+          "topics": [
+            {
+              "id": 55,
+              "number": "2.7.1",
+              "title": "Amallarni qayta yuklash",
+              "problems": []
+            },
+            {
+              "id": 56,
+              "number": "2.7.2",
+              "title": "Funksiya shablonlariga oid masalalar",
+              "problems": []
+            },
+            {
+              "id": 57,
+              "number": "2.7.3",
+              "title": "Sinf shablonlariga oid masalalar",
+              "problems": []
+            }
+          ]
+        },
+        {
+          "number": "2.8",
+          "title": "Istisnolar va ularni qayta ishlash",
+          "topics": [
+            {
+              "id": 58,
+              "number": "2.8.1",
+              "title": "Istisnolarni ishlab chiqish va funksiyalarga oid masalalar",
+              "problems": []
+            },
+            {
+              "id": 59,
+              "number": "2.8.2",
+              "title": "Istisno sinflarga oid masalalar",
+              "problems": []
+            },
+            {
+              "id": 60,
+              "number": "2.8.3",
+              "title": "Standart istisno sinflardan foydalanishga oid masalalar",
+              "problems": []
+            }
+          ]
+        },
+        {
+          "number": "2.9",
+          "title": "Standart shablon kutubxonalari",
+          "topics": [
+            {
+              "id": 61,
+              "number": "2.9.1",
+              "title": "Ketma-ket konteyner sinflaridan foydalanishga oid masalalar",
+              "problems": []
+            },
+            {
+              "id": 62,
+              "number": "2.9.2",
+              "title": "Assotsiativ konteyner sinflaridan foydalanishga oid masalalar",
+              "problems": []
+            },
+            {
+              "id": 63,
+              "number": "2.9.3",
+              "title": "Adapter konteyner sinflaridan foydalanishga oid masalalar",
+              "problems": []
+            },
+            {
+              "id": 64,
+              "number": "2.9.4",
+              "title": "algorithm kutubxonasidan foydalanishga oid masalalar",
+              "problems": []
+            }
+          ]
+        },
+        {
+          "id": 65,
+          "number": "2.10",
+          "title": "Umumiy masalalar",
+          "topics": [],
+          "problems": []
+        }
+      ]
+    },
+    {
+      "number": "III",
+      "title": "Vizual dasturlash asoslari",
+      "chapters": [
+        {
+          "number": "3.1",
+          "title": "Integrallashgan muhitda oynalar",
+          "topics": [
+            {
+              "id": 66,
+              "number": "3.1.1",
+              "title": "Integrallashgan muhitda oynalar bilan ishlashga oid masalalar",
+              "problems": []
+            },
+            {
+              "id": 67,
+              "number": "3.1.2",
+              "title": "Bir nechta oynalar bilan ishlashga oid masalalar",
+              "problems": []
+            }
+          ]
+        },
+        {
+          "number": "3.2",
+          "title": "Ma’lumotlarga ishlov berish, formada tasvirlash va ma’lumotlarni kiritish komponentalari",
+          "topics": [
+            {
+              "id": 68,
+              "number": "3.2.1",
+              "title": "Ishlov berish, tasvirlash, kiritish komponentalarini qo‘llashga oid masalalar",
+              "problems": []
+            },
+            {
+              "id": 69,
+              "number": "3.2.2",
+              "title": "Menyular hosil qilishga oid masalalar",
+              "problems": []
+            },
+            {
+              "id": 70,
+              "number": "3.2.3",
+              "title": "Obyektlarni guruhlash komponentalarini qo‘llashga oid masalalar",
+              "problems": []
+            }
+          ]
+        },
+        {
+          "number": "3.3",
+          "title": "Ma’lumotlarni ro‘yxat orqali tasvirlash komponentalari",
+          "topics": [
+            {
+              "id": 71,
+              "number": "3.3.1",
+              "title": "Ma’lumotlarni ro‘yxat orqali tasvirlash komponentalarini qo‘llashga oid masalalar",
+              "problems": []
+            },
+            {
+              "id": 72,
+              "number": "3.3.2",
+              "title": "Ma’lumotlarni bir nechtasini, bittasini tanlash komponentalarini qo‘llashga oid masalalar",
+              "problems": []
+            }
+          ]
+        },
+        {
+          "number": "3.4",
+          "title": "Vaqt, sana, jarayonlar va maxsus muloqot oynalari bilan ishlash komponentalari",
+          "topics": [
+            {
+              "id": 73,
+              "number": "3.4.1",
+              "title": "Sanalar bilan ishlash komponentasi",
+              "problems": []
+            },
+            {
+              "id": 74,
+              "number": "3.4.2",
+              "title": "Vaqt va jarayonlar bilan ishlash komponentalarini qo‘llashga oid masalalar",
+              "problems": []
+            },
+            {
+              "id": 75,
+              "number": "3.4.3",
+              "title": "Maxsus muloqot oynalari qo‘llash va turli formatdagi fayllarni ishlashga oid masalalar",
+              "problems": []
+            }
+          ]
+        },
+        {
+          "number": "3.5",
+          "title": "Grafik obyektlar bilan ishlash",
+          "topics": [
+            {
+              "id": 76,
+              "number": "3.5.1",
+              "title": "Vizual muhitda tasvirlar bilan ishlashga masalalar",
+              "problems": []
+            },
+            {
+              "id": 77,
+              "number": "3.5.2",
+              "title": "Grafiklar va geometrik shakllar bilan ishlashga oid masalalar",
+              "problems": []
+            }
+          ]
+        },
+        {
+          "number": "3.6",
+          "title": "Ma’lumotlar bazasiga ulanish jarayonlarini dasturlash",
+          "topics": [
+            {
+              "id": 78,
+              "number": "3.6.1",
+              "title": "Ma’lumotlar bazasiga ulanish komponentasini qo‘llashga oid masalalar",
+              "problems": []
+            }
+          ]
+        },
+        {
+          "id": 79,
+          "number": "3.7",
+          "title": "Umumiy masalalar",
+          "topics": [],
+          "problems": []
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "id": 80,
+      "title": "Foydalanilgan adabiyotlar",
+      "books": [
+        "Абрамян М. Э. 1000 задач по программированию, Ростов-на-Дону, 2004.",
+        "Златопольский Д. М., Сборник задач по программированию. — 3-е изд., перераб. и доп. — СПб.: БХВ-Петербург, 2011. — 304 с.: ил. — (ИиИКТ).",
+        "Лаптев В.В., Морозов А.В., Бокова А.В., C++. Объектно-ориентированное программирование. Задачи и упражнения.— СПб. Питер, 2007. — 288 с. ил.",
+        "Лагутина, Н.С. C++. Примеры и задачи: практикум Яросльваль: ЯрГУ, 2011. — 48 с.",
+        "Лафоре Р. Объектно-ориентированное программирование в C++. — Питер, 2011.",
+        "Boltayev B.J., Azamatov A.R., Rahimov A.D., Azamatov B.A., Asrayev D.T., Qambaraliyev Sh.Z., Algoritmlash va dasturlash asoslari, Amaliy qo‘llanma, Toshkent, “Akademnashr”, 2011, 404-b.",
+        "Madraximov Sh.F. va boshq. C++ tilida programmash bo‘yicha masalalar to‘plami. Toshkent. “Universiteti” nashriyoti-2014-160-bet."
+      ],
+      "electronic_resources": [
+        "https://codeforces.com/",
+        "http://e-maxx.ru/",
+        "https://ravesli.com/",
+        "https://acmp.ru/",
+        "https://leetcode.com/"
+      ],
+      "problems": []
+    }
+  ]
+}

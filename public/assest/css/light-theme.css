@@ -1,0 +1,43 @@
+/* Light Theme */
+body.light-mode {
+    background-color: #F8FAFC;
+    color: #1E293B;
+}
+
+.light-mode .navigation-drawer {
+    background-color: #FFFFFF;
+}
+
+.light-mode .card,
+.light-mode .topic-card,
+.light-mode .settings-card,
+.light-mode .contact-link {
+    background-color: #FFFFFF;
+    border-color: #E2E8F0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.light-mode .toolbar {
+    background-color: #FFFFFF;
+    border-bottom-color: #E2E8F0;
+}
+
+.light-mode .code-input textarea,
+.light-mode .output-panel {
+    background-color: #FFFFFF;
+    border-color: #3B82F6;
+    color: #1E293B;
+}
+
+.light-mode .menu-button:hover,
+.light-mode .theme-toggle-mobile:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.light-mode .menu-item:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.light-mode ::-webkit-scrollbar-track {
+    background: #F8FAFC;
+}

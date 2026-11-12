@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 220" role="img" aria-labelledby="title description">
+  <title id="title">1.3.56-masala, 2-chizma</title>
+  <desc id="description">Koordinatalari x = −2 dan x = 2 gacha, y = −2 dan y = 1.5 gacha bo‘lgan shtrixlangan to‘rtburchak.</desc>
+  <defs>
+    <pattern id="hatch" width="7" height="7" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+      <path d="M0 0V7" stroke="#555" stroke-width="1"/>
+    </pattern>
+    <marker id="arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <path d="M0 0 8 3 0 6Z" fill="#17191b"/>
+    </marker>
+  </defs>
+  <rect x="102" y="58" width="150" height="108" fill="url(#hatch)" stroke="#45484b" stroke-width="1.2"/>
+  <g fill="none" stroke="#17191b" stroke-width="1.3">
+    <path d="M35 112H326" marker-end="url(#arrow)"/>
+    <path d="M177 198V18" marker-end="url(#arrow)"/>
+  </g>
+  <g fill="#17191b" font-family="Georgia,serif" font-size="15">
+    <text x="93" y="132">−2</text><text x="248" y="132">2</text>
+    <text x="182" y="62">1,5</text><text x="182" y="169">−2</text>
+    <text x="314" y="106" font-style="italic">x</text><text x="185" y="25" font-style="italic">y</text>
+    <text x="18" y="213" font-size="20">2)</text>
+  </g>
+</svg>

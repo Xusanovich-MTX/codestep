@@ -1,0 +1,101 @@
+// Read-only navigation by default. Opt-in execution sends synthetic samples only.
+const assert = require('node:assert/strict');
+const fs = require('node:fs');
+const path = require('node:path');
+const {chromium} = require('../.tools/browser/node_modules/playwright');
+const base = (process.env.CODESTEP_TEST_URL || 'http://codestep').replace(/\/+$/, '');
+const catalog = JSON.parse(fs.readFileSync(path.join(__dirname, '../public/data/programming-topics.json'), 'utf8'));
+const topic = catalog.sections[0].chapters[0].topics.find(item => item.number === '1.1.4');
+assert.ok(topic);
+assert.deepEqual(topic.problems.map(item => item.number), Array.from({length:40}, (_, i) => `1.1.${101+i}`));
+
+(async () => {
+    const browser = await chromium.launch({executablePath:'C:/Program Files/Google/Chrome/Application/chrome.exe',headless:true});
+    try {
+        const context = await browser.newContext({viewport:{width:1440,height:1000}});
+        await context.addCookies([{name:'visited',value:'true',url:base}]);
+        await context.route('**/*',route => {
+            const url = new URL(route.request().url());
+            if (url.origin !== new URL(base).origin) return route.abort();
+            if (url.pathname === '/api/code-tools.php') return route.fulfill({json:{error:false,diagnostics:[],message:'Static analysis omitted in navigation smoke',tools:[]}});
+            if (url.pathname === '/api/execute-code.php' && process.env.CODESTEP_LIVE_WANDBOX !== '1') return route.abort();
+            return route.continue();
+        });
+        const page = await context.newPage();
+        page.setDefaultTimeout(10000);
+        const errors = [];
+        page.on('pageerror', error => errors.push(error.message));
+        async function goto(query) {
+            const response = await page.goto(base+'/?'+query, {waitUntil:'domcontentloaded'});
+            assert.equal(response.status(),200);
+            assert.doesNotMatch(await page.locator('body').innerText(),/\b(?:Fatal error|Warning|Parse error):/);
+        }
+        await goto('page=chapter&chapter=1.1');
+        assert.deepEqual(await page.locator('.book-topic-card').evaluateAll(links => links.map(a => new URL(a.href).searchParams.get('id'))),['14','15','16',String(topic.id)]);
+        await page.locator(`.book-topic-card[href="?page=topic-detail&id=${topic.id}"]`).click();
+        assert.equal(await page.locator('.curriculum-problem-link').count(),40);
+        const destinations = await page.locator('.curriculum-problem-link').evaluateAll(links => links.map(a => a.href));
+        for (let i=0; i<40; i++) {
+            const response = await context.request.get(destinations[i]);
+            assert.equal(response.status(),200);
+            const html = await response.text();
+            assert.ok(html.includes(`data-problem-key="${topic.id}:1.1.${101+i}"`));
+            assert.match(html,/data-problem-tests="[13]"/);
+            assert.doesNotMatch(html,/avtomatik qabul qilish talablari hali belgilanmagan|\b(?:Fatal error|Warning|Parse error):/);
+            assert.match(html,/data-lang="python"/);
+            assert.match(html,/data-lang="cpp"/);
+            await response.dispose();
+        }
+        assert.equal(await page.locator('#problem-1-1-110 .subitem-num').count(),11);
+        assert.equal(await page.locator('#problem-1-1-124 .subitem-num').count(),4);
+        assert.match(await page.locator('#problem-1-1-111 .problem-source-note').innerText(),/olti|6/);
+        console.log('PASS: ordered 40 exercises, all editor routes, both languages, 110 subparts and 124 continuation.');
+
+        const artifacts = path.join(__dirname,'artifacts');
+        fs.mkdirSync(artifacts,{recursive:true});
+        for (const theme of ['light','dark']) {
+            await context.addCookies([{name:'theme',value:theme,url:base}]);
+            for (const width of [320,390,1440]) {
+                await page.setViewportSize({width,height:1000});
+                for (const query of [`page=topic-detail&id=${topic.id}`,`page=code-editor&topic=${topic.id}&problem=1.1.110&lang=python`]) {
+                    await goto(query);
+                    assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth+1),`${theme} ${width} ${query}: overflow`);
+                }
+                if (width===390 || width===1440) {
+                    await page.screenshot({path:path.join(artifacts,`integer-editor-${theme}-${width}.png`),animations:'disabled'});
+                }
+            }
+        }
+        console.log('PASS: source notes and long subparts fit both themes at 320/390/1440px.');
+
+        if (process.env.CODESTEP_LIVE_WANDBOX === '1') {
+            await page.setViewportSize({width:1440,height:1000});
+            async function run(number, language, code, status) {
+                await goto(`page=code-editor&topic=${topic.id}&problem=1.1.${number}&lang=${language}`);
+                await page.waitForFunction(() => window.codeEditor);
+                await page.locator('#liveCheck').uncheck();
+                await page.evaluate(code => window.codeEditor.setValue(code),code);
+                const responsePromise = page.waitForResponse(r => r.url().endsWith('/api/execute-code.php'),{timeout:105000});
+                await page.locator('#runCode').click();
+                const response = await responsePromise;
+                const result = await response.json();
+                assert.equal(response.status(),200,JSON.stringify(result));
+                assert.equal(result.error,false,JSON.stringify(result));
+                assert.equal(result.verdict.status,status,JSON.stringify(result));
+                assert.equal(Object.hasOwn(result,'saved_run_id'),false,'guest cannot save account history');
+                await page.waitForFunction(() => !document.getElementById('runCode').disabled);
+                assert.equal(await page.locator('#problemVerdict').getAttribute('data-state'),status);
+                if (status==='structure_passed') assert.match(await page.locator('#verdictMessage').innerText(),/avtomatik tekshirilmadi/);
+                console.log(`PASS: live ${number} ${language}: ${status}`);
+            }
+            await run(101,'python','k = int(input())\nprint(k // 100 % 10)','accepted');
+            await run(124,'cpp','#include <iostream>\nusing namespace std;\nint main() { int n; cin >> n; int a=n/1000,b=n/100%10,c=n/10%10,d=n%10; cout << d*1000+c*100+b*10+a << " " << b*1000+a*100+d*10+c << " " << a*1000+c*100+b*10+d << " " << c*1000+d*100+a*10+b; }','accepted');
+            await run(101,'python','print(9)','wrong_answer');
+            // Output is right, but ** deliberately violates the required multiplication method.
+            await run(110,'python','a = int(input())\nprint(*(a**k for k in [4,6,7,8,9,10,13,15,21,28,64]))','structure_passed');
+            // Check exact large integers through the actual C++ compiler as well.
+            await run(110,'cpp','#include <iostream>\n#include <boost/multiprecision/cpp_int.hpp>\nusing namespace std;\nusing boost::multiprecision::cpp_int;\nint main(){ int a; cin>>a; for(int e: {4,6,7,8,9,10,13,15,21,28,64}){ cpp_int p=1; for(int i=0;i<e;i++)p*=a; cout<<p<<" "; } }','structure_passed');
+        }
+        assert.deepEqual(errors,[]);
+    } finally { await browser.close(); }
+})().catch(error => {console.error(error);process.exitCode=1;});
