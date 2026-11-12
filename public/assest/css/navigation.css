@@ -301,31 +301,38 @@
     .drawer-footer-actions,
     .menu-button,
     .menu-label-full { display: none !important; }
-    .menu-label-short { display: inline; }
+    .menu-label-short { display: inline; white-space: nowrap; }
     .navigation-drawer .drawer-menu {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
-        grid-auto-rows: minmax(58px, 1fr);
-        gap: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 6px;
         height: 100%;
-        padding: 0;
-        overflow: hidden;
+        padding: 0 2px;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
     }
+    .navigation-drawer .drawer-menu::-webkit-scrollbar { display: none; }
     .navigation-drawer .menu-item {
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        gap: 5px;
-        padding: 6px 2px;
-        min-width: 0;
+        flex: 1 0 68px;
+        gap: 4px;
+        padding: 6px 8px;
+        min-width: 68px;
+        height: 58px;
         margin: 0;
         border: 1px solid transparent;
         border-radius: 10px;
         font-size: 0.6875rem;
-        line-height: 1.25;
+        line-height: 1.2;
         text-align: center;
-        overflow-wrap: anywhere;
+        white-space: nowrap;
+        overflow-wrap: normal;
     }
     .navigation-drawer .menu-item[aria-current="page"] { border: 1px solid #32876b; border-radius: 10px; }
     .light-mode .navigation-drawer .menu-item[aria-current="page"] { border-color: #88ad94; }

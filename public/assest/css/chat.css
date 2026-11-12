@@ -1,4 +1,4 @@
-﻿#aiChatWrap{position:fixed;right:28px;bottom:28px;z-index:9999;font-family:'Poppins',sans-serif;color:#e8f3ff}
+#aiChatWrap{position:fixed;right:28px;bottom:28px;z-index:9999;font-family:'Poppins',sans-serif;color:#e8f3ff}
 #aiChatBtn{width:62px;height:62px;border:1px solid rgba(105,220,255,.45);border-radius:50%;background:linear-gradient(145deg,#06d6b1,#087cf0);color:#fff;font-size:13px;font-weight:700;cursor:pointer;box-shadow:0 0 28px rgba(0,193,222,.38),0 8px 24px rgba(0,0,0,.4);transition:transform .2s,box-shadow .2s}
 #aiChatBtn:hover{transform:translateY(-3px);box-shadow:0 0 36px rgba(0,193,222,.5),0 10px 28px rgba(0,0,0,.45)}
 #aiChatBox{position:absolute;right:0;bottom:78px;display:none;flex-direction:column;width:402px;height:min(660px,calc(100dvh - 112px));min-height:440px;overflow:hidden;border:1px solid rgba(89,177,255,.62);border-radius:19px;background:radial-gradient(ellipse at 18% 0%,rgba(9,113,146,.22),transparent 38%),linear-gradient(160deg,#0b172b,#091326 58%,#0b1a31);box-shadow:0 0 0 1px rgba(28,92,155,.22),0 0 36px rgba(27,139,220,.22),0 24px 64px rgba(0,0,0,.58)}
@@ -83,5 +83,6 @@
 .history-item-title{min-width:0;overflow:hidden;font-size:13px;text-overflow:ellipsis;white-space:nowrap}
 .history-item-date{flex:none;color:#91a8c6;font-size:11px}
 .history-empty{margin:8px 0;color:#9eb0ca;font-size:13px}
-@media(max-width:520px){#aiChatWrap{right:14px;bottom:14px}#aiChatBox{position:fixed;right:10px;bottom:10px;width:calc(100vw - 20px);height:min(680px,calc(100dvh - 20px));min-height:360px;border-radius:17px}#aiChatHeader{min-height:84px;padding:13px 15px}#aiChatInputRow{gap:7px;padding:10px}#aiChatInput{height:56px}#aiChatSend{min-width:96px;height:56px;padding:0 11px}.ai-msg-row.user{margin-left:20px}}
+@media(max-width:1023px){#aiChatWrap{right:14px;bottom:calc(var(--mobile-navigation-height,72px) + env(safe-area-inset-bottom,0px) + 12px)}}
+@media(max-width:520px){#aiChatBox{position:fixed;right:10px;bottom:10px;width:calc(100vw - 20px);height:min(680px,calc(100dvh - 20px));min-height:360px;border-radius:17px}#aiChatHeader{min-height:84px;padding:13px 15px}#aiChatInputRow{gap:7px;padding:10px}#aiChatInput{height:56px}#aiChatSend{min-width:96px;height:56px;padding:0 11px}.ai-msg-row.user{margin-left:20px}}
 @media(max-width:520px){#aiChatHistory{top:84px;bottom:76px;padding:13px}}
