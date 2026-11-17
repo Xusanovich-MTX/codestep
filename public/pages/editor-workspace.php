@@ -5,12 +5,14 @@ $editorProblem = $editorProblem ?? null;
 require_once dirname(__DIR__) . '/includes/problem-rules.php';
 require_once dirname(__DIR__) . '/includes/code-execution.php';
 $editorExecutionProvider = codeExecutionProvider();
-$editorRule = $editorProblem ? problemRule($editorTopicId, $editorProblem['number']) : null;
+$editorRule = !empty($contestRule) ? $contestRule : ($editorProblem ? problemRule($editorTopicId, $editorProblem['number']) : null);
 $editorExamples = $editorProblem ? programmingTopicExamples($editorTopicId) : ['examples' => []];
 $editorExamplesUrl = $editorProblem ? '?page=sample-problems&topic=' . $editorTopicId . '&problem=' . rawurlencode($editorProblem['number']) . '&lang=' . $language : '';
-$editorBackUrl = $editorProblem
-    ? '?page=topic-detail&id=' . $editorTopicId . '#problem-' . str_replace('.', '-', $editorProblem['number'])
-    : '?page=home';
+$editorBackUrl = (isset($_GET['contest']) || (int) $editorTopicId >= 1000)
+    ? '?page=contests'
+    : ($editorProblem
+        ? '?page=topic-detail&id=' . $editorTopicId . '#problem-' . str_replace('.', '-', $editorProblem['number'])
+        : '?page=home');
 $editorAccount = codeStepUser();
 $editorStorage = ['owner' => $editorAccount['id'] ?? null, 'drafts' => new stdClass(), 'run' => null, 'error' => ''];
 if ($editorAccount && $editorProblem) {

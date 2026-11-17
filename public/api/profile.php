@@ -53,7 +53,9 @@ try {
             profileResponse(429, ['error' => true, 'message' => 'Urinishlar soni ko‘payib ketdi. 15 daqiqadan keyin qayta urinib ko‘ring.']);
         }
         $db = solutionDb();
-        $query = $db->prepare('SELECT password_hash, email FROM users WHERE id = ?');
+        $cols = $db->query('PRAGMA table_info(users)')->fetchAll(PDO::FETCH_COLUMN, 1);
+        $hasEmail = in_array('email', $cols, true);
+        $query = $db->prepare($hasEmail ? 'SELECT password_hash, email FROM users WHERE id = ?' : 'SELECT password_hash FROM users WHERE id = ?');
         $query->execute([$user['id']]);
         $row = $query->fetch();
         $oldHash = $row['password_hash'] ?? null;
@@ -68,7 +70,7 @@ try {
                 $db->prepare('DELETE FROM contest_submissions WHERE user_id = ?')->execute([$user['id']]);
                 $db->prepare('DELETE FROM contest_registrations WHERE user_id = ?')->execute([$user['id']]);
             } catch (Throwable) {}
-            if (!empty($row['email'])) {
+            if ($hasEmail && !empty($row['email'])) {
                 try {
                     $db->prepare('DELETE FROM password_resets WHERE email = ?')->execute([$row['email']]);
                 } catch (Throwable) {}

@@ -79,10 +79,78 @@ if (array_key_exists('topic', $request) || array_key_exists('problem', $request)
         || !ctype_digit((string) $requestedTopic) || !is_string($requestedProblem)) {
         executionResponse(400, 'Mavzu va masala raqami noto‘g‘ri.');
     }
+    $topicId = (int) $requestedTopic;
+
+    if ($topicId >= 1000) {
+        $contestId = $topicId - 1000;
+        $db = solutionDb();
+        solutionEnsureFeatureSchema($db);
+        $cpStmt = $db->prepare("SELECT * FROM contest_problems WHERE contest_id = ? AND problem_order = ?");
+        $cpStmt->execute([$contestId, $requestedProblem]);
+        $cp = $cpStmt->fetch();
+        if (!$cp) {
+            executionResponse(404, 'Musobaqa masalasi topilmadi.');
+        }
+
+        $testStdin = (trim($stdin) !== '') ? $stdin : (string)$cp['sample_input'];
+        $expectedOutput = trim((string)$cp['sample_output']);
+
+        $result = codeExecutionRun($language, $code, $testStdin);
+        $extra = isset($result['diagnostics']) ? ['diagnostics' => $result['diagnostics']] : [];
+
+        $cleanActual = trim((string)($result['output'] ?? ''));
+        $normActual = preg_replace('/\s+/', ' ', $cleanActual);
+        $normExpected = preg_replace('/\s+/', ' ', $expectedOutput);
+
+        $isSuccess = !$result['error'] && $result['status'] === 200 && ($normExpected === '' || $normActual === $normExpected);
+
+        $verdictStatus = $isSuccess ? 'accepted' : ($result['error'] ? 'error' : 'wrong_answer');
+        $verdictMessage = $isSuccess
+            ? 'Tabriklaymiz! Masala muvaffaqiyatli yechildi (+ ' . $cp['points'] . ' ball).'
+            : ($result['error']
+                ? 'Dastur xatolik bilan yakunlandi. Kod sintaksisini tekshiring.'
+                : 'Javob xato. Kutilgan: "' . $expectedOutput . '", olingan: "' . $cleanActual . '"');
+
+        $extra['verdict'] = [
+            'status' => $verdictStatus,
+            'message' => $verdictMessage,
+            'checks_passed' => $isSuccess ? 1 : 0,
+            'total_checks' => 1,
+            'scope' => 'contest',
+            'topic' => $topicId,
+            'problem' => $requestedProblem,
+        ];
+        $extra['test_stdin'] = $testStdin;
+
+        if ($executionUser) {
+            try {
+                $extra['saved_run_id'] = solutionSaveRun($executionUser['id'], $topicId, $requestedProblem, $language, $code, [
+                    'status' => $result['status'],
+                    'output' => $result['output'],
+                    'error' => $result['error'],
+                    'verdict' => $extra['verdict'],
+                    'test_stdin' => $testStdin
+                ]);
+
+                $regStmt = $db->prepare("INSERT OR IGNORE INTO contest_registrations (contest_id, user_id) VALUES (?, ?)");
+                $regStmt->execute([$contestId, (int)$executionUser['id']]);
+
+                $subScore = $isSuccess ? (int)$cp['points'] : 0;
+                $subStmt = $db->prepare("INSERT INTO contest_submissions (contest_id, user_id, problem_order, language, code, verdict, score) VALUES (?, ?, ?, ?, ?, ?, ?)");
+                $subStmt->execute([$contestId, (int)$executionUser['id'], $requestedProblem, $language, $code, $verdictStatus, $subScore]);
+
+                $extra['save_message'] = $isSuccess ? 'Yechim qabul qilindi va musobaqa natijalariga qo‘shildi!' : 'Urinish musobaqa tarixiga qayd etildi.';
+            } catch (Throwable $error) {
+                error_log('CodeStep contest submission: ' . $error->getMessage());
+                $extra['save_message'] = 'Urinish tekshirildi.';
+            }
+        }
+        executionResponse($result['status'], $result['output'], $result['error'], $extra);
+    }
+
     require_once dirname(__DIR__) . '/includes/programming-topics.php';
     require_once dirname(__DIR__) . '/includes/problem-rules.php';
     require_once dirname(__DIR__) . '/includes/problem-judge.php';
-    $topicId = (int) $requestedTopic;
     $topics = programmingTopicsIndex(programmingTopicsCatalog());
     $found = false;
     foreach ($topics[$topicId]['problems'] ?? [] as $problem) {

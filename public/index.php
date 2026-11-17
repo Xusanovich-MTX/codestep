@@ -1,4 +1,8 @@
 <?php
+if (($_GET['api'] ?? null) === 'health') {
+    require __DIR__ . '/healthz.php';
+    exit;
+}
 if (($_GET['api'] ?? null) === 'chat') {
     require __DIR__ . '/api/chat.php';
     exit;
@@ -31,7 +35,12 @@ define('ACCENT_BLUE', '#3B82F6');
 // Mavzuni aniqlash
 if (!isset($_COOKIE['theme'])) {
     $theme = 'dark';
-    setcookie('theme', $theme, time() + (86400 * 30), "/");
+    setcookie('theme', $theme, [
+        'expires' => time() + (86400 * 30),
+        'path' => '/',
+        'secure' => codeStepIsHttps(),
+        'samesite' => 'Lax',
+    ]);
 } else {
     $theme = in_array($_COOKIE['theme'], ['dark', 'light'], true) ? $_COOKIE['theme'] : 'dark';
 }
@@ -202,7 +211,7 @@ $programmingCatalog = programmingTopicsCatalog();
 $programmingTopics = programmingTopicsIndex($programmingCatalog);
 
 // Joriy sahifani olish
-$page = is_string($_GET['page'] ?? null) ? $_GET['page'] : 'home';
+$page = is_string($_GET['page'] ?? null) && $_GET['page'] !== '' ? $_GET['page'] : 'home';
 $topicId = is_string($_GET['id'] ?? null) && ctype_digit($_GET['id']) ? (int) $_GET['id'] : 1;
 if ($page === 'topic-detail' && !isset($programmingTopics[$topicId]) && !isset($topics[$topicId])) {
     http_response_code(404);
@@ -211,6 +220,15 @@ if ($page === 'topic-detail' && !isset($programmingTopics[$topicId]) && !isset($
 if ($page === 'topics') {
     header('Location: ?page=home', true, 302);
     exit;
+}
+$knownPages = [
+    'home', 'section', 'chapter', 'topic-detail', 'sample-problems',
+    'login', 'register', 'forgot-password', 'reset-password',
+    'admin', 'contests', 'solutions', 'profile',
+    'terms', 'privacy', 'code-editor', 'contact', 'settings',
+];
+if (!in_array($page, $knownPages, true)) {
+    $page = 'home';
 }
 $bookSection = null;
 $bookChapter = null;
@@ -243,11 +261,20 @@ $pageTitle = match ($page) {
     'section' => $bookSection ? $bookSection['number'] . ' bo‘lim · ' . $bookSection['title'] : 'Bo‘lim topilmadi',
     'chapter' => $bookChapter ? $bookChapter['number'] . '-bob · ' . $bookChapter['title'] : 'Bob topilmadi',
     'topic-detail' => $programmingTopics[$topicId]['title'] ?? $topics[$topicId]['title'] ?? 'Mavzu',
+    'admin' => 'Admin Panel',
+    'contests' => 'Haftalik Kiber-Olimpiada',
+    'forgot-password' => 'Parolni qayta tiklash',
+    'reset-password' => 'Yangi parol o‘rnatish',
     'terms' => 'Foydalanish shartlari',
     'privacy' => 'Maxfiylik siyosati',
     'settings' => 'Sozlamalar',
     default => 'Dasturlashni o‘rganing',
 };
+$requestScheme = codeStepIsHttps() ? 'https' : 'http';
+$requestHost = is_string($_SERVER['HTTP_HOST'] ?? null) && preg_match('/^[a-z0-9.-]+(?::\d+)?$/i', $_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : 'codestep.tokhirdev.uz';
+$publicBaseUrl = ($requestHost === 'codestep' || str_starts_with($requestHost, '127.') || str_starts_with($requestHost, 'localhost'))
+    ? ($requestScheme . '://' . $requestHost . '/')
+    : 'https://codestep.tokhirdev.uz/';
 $showSplash = !isset($_COOKIE['visited']);
 ?>
 <!DOCTYPE html>
@@ -256,6 +283,19 @@ $showSplash = !isset($_COOKIE['visited']);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo topicText($pageTitle); ?> · <?php echo SITE_NAME; ?></title>
+    <meta name="description" content="CodeStep — C++ va Python dasturlash tillarini interaktiv tarzda o‘rganish, dasturlash kitobi bo‘limlari va masalalarni brauzerda kod yozib yechish platformasi.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="<?php echo topicText($publicBaseUrl); ?>">
+    <meta property="og:site_name" content="CodeStep">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="<?php echo topicText($publicBaseUrl); ?>">
+    <meta property="og:title" content="CodeStep — Dasturlashni o‘rganamiz va onlayn amaliyot">
+    <meta property="og:description" content="C++ va Python tillarini interaktiv tarzda o‘rganing. Bo‘limdan bobga, bobdan mavzuga o‘ting va masalalarni kod yozib yeching.">
+    <meta property="og:image" content="<?php echo topicText($publicBaseUrl . 'assest/images/codestep-preview.jpg'); ?>">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="CodeStep — Dasturlashni o‘rganamiz va onlayn amaliyot">
+    <meta name="twitter:description" content="C++ va Python tillarini interaktiv tarzda o‘rganing.">
+    <meta name="twitter:image" content="<?php echo topicText($publicBaseUrl . 'assest/images/codestep-preview.jpg'); ?>">
     <script>
         try {
             if (localStorage.getItem('codestep:desktop-menu-collapsed') === '1') {
@@ -1241,6 +1281,7 @@ $showSplash = !isset($_COOKIE['visited']);
             </div>
             <nav class="home-top-nav" aria-label="Tezkor havolalar">
                 <a class="active" href="?page=home" aria-current="page"><i class="fas fa-home" aria-hidden="true"></i>Asosiy</a>
+                <a href="?page=contests"><i class="fas fa-trophy" aria-hidden="true"></i>Musobaqalar</a>
                 <a href="#homeCourses"><i class="fas fa-book-open" aria-hidden="true"></i>Kurslar</a>
                 <a href="?page=contact"><i class="fas fa-users" aria-hidden="true"></i>Aloqa</a>
             </nav>
@@ -1296,6 +1337,18 @@ $showSplash = !isset($_COOKIE['visited']);
             <?php elseif ($page === 'login' || $page === 'register'): ?>
                 <?php include __DIR__ . '/pages/account.php'; ?>
 
+            <?php elseif ($page === 'forgot-password'): ?>
+                <?php include __DIR__ . '/pages/forgot-password.php'; ?>
+
+            <?php elseif ($page === 'reset-password'): ?>
+                <?php include __DIR__ . '/pages/reset-password.php'; ?>
+
+            <?php elseif ($page === 'admin'): ?>
+                <?php include __DIR__ . '/pages/admin.php'; ?>
+
+            <?php elseif ($page === 'contests'): ?>
+                <?php include __DIR__ . '/pages/contests.php'; ?>
+
             <?php elseif ($page === 'solutions'): ?>
                 <?php include __DIR__ . '/pages/solutions.php'; ?>
 
@@ -1316,6 +1369,9 @@ $showSplash = !isset($_COOKIE['visited']);
 
             <?php elseif ($page == 'settings'): ?>
                 <?php include __DIR__ . '/pages/settings.php'; ?>
+
+            <?php else: ?>
+                <?php include __DIR__ . '/pages/book-home.php'; ?>
             <?php endif; ?>
         </div>
     </main>
@@ -1387,7 +1443,7 @@ $showSplash = !isset($_COOKIE['visited']);
     <script src="assest/js/navigation.js?v=<?php echo filemtime(__DIR__ . '/assest/js/navigation.js'); ?>"></script>
     <?php if ($showSplash): ?>
     <script>
-        setTimeout(()=>{document.getElementById('splash')?.classList.add('hide');document.cookie="visited=true; max-age=3600; path=/"},2500);
+        setTimeout(()=>{const s=document.getElementById('splash');if(s){s.classList.add('hide');setTimeout(()=>{s.style.display='none';},600);}document.cookie="visited=true; max-age=3600; path=/; SameSite=Lax"+(location.protocol==='https:'?'; Secure':'')},2500);
     </script>
     <?php endif; ?>
     <?php if ($page === 'home'): ?>

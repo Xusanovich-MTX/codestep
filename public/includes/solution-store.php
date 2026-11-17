@@ -50,10 +50,101 @@ function solutionDb(): PDO
     return $db;
 }
 
+function solutionEnsureFeatureSchema(PDO $db): void
+{
+    $cols = $db->query('PRAGMA table_info(users)')->fetchAll(PDO::FETCH_COLUMN, 1);
+    if (!in_array('email', $cols, true)) {
+        $db->exec('ALTER TABLE users ADD COLUMN email TEXT COLLATE NOCASE');
+    }
+    $db->exec('CREATE UNIQUE INDEX IF NOT EXISTS users_email_unique ON users(email) WHERE email IS NOT NULL');
+    $db->exec("CREATE TABLE IF NOT EXISTS password_resets (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        email TEXT NOT NULL COLLATE NOCASE,
+        code TEXT NOT NULL,
+        token TEXT NOT NULL UNIQUE,
+        expires_at INTEGER NOT NULL,
+        created_at TEXT NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ', 'now'))
+    )");
+    $db->exec('CREATE INDEX IF NOT EXISTS password_resets_email_idx ON password_resets(email)');
+    $db->exec('CREATE INDEX IF NOT EXISTS password_resets_token_idx ON password_resets(token)');
+
+    $db->exec("CREATE TABLE IF NOT EXISTS contests (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        title TEXT NOT NULL,
+        description TEXT NOT NULL,
+        start_time TEXT NOT NULL,
+        end_time TEXT NOT NULL,
+        duration_minutes INTEGER NOT NULL DEFAULT 90,
+        status TEXT NOT NULL DEFAULT 'upcoming' CHECK (status IN ('upcoming', 'running', 'finished')),
+        created_at TEXT NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ', 'now'))
+    )");
+    $db->exec("CREATE TABLE IF NOT EXISTS contest_problems (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        contest_id INTEGER NOT NULL REFERENCES contests(id) ON DELETE CASCADE,
+        problem_order TEXT NOT NULL CHECK (problem_order IN ('A', 'B', 'C', 'D', 'E')),
+        title TEXT NOT NULL,
+        difficulty TEXT NOT NULL,
+        points INTEGER NOT NULL,
+        topic_id INTEGER NOT NULL,
+        problem_number TEXT NOT NULL,
+        description TEXT NOT NULL,
+        sample_input TEXT DEFAULT '',
+        sample_output TEXT DEFAULT '',
+        UNIQUE(contest_id, problem_order)
+    )");
+    $db->exec("CREATE TABLE IF NOT EXISTS contest_submissions (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        contest_id INTEGER NOT NULL REFERENCES contests(id) ON DELETE CASCADE,
+        user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+        problem_order TEXT NOT NULL CHECK (problem_order IN ('A', 'B', 'C', 'D', 'E')),
+        language TEXT NOT NULL CHECK (language IN ('cpp', 'python')),
+        code TEXT NOT NULL,
+        verdict TEXT NOT NULL CHECK (verdict IN ('accepted', 'wrong_answer', 'error')),
+        score INTEGER NOT NULL DEFAULT 0,
+        penalty_seconds INTEGER NOT NULL DEFAULT 0,
+        created_at TEXT NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ', 'now'))
+    )");
+    $db->exec("CREATE TABLE IF NOT EXISTS contest_registrations (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        contest_id INTEGER NOT NULL REFERENCES contests(id) ON DELETE CASCADE,
+        user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+        registered_at TEXT NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ', 'now')),
+        UNIQUE(contest_id, user_id)
+    )");
+
+    $count = (int) $db->query('SELECT COUNT(*) FROM contests')->fetchColumn();
+    if ($count === 0) {
+        $tz = new DateTimeZone('Asia/Tashkent');
+        $startDt = (new DateTimeImmutable('next sunday 20:00', $tz));
+        $endDt = $startDt->modify('+90 minutes');
+        $insContest = $db->prepare('INSERT INTO contests (title, description, start_time, end_time, duration_minutes, status) VALUES (?, ?, ?, ?, ?, ?)');
+        $insContest->execute([
+            'CodeStep Weekly Cup #1',
+            'Haftalik dasturlash olimpiadasi. 5 ta masala (osondan murakkabgacha). Python va C++ dasturlash tillarida qatnashish mumkin.',
+            $startDt->format('c'),
+            $endDt->format('c'),
+            90,
+            'upcoming',
+        ]);
+        $contestId = (int) $db->lastInsertId();
+        $seedProblems = [
+            ['A', 'Ikki sonning yigʻindisi va koʻpaytmasi', 'Juda oson', 50, 1, '1.1', "Ikkita butun a va b sonlari berilgan. Ularning yig'indisi va ko'paytmasini probel bilan bitta qatorda chop eting.", '4 7', '11 28'],
+            ['B', 'Uchburchak mavjudligi va perimetri', 'Oson', 100, 4, '1.4', "Uchta musbat butun a, b, c sonlari berilgan. Agar ular uchburchak tomonlari bo'la olsa, uning perimetrini, aks holda \"NO\" so'zini chiqaring.", '3 4 5', '12'],
+            ['C', 'Massivdagi juft sonlar yigʻindisi', 'Oʻrta', 150, 15, '1.15', "N ta butun sondan iborat massiv berilgan. Massivdagi barcha juft sonlar yig'indisi va ularning sonini chop etuvchi dastur tuzing.", "5\n1 4 7 8 2", '14 3'],
+            ['D', 'Palindrom satr va soʻzlar tahlili', 'Murakkab', 200, 20, '1.20', "Berilgan satr bo'sh joylar va tinish belgilarisiz chapdan ham, o'ngdan ham bir xil o'qiladimi (palindrommi) tekshiring hamda undagi unli harflar sonini toping.", 'aziza', 'YES 3'],
+            ['E', 'Olimpiada: Eng uzun oʻsuvchi qism-ketma-ketlik', 'Ekspert', 250, 35, '1.35', "N ta sondan iborat ketma-ketlik berilgan. Dinamik dasturlash usulida undagi eng uzun qat'iy o'suvchi qism-ketma-ketlik (LIS) uzunligini hisoblang.", "6\n10 22 9 33 21 50", '4'],
+        ];
+        $insProb = $db->prepare('INSERT INTO contest_problems (contest_id, problem_order, title, difficulty, points, topic_id, problem_number, description, sample_input, sample_output) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
+        foreach ($seedProblems as $p) {
+            $insProb->execute(array_merge([$contestId], $p));
+        }
+    }
+}
+
 function solutionContext(int $owner, ?int $topic = null, ?string $problem = null, ?string $language = null): void
 {
     if ($owner < 1 || ($topic !== null && $topic < 1)) throw new InvalidArgumentException('Foydalanuvchi yoki mavzu noto‘g‘ri.');
-    if ($problem !== null && preg_match('/^[1-9][0-9]*(?:\.[0-9]+){1,3}$/D', $problem) !== 1) {
+    if ($problem !== null && preg_match('/^(?:[1-9][0-9]*(?:\.[0-9]+){1,3}|[A-E])$/D', $problem) !== 1) {
         throw new InvalidArgumentException('Masala raqami noto‘g‘ri.');
     }
     if ($language !== null && !in_array($language, ['cpp', 'python'], true)) throw new InvalidArgumentException('Dasturlash tili noto‘g‘ri.');
@@ -145,7 +236,7 @@ function solutionSaveRun(int $owner, int $topic, string $problem, string $lang, 
         $total = $judgment['total_checks'];
         if (($verdict === 'wrong_answer' && $passed >= $total)
             || ($verdict !== 'wrong_answer' && $passed !== $total)
-            || ($verdict === 'accepted' && ($judgment['scope'] ?? '') !== 'output')
+            || ($verdict === 'accepted' && !in_array($judgment['scope'] ?? '', ['output', 'contest'], true))
             || ($verdict === 'structure_passed' && ($judgment['scope'] ?? '') !== 'structure_only')) {
             throw new InvalidArgumentException('Tekshiruv xulosasi va testlar soni mos emas.');
         }

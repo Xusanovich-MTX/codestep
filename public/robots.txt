@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /storage/
+Disallow: /tools/
+Disallow: /api/
+
+Sitemap: https://codestep.tokhirdev.uz/sitemap.xml
